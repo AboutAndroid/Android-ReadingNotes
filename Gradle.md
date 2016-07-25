@@ -1,12 +1,15 @@
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货。
+
 阅读文章：[给 Android 初学者的 Gradle 知识普及](http://stormzhang.com/android/2016/07/02/gradle-for-android-beginners/)，感谢[stormzhang](http://stormzhang.com/)的无私分享。
 
 #一.什么是Gradle
 - 新一代自动化构建工具，用于对项目进行编译、运行、签名、打包、依赖管理等一系列功能的集合，一个独立的项目与AS、Android无关。
 - 使用Groovy来进行描述，简洁灵活。
 - 为了支持Gradle在AS上谷歌开发了一个插件：Android Gradle Plugin，在项目根目录下的build.gradle文件中有这么一行用来依赖该插件的代码：classpath 'com.android.tools.build:gradle:2.1.2' 这个版本号是gradle插件，是谷歌定的，和Gradle官方没有关系。
+
 #二.Gradle Wrapper
 - 为了解决不同项目Gradle版本不一致的问题，谷歌推出的Gradle包装，每个Android项目中都会配置一个指定版本的Gradle，通过Gradle Wrapper每个项目可以使用不同版本的Gradle来构建。
+
 #三.AS中的Gradle配置文件
 未完待续
 - Module下的build.gradle：整个项目中最主要的gradle配置文件。
@@ -40,3 +43,9 @@
 - Gradle：自动化构建工具，用于对项目进行编译、运行、签名、打包、依赖管理等一系列功能的集合，一个独立的项目与AS、Android无关。
 - Android Gradle Plugin：谷歌为了支持Gradle在AS上使用开发的插件，它的版本号有谷歌规定与Gradle版本无关。
 - Gradle Wrapper：通过Gradle Wrapper每个Android项目中都会配置一个指定版本的Gradle，通过Gradle Wrapper每个项目可以使用不同版本的Gradle来构建。
+
+#联系作者
+Email：ssyijiu@126.com
+微信：SSyijiu11
+
+
