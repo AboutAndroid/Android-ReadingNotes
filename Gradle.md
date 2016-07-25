@@ -11,23 +11,23 @@
 为了解决不同项目Gradle版本不一致的问题，谷歌推出的Gradle包装，每个Android项目中都会配置一个指定版本的Gradle，通过Gradle Wrapper每个项目可以使用不同版本的Gradle来构建。
 
 ##三.AS中的Gradle配置文件
-未完待续 
+> 未完待续 
 
-1. Module下的build.gradle：整个项目中最主要的gradle配置文件。 
-2. Project下的build.gradle： 
-    ```
-    classpath 'com.android.tools.build:gradle:2.1.0'
-    ```
-    整个项目的 gradle 基础配置文件，声明了 android gradle plugin 的版本。
+1、Module下的build.gradle：整个项目中最主要的gradle配置文件。 
+2、Project下的build.gradle： 
+```
+classpath 'com.android.tools.build:gradle:2.1.0'
+```
+整个项目的 gradle 基础配置文件，声明了 android gradle plugin 的版本。
 
-3. settings.gradle： 
-    ```
-    include ':app'
-    ```
-    列出了项目中各个Moudle的名称，我这里没有用到其他的库所以只有一个app。
+3、settings.gradle： 
+```
+include ':app'
+```
+列出了项目中各个Moudle的名称，我这里没有用到其他的库所以只有一个app。  
 
-4. gradle目录下的gradle-wrapper.properties：
-     声明了 gradle 的目录与下载路径以及当前项目使用的 gradle 版本。
+4、gradle目录下的gradle-wrapper.properties：   
+声明了 gradle 的目录与下载路径以及当前项目使用的 gradle 版本。
 
 ##四.正确的导入AS开源项目
 打开各个Moudle下的build.gradle（包括library），检查ompileSdkVersion 和 buildToolsVersion是否和本地版本一直，不一致的话修改版本或者下载该版本。 
