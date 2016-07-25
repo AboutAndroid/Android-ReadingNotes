@@ -46,7 +46,7 @@
 - Gradle Wrapper：通过Gradle Wrapper每个Android项目中都会配置一个指定版本的Gradle，通过Gradle Wrapper每个项目可以使用不同版本的Gradle来构建。
 
 ##联系作者
-Email：ssyijiu@126.com
+Email：ssyijiu@126.com   
 微信：SSyijiu11
 
 
