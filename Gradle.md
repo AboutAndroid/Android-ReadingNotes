@@ -29,6 +29,7 @@
 ##四.正确的AS项目
 - 打开各个Moudle下的build.gradle（包括library），检查ompileSdkVersion 和 buildToolsVersion是否和本地版本一直，不一致的话修改版本或者下载该版本。
 - 检查 gradle-wrapper.properties，Google 有些时候要求不同的 AS 支持不同的 gradle 版本。比如 AS 1.0 的时候要求必须使用 gradle 1.x 的版本，等到 AS 2.0 的时候，Google 不支持 gradle1.x 的版本，这个时候你必须手动更新下 android gradle plugin 的版本。
+
 ##五.Gradle命令
 - gradlew -v：查看当前项目的gradle版本。
 - gradlew clean ：清除Project/app目录下的build文件夹（如果没有清除哪个？如果有多个Moudle会怎么样？）
@@ -45,7 +46,7 @@
 - Gradle Wrapper：通过Gradle Wrapper每个Android项目中都会配置一个指定版本的Gradle，通过Gradle Wrapper每个项目可以使用不同版本的Gradle来构建。
 
 ##联系作者
-- Email：ssyijiu@126.com
-- 微信：SSyijiu11
+Email：ssyijiu@126.com
+微信：SSyijiu11
 
 
