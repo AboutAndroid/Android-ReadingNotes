@@ -1,5 +1,4 @@
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货。
-
 阅读文章：[给 Android 初学者的 Gradle 知识普及](http://stormzhang.com/android/2016/07/02/gradle-for-android-beginners/)，感谢[stormzhang](http://stormzhang.com/)的无私分享。
 
 #一.什么是Gradle
@@ -45,7 +44,7 @@
 - Gradle Wrapper：通过Gradle Wrapper每个Android项目中都会配置一个指定版本的Gradle，通过Gradle Wrapper每个项目可以使用不同版本的Gradle来构建。
 
 #联系作者
-Email：ssyijiu@126.com
-微信：SSyijiu11
+- Email：ssyijiu@126.com
+- 微信：SSyijiu11
 
 
