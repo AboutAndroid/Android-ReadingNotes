@@ -1,10 +1,10 @@
 #Gradle
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货。     
-阅读文章：[给 Android 初学者的 Gradle 知识普及](http://stormzhang.com/android/2016/07/02/gradle-for-android-beginners/)，感谢[stormzhang](http://stormzhang.com/)的无私分享。
-参考文章：
-http://mp.weixin.qq.com/s?__biz=MzA4NTQwNDcyMA==&mid=2650662016&idx=1&sn=a3c338766b6ea9de654b1a011dcf5b3e&scene=1&srcid=0725MPNv3BTbCSMWdCXXsLvK#rd
+阅读文章：   
+[给 Android 初学者的 Gradle 知识普及](http://stormzhang.com/android/2016/07/02/gradle-for-android-beginners/)   
+[Android 开发你需要了解的 Gradle 配置](http://stormzhang.com/android/2016/07/15/android-gradle-config/)
 http://kaywu.github.io/2016/04/24/Gradle/
-http://www.jianshu.com/p/cd8fe9b16369
+[从Eclipse到AndroidStudio（四）Gradle基本配置](http://www.jianshu.com/p/cd8fe9b16369)
 http://www.androidchina.net/2155.html
 
 ##一.什么是Gradle
@@ -41,6 +41,8 @@ android {
         // 版本名称
         versionName "1.0"
     }
+
+    // 编译类型    
     buildTypes {
         release {
             minifyEnabled false
@@ -49,19 +51,28 @@ android {
     }
 }
 
+// 依赖管理标签
 dependencies {
+    // 编译libs目录下的所有jar包，用什么jar包直接放在libs目录下就可以了
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    
+    // 去远程仓库（一般是jcenter 和 maven 仓库）下载butterknife:5.1.1并编译
+    // com.jakewharton远程项目的路径，butterknife远程项目名称，5.1.1版本号
+    // 版本号写成 5.1.+ 表明使用5.1版本分支下的最新版本，5.+表明5版本分支下的最新版本
+    // 写成compile 'com.jakewharton:butterknife:+' 表示使用这个项目的最新版本
+    // 不建议compile 'com.jakewharton:butterknife:+'写法，每次都要联网检查该项目有没有最新版本
     compile 'com.jakewharton:butterknife:5.1.1'
-    compile project(':xutilslibrary')
+    
+    // 编译本地library库
+    compile project(':library')
 }
 ```
 2、Project下的build.gradle： 
 ```
 // buildscript用来声明Gradle的配置
 buildscript {
-    // Gradle工具本身要从哪个maven仓库下载，默认使用的是一个叫做jcenter的maven仓库
+    // Gradle工具本身默认从jcenter仓库下载
     repositories {
         jcenter()
     }
@@ -71,7 +82,7 @@ buildscript {
     }
 }
 
-// 声明项目中所有Moudle的通用配置，这里规定所有模块中要用到的jar包也都从jcenter这个maven仓库中获取 
+// 声明项目中所有Moudle的通用配置，这里规定所有模块中要用到的jar包也都从jcente仓库中获取 
 // 在allprojects标签下配置的好处是你不需要再在每个模块下的build.gradle中单独配置了
 allprojects {
     repositories {
