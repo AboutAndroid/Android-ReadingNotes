@@ -5,7 +5,8 @@
 [Android 开发你需要了解的 Gradle 配置](http://stormzhang.com/android/2016/07/15/android-gradle-config/)
 http://kaywu.github.io/2016/04/24/Gradle/
 [从Eclipse到AndroidStudio（四）Gradle基本配置](http://www.jianshu.com/p/cd8fe9b16369)
-http://www.androidchina.net/2155.html
+http://www.androidchina.net/2155.html   
+http://blog.csdn.net/innost/article/details/48228651
 
 ##一.什么是Gradle
 新一代自动化构建工具（Ant、Maven都是构建工具），用于对项目进行编译、运行、签名、打包、依赖管理等一系列功能的集合，一个独立的项目与AS、Android无关。    
