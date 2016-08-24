@@ -1,4 +1,10 @@
-#EventBus
+#EventBus Documentation
+##How-Tos
+[开始使用EventBus](http://www.github.com)
+
+
+
+
 - Event事件，用于区分事件和传输数据。
 - 在Activity/Fragment的onStart()、onStop()方法中分别注册和反注册EventBus
     ```
