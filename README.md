@@ -7,6 +7,7 @@ Android阅读笔记，个人成长之路。
 - Application、
 - Cache
 - EventBus
+- Git
 - Gradle 
 - MVP
 
