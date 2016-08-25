@@ -1,7 +1,19 @@
 # Android-ReadingNotes
-Android�Ķ��ʼǣ����˳ɳ�֮·��
+Android阅读笔记，个人成长之路。
+##目录
+###A
+- Application - 未完成
+###C
+- Cache - 未完成
+###E
+- EventBus - 未完成
+###G
+- Gradle - 未完成
+###M
+- MVP - 未完成
 
-## ��ϵ����
+
+## 联系作者
 - Github: [ssyijiu](https://github.com/ssyijiu)
 - E-mail: lxmyijiu@163.com
 - WeChat: ssyijiu11
