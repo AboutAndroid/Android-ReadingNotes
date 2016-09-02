@@ -4,12 +4,14 @@ Android阅读笔记，个人成长之路。
 > 惭愧，还没有一篇完全写完。
 
 ##TODO
-- Application、
+- Application
+- 编程的智慧
 - Cache
 - EventBus
 - Git
 - Gradle 
 - MVP
+- TabLayout
 
 
 ## 联系作者
