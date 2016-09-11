@@ -7,6 +7,7 @@ Android阅读笔记，个人成长之路。
 - Application
 - 编程的智慧
 - Cache
+- Clean Code
 - EventBus
 - Git
 - Gradle 
