@@ -1,7 +1,7 @@
 # Android-ReadingNotes
 Android阅读笔记，个人成长之路。
 ##目录
-> 惭愧，还没有一篇完全写完。
+- [x] 我为什么不再公开开发Yin语言
 
 ##TODO
 - Application
