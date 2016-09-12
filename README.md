@@ -16,9 +16,9 @@ TabLayout
 
 
 ## 联系作者
-Github: [ssyijiu](https://github.com/ssyijiu)
-E-mail: lxmyijiu@163.com
-WeChat: ssyijiu11
+Github: [ssyijiu](https://github.com/ssyijiu)  
+E-mail: lxmyijiu@163.com  
+WeChat: ssyijiu11  
 
 ##License
 
