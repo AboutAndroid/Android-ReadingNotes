@@ -80,21 +80,21 @@ Glide.with(this)
      .into(ivImgGlide);
 ```
 这样，下次加载图片的时候，Glide 会将原图将从缓存中取出，重新调整大小，显示，然后缓存。  
-相比 Picasso 在显示之前重新调整图片大小而言，Glide 的这种缓存方式会让图片加载速度也会大大提升，当然也会耗费更多的磁盘空间。  
+相比 Picasso 在每次显示之前都要重新调整图片大小而言，Glide 的这种缓存方式会让图片加载速度也会大大提升，当然也会耗费更多的磁盘空间。  
 
 ##What that Glide has but Picasso doesn't
 - Glide 可以加载 gif 图片（很耗内存），Picasso 不可以。
 - Glide 也可以加载本地 video  略缩图到 ImageView。
 - Glide 可以通过 R.animator 来配置图片显示动画，而 Picasso 只有一种动画：淡入（fading in）。
-- generate a thumbnail file of an image you loaded with thumbnail()  (使用 thumbnail() 为你要加载的图片生成一张缩略图)
+- generate a thumbnail file of an image you loaded with thumbnail()  ( Glide 可以使用 thumbnail() 为你要加载的图片生成一张缩略图)
 
 ##Library's size
-- Picasso (v2.5.1):118KB
-- Glide (v3.5.2):430KB
+- Picasso (v2.5.1) : 118KB
+- Glide (v3.5.2) : 430KB
 
 ##Method count 
-- Picasso (v2.5.1):840 
-- Glide (v3.5.2):2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）  
+- Picasso (v2.5.1) : 480 
+- Glide (v3.5.2) : 2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）  
 
 ##总结
 比较项目 | 选择结果
@@ -109,7 +109,8 @@ gif | Glide
 缩略图 | Glide
 图片显示动画 | Glide
 
-相对而言，Picasso 更轻一些，但是它的图片加载速度和其他功能没有 Glide 强大。
+相对而言，Picasso 更轻一些，但是它的图片加载速度和加载 gif 动画等其他功能没有 Glide 强大。  
+在使用 Glide 的使用建议修改 Bitmap 的格式为 ARGB_8888 并同时缓存原图和 ImageView size 大小的图片。
 
 ## 联系作者
 - Github: [ssyijiu](https://github.com/ssyijiu)
