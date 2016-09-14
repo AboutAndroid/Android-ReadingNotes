@@ -32,10 +32,10 @@ AndroidManifest.xml
 <meta-data android:name="com.inthecheesefactory.lab.glidepicasso.GlideConfiguration"
         android:value="GlideModule"/>
 ```
-####修改 Glide 默认的 Bitmap 格式为 ARGB_8888 后，两者加载图片的质量相差无几，但是 Glide 消耗的内存仍比 Picasso 小的多。
+####修改 Glide 的 Bitmap 格式为 ARGB_8888 后，两者加载图片的质量相差无几，但是 Glide 消耗的内存仍比 Picasso 小的多。
 
 原因：Picasso会加载原图片(1920x1080 pixels)到内存，而 Glide 加载的是当前 ImageView 的 size(768x432 pixels) 到内存。
-####使用 Picasso 加载当前 ImageView 的 size 到内存：
+####使用 Picasso 加载当前 ImageView 的 size 到内存:
 ```java
 Picasso.with(this)
     .load("http://nuuneoi.com/uploads/source/playstore/cover.jpg")
@@ -55,6 +55,7 @@ Picasso.with(this)
 Picasso 加载的图片比 Glide 更平滑一些。
 ##Disk Caching
 Picasso will cache only single size of image, the full-size one. Glide acts differently, caches separate file for each size of ImageView. Although an image has already been loaded once but if you need to load another size the same image, it needs to be downloaded once again before be resized to the right resolution and then be cached.  
+
 简单点来说，就是 Picasso 只缓存一次原图，Glide 会根据当前 ImageView 的大小不同来缓存多次，每次缓存 ImageView size 大小的图片。尽管一张图片已经被缓存了，如果你要需要以不同的尺寸加载这张图片，Glide 需要重新下载，调整成新尺寸的大小，然后将这个尺寸的也缓存起来。
 
 ####让 Glide 同时缓存原图和 ImageView 大小的图片
@@ -74,12 +75,12 @@ Glide.with(this)
 - generate a thumbnail file of an image you loaded with thumbnail()  (使用 thumbnail() 为你要加载的图片生成一张缩略图)
 
 ##Library's size
-- Picasso (v2.5.1)：118KB
-- Glide (v3.5.2)：430KB
+- Picasso (v2.5.1):118KB
+- Glide (v3.5.2):430KB
 
 ##Method count 
-- Picasso (v2.5.1)：840 
-- Glide (v3.5.2)：2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）  
+- Picasso (v2.5.1):840 
+- Glide (v3.5.2):2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）  
 
 ##总结
 比较项目 | 选择结果
