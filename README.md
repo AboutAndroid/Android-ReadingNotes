@@ -5,7 +5,6 @@ Android阅读笔记，个人成长之路。
 
 ##TODO
 Application  
-编程的智慧  
 Cache  
 Clean Code  
 EventBus  
@@ -13,6 +12,9 @@ Git
 Gradle   
 MVP  
 TabLayout  
+编程的智慧   
+DRY原则的危害 
+国美黄金APP重构思考 
 
 
 ## 联系作者
