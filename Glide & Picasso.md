@@ -10,7 +10,7 @@ Glide 的 with 参数可以接受 Activity/Fragment，并且图片加载会和 A
 ##Default Bitmap Format is RGB_565
 Glide 默认的 Bitmap 格式是 RGB_565，Picasso 是 ARGB_8888，因此**默认情况下**，Glide 比 Picasso 加载的图片质量略差，但是内存节约了50%左右。
 
-####修改 Glide 默认的 Bitmap 格式为 ARGB_8888:
+修改 Glide 默认的 Bitmap 格式为 ARGB_8888:  
 java
 ```java
 public class GlideConfiguration implements GlideModule {
@@ -32,10 +32,10 @@ AndroidManifest.xml
 <meta-data android:name="com.inthecheesefactory.lab.glidepicasso.GlideConfiguration"
         android:value="GlideModule"/>
 ```
-####修改 Glide 的 Bitmap 格式为 ARGB_8888 后，两者加载图片的质量相差无几，但是 Glide 消耗的内存仍比 Picasso 小的多。
+修改 Glide 的 Bitmap 格式为 ARGB_8888 后，两者加载图片的质量相差无几，但是 Glide 消耗的内存仍比 Picasso 小的多。  
 
-原因：Picasso会加载原图片(1920x1080 pixels)到内存，而 Glide 加载的是当前 ImageView 的 size(768x432 pixels) 到内存。
-####使用 Picasso 加载当前 ImageView 的 size 到内存:
+原因：Picasso会加载原图片(1920x1080 pixels)到内存，而 Glide 加载的是当前 ImageView 的 size(768x432 pixels) 到内存。  
+使用 Picasso 加载当前 ImageView 的 size 到内存:   
 ```java
 Picasso.with(this)
     .load("http://nuuneoi.com/uploads/source/playstore/cover.jpg")
@@ -49,7 +49,7 @@ Picasso.with(this)
     .centerCrop()
     .into(ivImgPicasso);
 ```
-####现在两者消耗的内存相差无几，但是相对而言 Glide 更方便一些，因为它可以自动计算出任意情况下的 ImageView 大小。
+现在两者消耗的内存相差无几，但是相对而言 Glide 更方便一些，因为它可以自动计算出任意情况下的 ImageView 大小。  
 
 ##Image's quality in details
 Picasso 加载的图片比 Glide 更平滑一些。
@@ -58,15 +58,15 @@ Picasso will cache only single size of image, the full-size one. Glide acts diff
 
 简单点来说，就是 Picasso 只缓存一次原图，Glide 会根据当前 ImageView 的大小不同来缓存多次，每次缓存 ImageView size 大小的图片。尽管一张图片已经被缓存了，如果你要需要以不同的尺寸加载这张图片，Glide 需要重新下载，调整成新尺寸的大小，然后将这个尺寸的也缓存起来。
 
-####让 Glide 同时缓存原图和 ImageView 大小的图片
+让 Glide 同时缓存原图和 ImageView 大小的图片  
 ```java
 Glide.with(this)
              .load("http://nuuneoi.com/uploads/source/playstore/cover.jpg")
              .diskCacheStrategy(DiskCacheStrategy.ALL)
              .into(ivImgGlide);
 ```
-这样，下次加载图片的时候，Glide 会将原图将从缓存中取出，重新调整大小，显示，然后缓存。
-####相比 Picasso 在显示之前重新调整图片大小而言，Glide 的这种缓存方式会让图片加载速度也会大大提升，当然也会耗费更多的磁盘空间。
+这样，下次加载图片的时候，Glide 会将原图将从缓存中取出，重新调整大小，显示，然后缓存。  
+相比 Picasso 在显示之前重新调整图片大小而言，Glide 的这种缓存方式会让图片加载速度也会大大提升，当然也会耗费更多的磁盘空间。  
 
 ##What that Glide has but Picasso doesn't
 - Glide 可以加载 gif 图片（很耗内存），Picasso 不可以。
