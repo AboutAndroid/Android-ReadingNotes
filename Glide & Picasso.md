@@ -54,7 +54,7 @@ Picasso.with(this)
 ##Image's quality in details
 Picasso 加载的图片比 Glide 更平滑一些。
 ##Disk Caching
-Picasso will cache only single size of image, the full-size one. Glide acts differently, caches separate file for each size of ImageView. Although an image has already been loaded once but if you need to load another size the same image, it needs to be downloaded once again before be resized to the right resolution and then be cached.
+Picasso will cache only single size of image, the full-size one. Glide acts differently, caches separate file for each size of ImageView. Although an image has already been loaded once but if you need to load another size the same image, it needs to be downloaded once again before be resized to the right resolution and then be cached.  
 简单点来说，就是 Picasso 只缓存一次原图，Glide 会根据当前 ImageView 的大小不同来缓存多次，每次缓存 ImageView size 大小的图片。尽管一张图片已经被缓存了，如果你要需要以不同的尺寸加载这张图片，Glide 需要重新下载，调整成新尺寸的大小，然后将这个尺寸的也缓存起来。
 
 ####让 Glide 同时缓存原图和 ImageView 大小的图片
@@ -79,7 +79,7 @@ Glide.with(this)
 
 ##Method count 
 - Picasso (v2.5.1)：840 
-- Glide (v3.5.2)：2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）
+- Glide (v3.5.2)：2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）  
 ##总结
 比较项目 | 选择结果
 --- | --- | ---
