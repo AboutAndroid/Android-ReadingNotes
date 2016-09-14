@@ -17,7 +17,8 @@
         compile 'com.squareup.picasso:picasso:2.5.2'
     }
     ```
-Glide 需要 Android Support Library v4，Picasso 则不需要。
+Glide 需要 Android Support Library v4，Picasso 则不需要。 
+
 ##Basic
 Glide 的 with 参数可以接受 Activity/Fragment，并且图片加载会和 Activity/Fragment 的生命周期保持一致，例如：在 Paused 状态暂停加载图片，在 Resumed 的时候又自动重新加载图片。
 
