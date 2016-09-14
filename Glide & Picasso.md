@@ -80,6 +80,7 @@ Glide.with(this)
 ##Method count 
 - Picasso (v2.5.1)：840 
 - Glide (v3.5.2)：2678（对于dex文件65535个方法的限制来说，2678是一个相当大的数字了，建议在使用Glide的时候开启ProGuard）  
+
 ##总结
 比较项目 | 选择结果
 --- | --- | ---
