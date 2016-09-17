@@ -11,9 +11,9 @@
 
 确实，现在Github已经慢慢的在变味道，在很多人的眼中写一份好的代码远远没有多几个star重要(例如某 RecyclerView 的 Adapter 不star 就不让加Q群)。如果有一天出现卖 Github Star 的淘宝店才是最大的讽刺吧。
 ## 联系作者
-- Github: [ssyijiu](https://github.com/ssyijiu)
-- E-mail: lxmyijiu@163.com
-- WeChat: ssyijiu11
+- Github : [ssyijiu](https://github.com/ssyijiu)
+- E-mail : lxmyijiu@163.com
+- WeChat : [ssyijiu11](http://obe5pxv6t.bkt.clouddn.com/weixin.jpg)
 
 ##License
 

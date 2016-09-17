@@ -113,9 +113,9 @@ gif | Glide
 在使用 Glide 的使用建议修改 Bitmap 的格式为 ARGB_8888 并同时缓存原图和 ImageView size 大小的图片。
 
 ## 联系作者
-- Github: [ssyijiu](https://github.com/ssyijiu)
-- E-mail: lxmyijiu@163.com
-- WeChat: ssyijiu11
+- Github : [ssyijiu](https://github.com/ssyijiu)
+- E-mail : lxmyijiu@163.com
+- WeChat : [ssyijiu11](http://obe5pxv6t.bkt.clouddn.com/weixin.jpg)
 
 ##License
 

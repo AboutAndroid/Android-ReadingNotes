@@ -48,9 +48,9 @@
 - 思考：不要过分的追求这些原则和设计模式，它们只是一些经验，不应该成为你的束缚。仔细想想，如你写每一行代码都要对照这些原则或者设计模式来检查一下是否违背了它们，这将是一件多么可怕的事情。
 
 ## 联系作者
-- Github: [ssyijiu](https://github.com/ssyijiu)
-- E-mail: lxmyijiu@163.com
-- WeChat: ssyijiu11
+- Github : [ssyijiu](https://github.com/ssyijiu)
+- E-mail : lxmyijiu@163.com
+- WeChat : [ssyijiu11](http://obe5pxv6t.bkt.clouddn.com/weixin.jpg)
 
 ##License
 
