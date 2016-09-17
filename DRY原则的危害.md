@@ -1,7 +1,7 @@
 ##读：DRY原则的危害
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
 阅读文章：[DRY原则的危害](http://www.jianshu.com/p/87fc1079d596)
-> DRY：Don't Repeat Yourself  
+> DRY : Don't Repeat Yourself  
 
 ###抽象与可读性的矛盾
 - 适度的抽象和避免重复是有好处的，它甚至可以提高代码的可读性。
@@ -21,6 +21,7 @@
       int v;
     }
     ```
+- - - - --
     ```
     // 对代码进行过度的抽取
     class C {
