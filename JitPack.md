@@ -58,13 +58,13 @@
     }
     ```
 
-##3. 上传Github
+##3. 上传 Github
 将整个 Project   上传到 Github。 
 - 你可以直接使用 Android Studio 的 Share Project  On Github 上传
 - 也可以先在 Github 上创建一个仓库， 然后 clone 到本地，将 Project 中的文件复制进去，Commit and Push 
 - **注意 : 这里要上传整个 Project 不要只上传你的 Library**
 
-##4. 创建releases
+##4. 创建 releases
 - 点击 releases
 - 点击 Draft a new releases
 - 填写 版本号、标题、描述
