@@ -1,6 +1,6 @@
 ##读：我为什么不再公开开发Yin语言
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-阅读文章：[我为什么不再公开开发Yin语言](http://www.jianshu.com/p/f1e4240f527f)
+阅读文章：[我为什么不再公开开发Yin语言](http://www.yinwang.org/blog-cn/2015/03/18/yin-lang-secret)
 
 对王垠大神的不敢做太多的评价，下面两句是原文摘抄。
 - 要知道，我是世界上最强的语言设计者之一（很可能没有之一），我的价值是不限定于任何国家的。

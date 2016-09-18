@@ -1,6 +1,6 @@
-##读：DRY原则的危害
+##读：DRY原则的误区
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-阅读文章：[DRY原则的危害](http://www.jianshu.com/p/87fc1079d596)
+阅读文章：[DRY原则的误区](http://www.yinwang.org/blog-cn/2015/06/14/dry-principle)
 > DRY : Don't Repeat Yourself  
 
 ###抽象与可读性的矛盾
