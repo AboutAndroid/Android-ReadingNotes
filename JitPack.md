@@ -1,9 +1,6 @@
 #JitPack
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-阅读文章：  
-[JitPack官方文档](https://jitpack.io/docs/ANDROID/)  
-[写自己的开源库，发布到 JitPack.io](http://icodeyou.com/2015/12/23/2015-12-23-AndroidLibraryJitPack/)  
-[用JitPack发布开源库时附加文档和源码](http://www.gcssloop.com/course/jitpack-sources-javadoc/?utm_source=tuicool&utm_medium=referral)
+阅读文章：  [JitPack官方文档](https://jitpack.io/docs/ANDROID/)  , [写自己的开源库，发布到 JitPack.io](http://icodeyou.com/2015/12/23/2015-12-23-AndroidLibraryJitPack/)  , [用JitPack发布开源库时附加文档和源码](http://www.gcssloop.com/course/jitpack-sources-javadoc/?utm_source=tuicool&utm_medium=referral)
 
 > 非常简单的几步将你的库发布到JitPack
 
@@ -68,19 +65,18 @@
 - **注意 : 这里要上传整个 Project 不要只上传你的 Library**
 
 ##4. 创建releases
-点击releases —> 点击Draft a new releases —> 填写 版本号、标题、描述 —> 点击Publish releases
-![](http://obe5pxv6t.bkt.clouddn.com/releases_1.png)
-![](http://obe5pxv6t.bkt.clouddn.com/releases_2.png)
-![](http://obe5pxv6t.bkt.clouddn.com/releases_3.png)
+- 点击 releases
+- 点击 Draft a new releases
+- 填写 版本号、标题、描述
+- 点击 Publish releases
 
 ##5. 远程依赖
 前四步走完的话，你的库已经发布好了，下面则是如何远程依赖刚刚发布的库。
 - 前往[JitPack](https://jitpack.io/)
 - 搜索你的 Github name/Project name
 - 选择最新版本，Get it
-![](http://obe5pxv6t.bkt.clouddn.com/jitpack.png)
 
-##Demo 请看：[ssyijiu/MLog](https://github.com/ssyijiu/MLog)
+##demo：[ssyijiu/MLog](https://github.com/ssyijiu/MLog)
 
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
