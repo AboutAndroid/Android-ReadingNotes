@@ -80,7 +80,7 @@
 - 选择最新版本，Get it
 ![](http://obe5pxv6t.bkt.clouddn.com/jitpack.png)
 
-##demo 请看：[ssyijiu/MLog](https://github.com/ssyijiu/MLog)
+##Demo 请看：[ssyijiu/MLog](https://github.com/ssyijiu/MLog)
 
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
