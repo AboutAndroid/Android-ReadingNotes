@@ -24,3 +24,6 @@ Watch
 
 Gist
 有些时候你没有项目可以开源，只是单纯的想分享一些代码片段，那这个时候 Gist 就派上用场了！
+
+
+http://rogerdudler.github.io/git-guide/index.zh.html
