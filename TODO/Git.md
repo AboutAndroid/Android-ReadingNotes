@@ -27,3 +27,4 @@ Gist
 
 
 http://rogerdudler.github.io/git-guide/index.zh.html
+http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/zh_cn/
