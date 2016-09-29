@@ -77,7 +77,7 @@
 - 搜索你的 Github name/Project name
 - 选择最新版本，Get it
 
-##demo：[ssyijiu/MLog](https://github.com/ssyijiu/MLog)
+##Demo：[MLog](https://github.com/ssyijiu/MLog)
 
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
