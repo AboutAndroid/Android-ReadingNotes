@@ -28,3 +28,4 @@ Gist
 
 http://rogerdudler.github.io/git-guide/index.zh.html
 http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/zh_cn/
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
