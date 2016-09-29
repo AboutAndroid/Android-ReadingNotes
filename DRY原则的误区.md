@@ -1,5 +1,6 @@
 ##读：DRY原则的误区
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
+阅读文章：[DRY原则的误区](http://www.yinwang.org/blog-cn/2015/06/14/dry-principle)  
 完成时间：2016/8/25
 
 > DRY : Don't Repeat Yourself  
@@ -47,9 +48,6 @@
 ###谨慎的对待所谓原则
 - 我完全不在乎这类原则，因为它们非常的肤浅。这就像你告诉我说你有一个重大的发现，那就是“1+1=2”，我该支持你还是反对你呢？我才懒得跟你说话。**人们写程序，本来自然而然就会在合适的时候进行抽象，避免重复**，怎么过了几十年后，某个菜鸟给我们的做法起了个名字叫DRY，反而他成了“大师”一样的人物，我倒要用“DRY”这个词来描述我一直在干的事情呢？
 - 思考：不要过分的追求这些原则和设计模式，它们只是一些经验，不应该成为你的束缚。仔细想想，如你写每一行代码都要对照这些原则或者设计模式来检查一下是否违背了它们，这将是一件多么可怕的事情。
-
-##Thanks
-[DRY原则的误区](http://www.yinwang.org/blog-cn/2015/06/14/dry-principle)  
 
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
