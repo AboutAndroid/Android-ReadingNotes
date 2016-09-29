@@ -1,6 +1,5 @@
 #Glide and Picasso 
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-阅读文章：[Introduction to Glide, Image Loader Library for Android, recommended by Google](https://inthecheesefactory.com/blog/get-to-know-glide-recommended-by-google/en)  
 完成时间：2016/9/13  
 
 ##Import to project
@@ -113,6 +112,8 @@ gif | Glide
 相对而言，Picasso 更轻一些，但是它的图片加载速度和加载 gif 动画等其他功能没有 Glide 强大。  
 在使用 Glide 的使用建议修改 Bitmap 的格式为 ARGB_8888 并同时缓存原图和 ImageView size 大小的图片。
 
+##Thanks
+[Introduction to Glide, Image Loader Library for Android, recommended by Google](https://inthecheesefactory.com/blog/get-to-know-glide-recommended-by-google/en)    
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
 - E-mail : lxmyijiu@163.com
