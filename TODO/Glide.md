@@ -1,6 +1,6 @@
 #Glide
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-阅读文章：  
+阅读文章：  http://www.jianshu.com/p/e26130a93289
 完成时间：2016/9/18  
 
 
