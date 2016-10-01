@@ -4,7 +4,9 @@ Android阅读笔记，个人成长之路。
 [Glide and Picasso](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/Glide%20and%20Picasso.md)   
 [JitPack](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/JitPack.md)   
 [DRY原则的误区](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/DRY%E5%8E%9F%E5%88%99%E7%9A%84%E8%AF%AF%E5%8C%BA.md)  
-[我为什么不再公开开发Yin语言](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%86%8D%E5%85%AC%E5%BC%80%E5%BC%80%E5%8F%91Yin%E8%AF%AD%E8%A8%80.md)   
+[我为什么不再公开开发Yin语言](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%86%8D%E5%85%AC%E5%BC%80%E5%BC%80%E5%8F%91Yin%E8%AF%AD%E8%A8%80.md)    
+[如何选择开源项目](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE.md)
+
 
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
