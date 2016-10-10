@@ -3,7 +3,7 @@
 阅读文章：[DRY原则的误区](http://www.yinwang.org/blog-cn/2015/06/14/dry-principle)  
 完成时间：2016/8/25
 
-> DRY : Don't Repeat Yourself  
+> DRY : Don't Repeat Yourself , 你是否误解了呢?
 
 ###抽象与可读性的矛盾
 - 适度的抽象和避免重复是有好处的，它甚至可以提高代码的可读性。
