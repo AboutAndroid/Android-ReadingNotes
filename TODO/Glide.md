@@ -1,6 +1,8 @@
 #Glide
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
 阅读文章：  http://www.jianshu.com/p/e26130a93289
+
+http://wuxiaolong.me/2016/09/07/MyAndroidLibrary/
 完成时间：2016/9/18  
 ###1. 踩坑
 - 加载 GIF - Glide加载 GIF 真的很糟糕，经常出现各种加载不出来，如果对 GIF 进行剪裁就更糟糕了。

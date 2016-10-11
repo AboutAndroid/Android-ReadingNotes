@@ -1,10 +1,11 @@
 #开发一个App 我会使用哪些技术
-本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-完成时间：2016/9/18  
+本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。    
+完成时间：2016/10/11  
 > 总结一下现在 Android 的流行技术，本文不包括 RxJava 系列。
 > 未完成
 
 ###Common Purpose
+- 架构：[MVP](https://github.com/googlesamples/android-architecture)
 - 网络请求：[retrofit](https://github.com/square/retrofit) + [okhttp](https://github.com/square/okhttp)
 - 图片加载：[picasso](https://github.com/square/picasso) | [glide](https://github.com/bumptech/glide) | [fresco](https://github.com/facebook/fresco)
 - 依赖注入：[butterknife](https://github.com/JakeWharton/butterknife) + [dagger2](https://github.com/google/dagger)
@@ -12,10 +13,10 @@
 - 事件总线：[EventBus](https://github.com/greenrobot/EventBus)
 - Json 解析：[fastjson](https://github.com/alibaba/fastjson) | [gson](https://github.com/google/gson)
 - 数据库：[realm](https://realm.io/docs/java/latest/)
+- 屏幕适配：[AndroidAutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
 - 内存泄漏：[leakcanary](https://github.com/square/leakcanary)
 - 热修付：[Tinker](https://github.com/Tencent/tinker)
-- IO：[okio](https://github.com/square/okio)
-- Log打印：[MLog](https://github.com/ssyijiu/MLog)
+- Log 打印：[MLog](https://github.com/ssyijiu/MLog)
 
 
 ###Design
