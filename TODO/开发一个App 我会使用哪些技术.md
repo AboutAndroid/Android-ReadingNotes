@@ -4,8 +4,9 @@
 > 总结一下现在 Android 的流行技术，本文不包括 RxJava 系列。
 > 未完成
 
-###Common Purpose
-- 架构：[MVP](https://github.com/googlesamples/android-architecture)
+###通用
+- 架构：[MVP](https://github.com/googlesamples/android-architecture) | MVVM | [AndroidTDDBootStrap](https://github.com/Piasy/AndroidTDDBootStrap) 
+
 - 网络请求：[retrofit](https://github.com/square/retrofit) + [okhttp](https://github.com/square/okhttp)
 - 图片加载：[picasso](https://github.com/square/picasso) | [glide](https://github.com/bumptech/glide) | [fresco](https://github.com/facebook/fresco)
 - 依赖注入：[butterknife](https://github.com/JakeWharton/butterknife) + [dagger2](https://github.com/google/dagger)
@@ -19,30 +20,40 @@
 - Log 打印：[MLog](https://github.com/ssyijiu/MLog)
 
 
-###Design
+###设计
 - [Material Design](https://material.google.com/)
+- 图标：[material-icon-lib](https://github.com/code-mc/material-icon-lib)
 - Recyclerview
     - Recyclerview 动画：[recyclerview-animators](https://github.com/wasabeef/recyclerview-animators)
     - Recyclerview 布局：[twoway-view](https://github.com/lucasr/twoway-view)
+    - 多类型Item：[epoxy](https://github.com/airbnb/epoxy) | [MultiType](https://github.com/drakeet/MultiType)
+    - Recyclerview 拖拽：[RecyclerViewUndoSwipe](https://github.com/HoneyNeutrons/RecyclerViewUndoSwipe)
 - 对话框：[material-dialogs](https://github.com/afollestad/material-dialogs) | [sweet-alert-dialog](https://github.com/pedant/sweet-alert-dialog)
 - Activity 动画：[Material-Animations](https://github.com/lgvalle/Material-Animations)
 - Loading 动画：[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
 - Splash 引导：[AppIntro](https://github.com/PaoloRotolo/AppIntro) | [material-intro-screen](https://github.com/TangoAgency/material-intro-screen)
 - MIUI 爆炸：[ExplosionField](https://github.com/tyrantgit/ExplosionField)
 - 粘性控件：[BGABadgeView-Android](https://github.com/bingoogolapple/BGABadgeView-Android)
+- 快速索引：[WaveSideBar](https://github.com/gjiazhe/WaveSideBar)
 
+###第三方服务
+- 数据分析：
+- 推送服务：
+- 即时通信：
 
-### Special Purpose
+###其他需求
 - 二维码：[zxing](https://github.com/zxing/zxing)
 - 视频播放：[ijkplayer](https://github.com/Bilibili/ijkplayer) | [Vitamio](https://github.com/yixia/VitamioBundle)
 - 图表绘制：[MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
 - HTML 解析：[jsoup](https://github.com/jhy/jsoup)
 - 混合开发：[rexxar](https://github.com/douban/rexxar-android)
 - 双开：[VirtualApp](https://github.com/asLody/VirtualApp)
-- 图片手势缩放：[PhotoView](https://github.com/chrisbanes/PhotoView)
-- 圆形图片：[CircleImageView](https://github.com/hdodenhof/CircleImageView)
-- 图片剪裁：[uCrop](https://github.com/Yalantis/uCrop)
-- 图片压缩：[Luban](https://github.com/Curzibn/Luban)
+- 图片操作
+    - 手势缩放：[PhotoView](https://github.com/chrisbanes/PhotoView)
+    - 圆形图片：[CircleImageView](https://github.com/hdodenhof/CircleImageView)
+    - 图片剪裁：[uCrop](https://github.com/Yalantis/uCrop)
+    - 图片压缩：[Android-BitherCompress](https://github.com/jeanboydev/Android-BitherCompress) | [Luban](https://github.com/Curzibn/Luban) | [AdvancedLuban](https://github.com/shaohui10086/AdvancedLuban)
+
 - 字体：[Calligraphy](https://github.com/chrisjenx/Calligraphy)
 
 ## 联系作者
