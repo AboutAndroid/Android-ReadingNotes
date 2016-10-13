@@ -35,6 +35,7 @@
 - MIUI 爆炸：[ExplosionField](https://github.com/tyrantgit/ExplosionField)
 - 粘性控件：[BGABadgeView-Android](https://github.com/bingoogolapple/BGABadgeView-Android)
 - 快速索引：[WaveSideBar](https://github.com/gjiazhe/WaveSideBar)
+- 输入框：[MaterialEditText](https://github.com/rengwuxian/MaterialEditText)
 
 ###第三方服务
 - 数据分析：
