@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.resp;
+package com.ssyijiu.retrofit.bean;
 
 import java.util.List;
 

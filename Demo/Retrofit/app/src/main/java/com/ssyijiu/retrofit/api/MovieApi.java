@@ -1,11 +1,14 @@
 package com.ssyijiu.retrofit.api;
 
-import com.ssyijiu.retrofit.resp.MovieResp;
+import com.ssyijiu.retrofit.bean.MovieResp;
+
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by ssyijiu on 2016/10/13.
@@ -36,6 +39,10 @@ public interface MovieApi {
     /* Query */
     @GET("top250")
     Call<MovieResp> getTop250(@Query("start") int start, @Query("count") int count);
+
+    /* QueryMap */
+    @GET("top250")
+    Call<MovieResp> getTop250(@QueryMap Map<String,Integer> count);
 
 
 }
