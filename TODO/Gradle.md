@@ -12,6 +12,8 @@ http://xybcoder.github.io/2016/05/08/Android%20Gradle%E6%B5%85%E6%9E%90/
 
 http://wuxiaolong.me/categories/Gradle/
 
+http://rinvay.github.io/android/2015/03/26/Gradle-Plugin-User-Guide%28Translation%29/#102
+
 ##一.什么是Gradle
 新一代自动化构建工具（Ant、Maven都是构建工具），用于对项目进行编译、运行、签名、打包、依赖管理等一系列功能的集合，一个独立的项目与AS、Android无关。    
 使用Groovy来进行描述，简洁灵活。     
