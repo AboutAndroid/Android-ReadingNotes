@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.model;
+package com.ssyijiu.retrofit.model_mvc;
 
 /**
  * Created by ssyijiu on 2016/10/14.

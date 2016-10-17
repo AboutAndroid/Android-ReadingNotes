@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.model;
+package com.ssyijiu.retrofit.model_mvc;
 
 
 /**

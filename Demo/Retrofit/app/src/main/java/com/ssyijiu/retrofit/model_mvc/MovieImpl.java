@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.model;
+package com.ssyijiu.retrofit.model_mvc;
 
 import com.ssyijiu.retrofit.api.MovieApi;
 import com.ssyijiu.retrofit.bean.MovieResp;
