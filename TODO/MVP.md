@@ -52,6 +52,7 @@ Email：ssyijiu@126.com
 - http://blog.csdn.net/u014099894/article/details/51388170
 - http://blog.csdn.net/u011459799/article/details/51360882
 - https://www.zybuluo.com/shark0017/note/256112
-- http://blog.csdn.net/yanbober/article/details/45645115
+http://qlm.pw/2016/10/01/%E5%A6%82%E4%BD%95%E5%B0%86%E5%8E%9F%E9%A1%B9%E7%9B%AE%E9%87%8D%E6%9E%84%E6%88%90mvp%E6%A8%A1%E5%BC%8F/
+
 
 
