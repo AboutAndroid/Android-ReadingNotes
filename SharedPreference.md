@@ -2,13 +2,13 @@
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
 完成时间：2016/10/19    
 
-###1.commit 和 apply 的区别：  
+###1.commit 和 apply 的区别  
 commit 返回一个 boolean 来表明修改是否提交成功， apply 没有返回值；commit 是将数据写入内存后同步提交到磁盘(不要在主线程中 commit )，而 apply 将数据写入内存后会在一个新线程中异步提交到磁盘，在不要求提交结果的情况下应使用 apply。   
 
-###2.批量操作：  
+###2.批量操作  
 当我们一次有多个修改写操作时，不要多次 edit 和 apply，尽量批量修改一次提交
 
-###3.第一次加载 & 存储大的 key value：  
+###3.第一次加载 & 存储大的 key value   
 sp 底层是以xml方式进行数据存储的，在第一次使用的时候会加载整个文件加载进入内存，接下来的读操作都是内存缓存操作而不是文件操作。sp 在加载的时候确实是异步加载，但是在 sp 文件加载未完成时 `getString()` `setString()` 等方法是阻塞等待的。所以不要在 sp 存放大的 key  和 value ，会拖慢第一次加载时的速度，引起界面卡顿；同时解析 sp(xml的解析) 还会产生很多临时对象导致频繁GC；并且这些 key 和 value 将永远存在于内存之中，占用大量内存。
 
 ###4.存储 json or html ?  
@@ -24,7 +24,7 @@ ContextImpl 有一个 static 的 ArrayMap 变量 `sSharedPrefsCache`，它保存
 - 将相关性高、经常一起使用的 key 放在一个 sp。
 - 其实就是一个内存与速度的平衡关系，建议偏重速度。
 
-###7.多进程：  
+###7.多进程
 sp 不支持多进程，即使你使用了 `MODE_MULTI_PROCESS` 也是不行的。   
 
 ###8.[SPUtil](https://github.com/ssyijiu/android-helper/blob/master/utils/SPUtil.java)
