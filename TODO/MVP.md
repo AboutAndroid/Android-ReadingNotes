@@ -51,5 +51,7 @@ Email：ssyijiu@126.com
 - http://mp.weixin.qq.com/s?__biz=MzA3MDMyMjkzNg==&mid=2652261695&idx=1&sn=ab5fc0468b9bbd6a7777830981a61356&scene=21#wechat_redirect
 - http://blog.csdn.net/u014099894/article/details/51388170
 - http://blog.csdn.net/u011459799/article/details/51360882
+- https://www.zybuluo.com/shark0017/note/256112
+- http://blog.csdn.net/yanbober/article/details/45645115
 
 
