@@ -37,6 +37,6 @@ public class LoginPresenter extends LoginContract.Presenter {
                     }
                 });
             }
-        }, 5000);
+        }, 0);
     }
 }

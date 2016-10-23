@@ -14,13 +14,9 @@ import com.ssyijiu.mvpdemo2.model.LoginModel;
 public interface LoginContract {
 
     interface Model extends IModel {
-
         void login(String username, String password, LoginListener listener);
-
         interface LoginListener {
-
             void onSuccess();
-
             void onFailed();
         }
     }
