@@ -11,18 +11,22 @@ import com.ssyijiu.mvpdemo2.presenter.LoginContract;
 
 public class LoginModel implements LoginContract.Model {
 
-    private static LoginModel mLoginModel;
+    private LoginModel() {
+
+    }
+
+    private static LoginModel instance;
 
     public static LoginModel getInstance() {
         synchronized (LoginModel.class) {
-            if (mLoginModel == null) {
+            if (instance == null) {
                 synchronized (LoginModel.class) {
-                    mLoginModel = new LoginModel();
+                    instance = new LoginModel();
                 }
 
             }
         }
-        return mLoginModel;
+        return instance;
     }
 
 
