@@ -1,7 +1,6 @@
 package com.ssyijiu.mvpdemo2.model;
 
 
-import com.ssyijiu.mvpdemo2.base.IModel;
 import com.ssyijiu.mvpdemo2.presenter.LoginContract;
 
 /**

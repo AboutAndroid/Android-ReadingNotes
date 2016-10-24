@@ -14,11 +14,15 @@ import com.ssyijiu.mvpdemo2.model.LoginModel;
 public interface LoginContract {
 
     interface Model extends IModel {
-        void login(String username, String password, LoginListener listener);
+
         interface LoginListener {
             void onSuccess();
+
             void onFailed();
+
         }
+
+        void login(String username, String password, LoginListener listener);
     }
 
     interface View extends IView {
@@ -28,10 +32,13 @@ public interface LoginContract {
         void showSuccess();
 
         void showFailed();
+
+        void showHello();
     }
 
     abstract class Presenter extends BasePresenter<View, LoginModel> {
         public abstract void login(final String username, final String password);
+        public abstract void init();
     }
 
 }

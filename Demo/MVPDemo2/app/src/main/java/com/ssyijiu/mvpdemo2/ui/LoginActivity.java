@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.R;
@@ -53,7 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public LoginPresenter onLoadPresenter() {
-        return new LoginPresenter();
+        return LoginPresenter.getInstance();
     }
 
 
@@ -70,5 +71,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void showFailed() {
         login_status.setText("failed");
+    }
+
+    @Override
+    public void showHello() {
+        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
     }
 }

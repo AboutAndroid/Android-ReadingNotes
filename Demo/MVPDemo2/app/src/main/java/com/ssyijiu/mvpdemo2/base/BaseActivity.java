@@ -2,6 +2,7 @@ package com.ssyijiu.mvpdemo2.base;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -25,7 +26,9 @@ public abstract class BaseActivity<P extends BasePresenter>
         setContentView(getLayoutResId());
         mPresenter = onLoadPresenter();
 
-        MLog.i(mPresenter);
+        MLog.setLogLev(MLog.LogLev.NO_LOG);
+
+        MLog.i("onCreate:" + mPresenter);
 
         getPresenter().attachView(this);
 
@@ -36,7 +39,7 @@ public abstract class BaseActivity<P extends BasePresenter>
         }
 
         if (getPresenter() != null) {
-            getPresenter().onStrat();
+            getPresenter().onStart();
         }
     }
 
@@ -62,10 +65,11 @@ public abstract class BaseActivity<P extends BasePresenter>
             mPresenter.detachView();
         }
 
-        if(getPresenter() != null) {
+        if(isFinishing()) {
             mPresenter = null;
         }
 
-        MLog.i(mPresenter);
+
+        MLog.i("onDestroy:" + mPresenter);
     }
 }

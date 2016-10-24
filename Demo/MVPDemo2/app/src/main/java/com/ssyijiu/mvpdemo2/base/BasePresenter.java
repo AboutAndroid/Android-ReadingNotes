@@ -1,6 +1,8 @@
 package com.ssyijiu.mvpdemo2.base;
 
 
+import android.os.Bundle;
+
 /**
  * Created by ssyijiu on 2016/10/20.
  * Github: ssyijiu
@@ -19,13 +21,18 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     }
 
     @Override
-    public void onStrat() {
+    public void onStart() {
     }
 
 
     @Override
     public void detachView() {
         mView = null;
+    }
+
+    @Override
+    public void onSave(Bundle state) {
+
     }
 
 
