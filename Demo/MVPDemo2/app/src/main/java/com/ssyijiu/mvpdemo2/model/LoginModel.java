@@ -1,6 +1,8 @@
 package com.ssyijiu.mvpdemo2.model;
 
 
+import com.ssyijiu.mvpdemo2.base.IModel;
+import com.ssyijiu.mvpdemo2.presenter.LoginContract;
 
 /**
  * Created by ssyijiu on 2016/10/20.
@@ -8,9 +10,9 @@ package com.ssyijiu.mvpdemo2.model;
  * E-mail: lxmyijiu@163.com
  */
 
-public class LoginModel implements IModel {
+public class LoginModel implements LoginContract.Model {
 
-    static LoginModel mLoginModel;
+    private static LoginModel mLoginModel;
 
     public static LoginModel getInstance() {
         synchronized (LoginModel.class) {
@@ -25,7 +27,8 @@ public class LoginModel implements IModel {
     }
 
 
-    public void login(String username, String password, LoginListener listener) {
+    @Override
+    public void login(String username, String password, LoginContract.Model.LoginListener listener) {
         if (username.equals("lxm")) {
             listener.onSuccess();
         } else {
@@ -33,8 +36,4 @@ public class LoginModel implements IModel {
         }
     }
 
-    public interface LoginListener {
-        void onSuccess();
-        void onFailed();
-    }
 }
