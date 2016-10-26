@@ -13,10 +13,9 @@ public interface IPresenter<V extends IView> {
 
     void attachView(V view);
 
+    /** Presenter 初始化网络数据，并根据数据展示相关页面 */
     void onStart();
 
     void detachView();
-
-    void onSave(Bundle state);
 
 }

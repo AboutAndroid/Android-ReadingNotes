@@ -1,15 +1,13 @@
 package com.ssyijiu.mvpdemo2.base;
 
 
-import android.os.Bundle;
-
 /**
  * Created by ssyijiu on 2016/10/20.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  */
 
-public class BasePresenter<V extends IView, M extends IModel> implements IPresenter<V> {
+public class BasePresenter<V extends IView, M extends IModel> extends AbsSingle implements IPresenter<V> {
 
     private V mView;
     private M mModel;
@@ -22,6 +20,7 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
 
     @Override
     public void onStart() {
+
     }
 
 
@@ -30,10 +29,6 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
         mView = null;
     }
 
-    @Override
-    public void onSave(Bundle state) {
-
-    }
 
 
     public boolean isViewAttach() {

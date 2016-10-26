@@ -2,6 +2,7 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import com.ssyijiu.mvpdemo2.base.BasePresenter;
 import com.ssyijiu.mvpdemo2.base.IModel;
+import com.ssyijiu.mvpdemo2.base.IPresenter;
 import com.ssyijiu.mvpdemo2.base.IView;
 import com.ssyijiu.mvpdemo2.model.LoginModel;
 
@@ -13,9 +14,13 @@ import com.ssyijiu.mvpdemo2.model.LoginModel;
 
 public interface LoginContract {
 
+    /**
+     * LoginModel 的接口，规定 LoginModel 有什么方法和回调
+     */
     interface Model extends IModel {
 
         interface LoginListener {
+
             void onSuccess();
 
             void onFailed();
@@ -24,6 +29,7 @@ public interface LoginContract {
 
         void login(String username, String password, LoginListener listener);
     }
+
 
     interface View extends IView {
 
@@ -36,9 +42,9 @@ public interface LoginContract {
         void showHello();
     }
 
+
     abstract class Presenter extends BasePresenter<View, LoginModel> {
         public abstract void login(final String username, final String password);
-        public abstract void init();
     }
 
 }

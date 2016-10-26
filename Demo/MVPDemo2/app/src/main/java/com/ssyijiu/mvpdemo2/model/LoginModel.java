@@ -1,6 +1,7 @@
 package com.ssyijiu.mvpdemo2.model;
 
 
+import com.ssyijiu.mvpdemo2.base.AbsSingle;
 import com.ssyijiu.mvpdemo2.presenter.LoginContract;
 
 /**
@@ -9,24 +10,10 @@ import com.ssyijiu.mvpdemo2.presenter.LoginContract;
  * E-mail: lxmyijiu@163.com
  */
 
-public class LoginModel implements LoginContract.Model {
-
-    private LoginModel() {
-
-    }
-
-    private static LoginModel instance;
+public class LoginModel extends AbsSingle implements LoginContract.Model {
 
     public static LoginModel getInstance() {
-        synchronized (LoginModel.class) {
-            if (instance == null) {
-                synchronized (LoginModel.class) {
-                    instance = new LoginModel();
-                }
-
-            }
-        }
-        return instance;
+        return getInstance(LoginModel.class);
     }
 
 

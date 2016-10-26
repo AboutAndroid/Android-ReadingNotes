@@ -26,10 +26,6 @@ public abstract class BaseActivity<P extends BasePresenter>
         setContentView(getLayoutResId());
         mPresenter = onLoadPresenter();
 
-        MLog.setLogLev(MLog.LogLev.NO_LOG);
-
-        MLog.i("onCreate:" + mPresenter);
-
         getPresenter().attachView(this);
 
         initEventAndData();
@@ -43,23 +39,12 @@ public abstract class BaseActivity<P extends BasePresenter>
         }
     }
 
-
-    public abstract P onLoadPresenter();
-
-    protected abstract int getLayoutResId();
-
-    protected abstract void initEventAndData();
-
-    protected abstract void parseIntDataFromIntent(Intent intent);
-
-
     public P getPresenter() {
         return mPresenter;
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
 
         if (getPresenter().isViewAttach()) {
             mPresenter.detachView();
@@ -69,7 +54,15 @@ public abstract class BaseActivity<P extends BasePresenter>
             mPresenter = null;
         }
 
-
-        MLog.i("onDestroy:" + mPresenter);
+        super.onDestroy();
     }
+
+    public abstract P onLoadPresenter();
+
+    protected abstract int getLayoutResId();
+
+    protected abstract void initEventAndData();
+
+    protected abstract void parseIntDataFromIntent(Intent intent);
+
 }

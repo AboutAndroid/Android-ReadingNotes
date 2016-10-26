@@ -2,6 +2,7 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import android.os.Handler;
 
+import com.ssyijiu.mvpdemo2.base.BasePresenter;
 import com.ssyijiu.mvpdemo2.model.LoginModel;
 
 /**
@@ -19,15 +20,8 @@ public class LoginPresenter extends LoginContract.Presenter {
     }
 
     // 通过静态变量延长 presenter 的生命周期
-    private static LoginPresenter instance = null;
-
     public static LoginPresenter getInstance() {
-        if(instance == null) {
-            synchronized (LoginPresenter.class) {
-                instance = new LoginPresenter();
-            }
-        }
-        return instance;
+        return getInstance(LoginPresenter.class);
     }
 
     @Override
@@ -59,9 +53,9 @@ public class LoginPresenter extends LoginContract.Presenter {
         }, 3000);
     }
 
+
     @Override
-    public void init() {
+    public void onStart() {
         getView().showHello();
     }
-
 }
