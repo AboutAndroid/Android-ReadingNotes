@@ -7,7 +7,7 @@ package com.ssyijiu.mvpdemo2.base;
  * E-mail: lxmyijiu@163.com
  */
 
-public class BasePresenter<V extends IView, M extends IModel> extends AbsSingle implements IPresenter<V> {
+public abstract class BasePresenter<V extends IView, M extends IModel> extends AbsSingle implements IPresenter<V> {
 
     private V mView;
     private M mModel;
@@ -16,11 +16,6 @@ public class BasePresenter<V extends IView, M extends IModel> extends AbsSingle 
     @Override
     public void attachView(V view) {
         mView = view;
-    }
-
-    @Override
-    public void onStart() {
-
     }
 
 
