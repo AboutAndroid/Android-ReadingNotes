@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "com.ssyijiu.dagger2"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,15 +21,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
     testCompile 'junit:junit:4.12'
-
+    // dagger2
     compile 'com.google.dagger:dagger:2.7'
     apt 'com.google.dagger:dagger-compiler:2.7'
-
+    compile 'org.glassfish:javax.annotation:10.0-b28'
     compile 'com.github.ssyijiu:MLog:1.0.9'
+    compile 'com.google.code.gson:gson:2.8.0'
 }
