@@ -27,7 +27,9 @@ ContextImpl 有一个 static 的 ArrayMap 变量 `sSharedPrefsCache`，它保存
 ###7. 多进程
 sp 不支持多进程，即使你使用了 `MODE_MULTI_PROCESS` 也是不行的。   
 
-###8. [SPUtils](https://github.com/ssyijiu/android-helper/blob/master/utils/SPUtil.java)
+###8. registerOnSharedPreferenceChangeListener
+这个方法可以监听 sp 的数据变化，非常方便
+###9. [SPUtils](https://github.com/ssyijiu/android-helper/blob/master/utils/SPUtil.java)
 
 ##Thanks
 [SharedPreference在使用过程中有什么注意点？](https://github.com/ZhaoKaiQiang/AndroidDifficultAnalysis/blob/master/09.SharedPreference%E5%9C%A8%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%9C%89%E4%BB%80%E4%B9%88%E6%B3%A8%E6%84%8F%E7%82%B9%EF%BC%9F.md)    
