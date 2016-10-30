@@ -16,8 +16,6 @@ import dagger.Provides;
 @Module
 public class PoetryModule {
 
-     // 这个方法需要一个String参数，在Dagger2注入中，这些参数也是注入形式的，也就是
-     // 要有其他对方提供参数poems的生成，不然会造成编译出错
 
     @PoetryScope
     @Provides
@@ -30,7 +28,6 @@ public class PoetryModule {
     // 可以为上面提供String类型的参数
     @Provides
     public String providePemo() {
-        return "从放弃到再次入门";
+        return "清风吹不皱欲滴的清欢";
     }
-
 }

@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     Poetry mPoetry;
 
+
     @Inject
     Gson mGson;
 
@@ -30,9 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         MLog.TAG = "dagger2_ssyijiu";
 
+
         MainComponent.getInstance().inject(this);
 
+        MLog.i(mGson);
         MLog.i(mPoetry+":"+mGson.toJson(mPoetry));
+
 
     }
 
