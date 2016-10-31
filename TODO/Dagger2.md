@@ -2,12 +2,16 @@
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
 完成时间：2016/9/18  
 
-- 目标类：@Inject注解依赖类
-- 依赖类：@inject构造函数，构造函数带参数或第三方库使用 @Modules + @Provides
-- 使用 @Component 将依赖类注入到目标类中。Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数，剩下的工作就是初始化该属性的实例并把实例进行赋值
+###目标类：@Inject注解依赖类
+###依赖类：@inject构造函数，或者（第三方库） @Modules + @Provides
+###使用 @Component 将依赖类注入到目标类中。  
+Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数，剩下的工作就是初始化该属性的实例并把实例进行赋值    
+###Singleton   
+1. 在Component用@Singleton标注   
+2. 使用@inject在类声明时标注@Singleton，使用@Module在@Provides后用@Singleton标注
 
 ###问题
-- 构造函数带参数怎么解决
+- [x] 构造函数带参数怎么解决 
 
 
 ## Thanks
