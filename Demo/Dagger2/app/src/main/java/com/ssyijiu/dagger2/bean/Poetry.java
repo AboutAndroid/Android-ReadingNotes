@@ -15,7 +15,7 @@ public class Poetry {
 
     @Inject
     public Poetry() {
-        mPemo = "dagger2从入门到放弃";
+        mPemo = "你是我眼睛里的海";
     }
 
     public Poetry(String pemo) {
