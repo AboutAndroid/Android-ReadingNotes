@@ -12,7 +12,7 @@ import dagger.Component;
  * E-mail: lxmyijiu@163.com
  */
 
-@Singleton
+//@Singleton
 @Component(modules = AndroidModule.class)
 public interface AppComponent {
     void inject(App app);

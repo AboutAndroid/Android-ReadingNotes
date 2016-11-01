@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 /**
  * https://github.com/luxiaoming/dagger2Demo
- * http://www.jianshu.com/p/1d84ba23f4d2
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DaggerAppComponent.builder().androidModule(new AndroidModule((App) getApplication()))
+//        DaggerAppComponent.builder()
+//                .androidModule(new AndroidModule((App) getApplication()))
+//                .build().inject(this);
+
+        DaggerMainComponent.builder()
+                .appComponent((((App) getApplication()).getComponent()))
+                .cModule(new CModule())
                 .build().inject(this);
+
 
         MLog.e(mTest);
         MLog.e(mTest2);
