@@ -1,5 +1,7 @@
 package com.ssyijiu.dagger2_2;
 
+import android.location.LocationManager;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -15,4 +17,6 @@ import dagger.Component;
 public interface AppComponent {
     void inject(App app);
     void inject(MainActivity activity);
+
+    LocationManager getLocationManager();
 }

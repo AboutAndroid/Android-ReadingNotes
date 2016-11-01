@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 /**
  * https://github.com/luxiaoming/dagger2Demo
+ * http://www.jianshu.com/p/1d84ba23f4d2
  */
 public class MainActivity extends AppCompatActivity {
 
