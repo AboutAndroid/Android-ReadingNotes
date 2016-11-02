@@ -1,5 +1,7 @@
 package com.ssyijiu.dagger2_2;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 /**

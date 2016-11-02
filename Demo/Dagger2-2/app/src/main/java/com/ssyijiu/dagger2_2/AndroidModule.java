@@ -30,13 +30,11 @@ public class AndroidModule {
     }
 
     @Provides
-    //@Singleton
     LocationManager provideLocationManager() {
         return (LocationManager) mApp.getSystemService(Context.LOCATION_SERVICE);
     }
 
 //    @Provides
-//    @Singleton
 //    Test provideTest() {
 //        return new Test(mApp);
 //    }
