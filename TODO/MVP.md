@@ -41,7 +41,7 @@ Email：ssyijiu@126.com
 微信：SSyijiu11
 
 
-
+- http://blog.csdn.net/sbsujjbcy/article/details/50707696  厂长最佳实践
 - http://www.linuxeden.com/html/news/20160429/165924.html
 - http://www.jianshu.com/p/2ecfc1f4561d
 - http://www.open-open.com/lib/view/open1462625604894.html
