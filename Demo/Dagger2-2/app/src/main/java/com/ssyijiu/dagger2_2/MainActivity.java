@@ -6,15 +6,18 @@ import android.os.Bundle;
 import com.ssyijiu.library.MLog;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * https://github.com/luxiaoming/dagger2Demo
  */
 public class MainActivity extends AppCompatActivity {
 
+    @Named("boy")
     @Inject
     Test mTest;
 
+    @Named("girl")
     @Inject
     Test mTest2;
 
@@ -27,13 +30,19 @@ public class MainActivity extends AppCompatActivity {
 //                .androidModule(new AndroidModule((App) getApplication()))
 //                .build().inject(this);
 
+
+//        DaggerMainComponent.builder()
+//                .appComponent((((App) getApplication()).getComponent()))
+//                .cModule(new CModule())
+//                .build().inject(this);
+
         DaggerMainComponent.builder()
-                .appComponent((((App) getApplication()).getComponent()))
-                .cModule(new CModule())
+                .cModule(new CModule(5))
                 .build().inject(this);
 
 
-        MLog.e(mTest);
-        MLog.e(mTest2);
+
+        MLog.e(mTest+":"+mTest.mAge);
+        MLog.e(mTest2+":"+mTest2.mAge);
     }
 }

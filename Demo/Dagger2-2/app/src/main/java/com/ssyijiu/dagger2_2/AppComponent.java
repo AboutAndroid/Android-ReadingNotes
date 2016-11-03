@@ -13,10 +13,10 @@ import dagger.Component;
  */
 
 //@Singleton
-@Component(modules = AndroidModule.class)
+@Component(modules = {AndroidModule.class})
 public interface AppComponent {
     void inject(App app);
-    void inject(MainActivity activity);
+//    void inject(MainActivity activity);
 
-    LocationManager getLocationManager();
+//    LocationManager getLocationManager();
 }

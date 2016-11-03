@@ -17,17 +17,27 @@ public class Test {
 
 //    public Context mContext;
 
-
 //    @Inject
 //    public Test(Context context) {
 //        // 注意：这个参数必须在某个 module中 provide
 //        mContext = context;
 //    }
 
-    public LocationManager mLocationManager;
+
+
+//    public LocationManager mLocationManager;
+//
+//    @Inject
+//    public Test(LocationManager locationManager) {
+//        this.mLocationManager = locationManager;
+//    }
+
+
+
+    public int mAge;
 
     @Inject
-    public Test(LocationManager locationManager) {
-        this.mLocationManager = locationManager;
+    public Test(int age) {
+        this.mAge = age;
     }
 }

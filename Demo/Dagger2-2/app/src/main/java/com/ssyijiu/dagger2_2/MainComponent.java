@@ -1,7 +1,5 @@
 package com.ssyijiu.dagger2_2;
 
-import javax.inject.Singleton;
-
 import dagger.Component;
 
 /**
@@ -10,8 +8,8 @@ import dagger.Component;
  * E-mail: lxmyijiu@163.com
  */
 
-@PerActivity
-@Component(dependencies = AppComponent.class,modules = CModule.class)
+//@PerActivity
+@Component(/*dependencies = AppComponent.class,*/modules = CModule.class)
 public interface MainComponent {
     void inject(MainActivity activity);
 }
