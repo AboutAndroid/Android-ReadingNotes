@@ -1,10 +1,9 @@
-package com.ssyijiu.dagger2_2;
+package com.ssyijiu.dagger2_2.modules;
 
-import android.app.Application;
 import android.content.Context;
 import android.location.LocationManager;
 
-import javax.inject.Singleton;
+import com.ssyijiu.dagger2_2.App;
 
 import dagger.Module;
 import dagger.Provides;

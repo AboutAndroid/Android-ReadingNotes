@@ -1,4 +1,4 @@
-package com.ssyijiu.dagger2_2;
+package com.ssyijiu.dagger2_2.annotation;
 
 import java.lang.annotation.Retention;
 

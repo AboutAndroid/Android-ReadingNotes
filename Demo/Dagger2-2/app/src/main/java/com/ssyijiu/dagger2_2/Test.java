@@ -1,10 +1,6 @@
 package com.ssyijiu.dagger2_2;
 
-import android.content.Context;
-import android.location.LocationManager;
-
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 /**
  * Created by ssyijiu on 2016/10/31.
@@ -34,10 +30,8 @@ public class Test {
 
 
 
-    public int mAge;
 
     @Inject
-    public Test(int age) {
-        this.mAge = age;
+    public Test() {
     }
 }

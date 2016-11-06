@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ssyijiu.toolbar.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:navigationIcon="@drawable/ic_bottombar_home"
+        app:logo="@mipmap/ic_launcher"
+
+        app:title="书生依旧"
+        app:subtitle="ssyijiu"
+
+        app:titleTextColor="@color/colorWhite"
+        app:subtitleTextColor="@color/colorWhite"
+
+        android:background="@color/colorPrimary"
+
+        app:titleMarginTop="15dp"
+        app:titleMarginStart="10dp"
+
+        android:minHeight="100dp"
+
+        app:popupTheme="@style/Theme.ToolBar.Popup"
+        app:theme="@style/Theme.ToolBar.Base"
+
+        app:contentInsetStartWithNavigation="0dp"
+        app:contentInsetEndWithActions="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hello~"
+                android:textColor="#ff0"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+</LinearLayout>

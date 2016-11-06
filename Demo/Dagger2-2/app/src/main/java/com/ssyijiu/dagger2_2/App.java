@@ -3,6 +3,9 @@ package com.ssyijiu.dagger2_2;
 import android.app.Application;
 import android.location.LocationManager;
 
+import com.ssyijiu.dagger2_2.component.AppComponent;
+import com.ssyijiu.dagger2_2.component.DaggerAppComponent;
+import com.ssyijiu.dagger2_2.modules.AndroidModule;
 import com.ssyijiu.library.MLog;
 
 import javax.inject.Inject;
