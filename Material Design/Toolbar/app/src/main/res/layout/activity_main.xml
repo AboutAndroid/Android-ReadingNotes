@@ -9,6 +9,14 @@
     android:orientation="vertical"
     tools:context="com.ssyijiu.toolbar.MainActivity">
 
+
+    <!--
+        app:contentInsetStartWithNavigation="0dp"
+        app:contentInsetEndWithActions="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp"
+        这几个属性还不会用
+    -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -37,7 +45,6 @@
         app:contentInsetEndWithActions="0dp"
         app:contentInsetStart="0dp"
         app:contentInsetEnd="0dp"
-
         >
 
         <LinearLayout

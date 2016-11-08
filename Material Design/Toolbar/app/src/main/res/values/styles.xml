@@ -11,15 +11,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="colorControlNormal">@color/colorRed</item>
-
     </style>
 
     <style name="Theme.ToolBar.Popup" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- 文字大小 -->
+        <!-- 弹出文字大小 -->
         <item name="android:textSize">15sp</item>
-
-        <!-- 文字颜色 -->
+        <!-- 弹出文字颜色 -->
         <item name="android:textColorPrimary">@color/colorRed</item>
 
     </style>
@@ -28,9 +25,9 @@
     <style name="Theme.ToolBar.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- 溢出按钮颜色-->
         <item name="colorControlNormal">@color/colorWhite</item>
+        <!-- 溢出文字颜色 -->
+        <item name="actionMenuTextColor">@color/colorWhite</item>
     </style>
-
-
 
 
 </resources>

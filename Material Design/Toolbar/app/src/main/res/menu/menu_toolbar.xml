@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:appcompat="http://schemas.android.com/apk/res-auto">
 
-
     <!--
     android:orderInCategory="80" menu_item 的排序，越大越靠下
     没有这个属性按照 xml 中书写的顺序排在加了这个属性的 item 上面
