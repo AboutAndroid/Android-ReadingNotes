@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- 溢出按钮颜色-->
+        <item name="colorControlNormal">@color/white</item>
+        <!-- 溢出文字颜色 -->
+        <item name="actionMenuTextColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <!-- 文字大小 -->
+        <item name="android:textSize">15sp</item>
+        <!-- 文字颜色 -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!-- 背景颜色 -->
+        <item name="android:colorBackground">@color/red</item>
+    </style>
+
+</resources>

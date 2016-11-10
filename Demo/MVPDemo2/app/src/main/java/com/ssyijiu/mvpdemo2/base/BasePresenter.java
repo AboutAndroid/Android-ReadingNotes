@@ -1,6 +1,8 @@
 package com.ssyijiu.mvpdemo2.base;
 
 
+import com.ssyijiu.mvpdemo2.app.AbsSingle;
+
 /**
  * Created by ssyijiu on 2016/10/20.
  * Github: ssyijiu

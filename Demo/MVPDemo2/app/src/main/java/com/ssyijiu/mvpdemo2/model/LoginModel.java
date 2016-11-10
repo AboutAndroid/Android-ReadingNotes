@@ -1,7 +1,7 @@
 package com.ssyijiu.mvpdemo2.model;
 
 
-import com.ssyijiu.mvpdemo2.base.AbsSingle;
+import com.ssyijiu.mvpdemo2.app.AbsSingle;
 import com.ssyijiu.mvpdemo2.presenter.LoginContract;
 
 /**

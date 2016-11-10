@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!--
+    android:orderInCategory="80" menu_item 的排序，越大越靠下
+    没有这个属性按照 xml 中书写的顺序排在加了这个属性的 item 上面
+    -->
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/refresh"
+        android:title="refresh"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_hello"
+        android:title="@string/action_hello"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/_90"
+        android:title="90"
+        android:orderInCategory="90"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/_100"
+        android:title="100"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+</menu>
