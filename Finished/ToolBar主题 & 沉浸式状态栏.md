@@ -1,4 +1,4 @@
-#ToolBar主题 & 沉浸式状态栏
+#Toolbar主题 & 沉浸式状态栏
 本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
 完成时间：2016/11/11
 ##Toolbar
@@ -15,6 +15,7 @@ android:theme="@style/AppTheme.AppBarOverlay"
 继承 AppTheme 和 ThemeOverlay.AppCompat.Dark.ActionBar
 - < item name="colorControlNormal">@color/red</item>  // 溢出按钮颜色,包括 navigationIcon
 - < item name="actionMenuTextColor">@color/black</item>  // 溢出文字颜色   
+
 ###溢出菜单主题  
 app:popupTheme="@style/AppTheme.PopupOverlay"  
 ```html
@@ -58,9 +59,11 @@ values-v21/style.xml
 在 AppTheme 中设置主题的基本颜色，< style name="AppTheme.NoActionBar">  实际上是继承 AppTheme 和 < style name="NoActionBar" parent="AppTheme"> 效果相同。  
 - < item name="windowActionBar">false</item>  // 不使用 ActionBar
 - < item name="windowNoTitle">true</item>       // 无标题栏  
-在 values-v21/style.xml 还有两条属性
+
+在 values-v21/style.xml 还有两条属性   
 - < item name="android:windowDrawsSystemBarBackgrounds">true</item> // 允许设置状态栏的背景颜色，默认 true
 - < item name="android:statusBarColor">?colorPrimaryDark</item> // 设置状态栏的背景颜色为colorPrimaryDark **注意：5.0系统，状态栏的颜色默认是 AppTheme 主题下的colorPrimaryDark，如果没有这个属性，则是灰色**   
+
 ###3. DrawerLayout 侧拉菜单也沉浸式
 - 首先在你每个页面的根布局 android:fitsSystemWindows="true"，看下官方文字的解释：If true, adjusts the padding of this view to leave space for the system windows. true 的话将会自动调整 padding 为系统窗口留出空间（布局不会侵入到状态栏上）**[官方文档是这样说的，但是我发现有时候不管用，不知道是BUG，还是使用姿势不对]**
 - 修改 values-v21/style.xml，将 statusBarColor 的颜色设置为透明    
@@ -102,7 +105,7 @@ if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 ```html
 <dimen name="status_bar_length">25dp</dimen>
 ```
-19版本设置为 25dp，其他版本0dp。(在小米4c上不知道为什么使用了 19 版本的 dimen，一怒之下建了一个 21 版本的 dimen ，status_bar_length 设置为0，问题解决，小米4c是 Api22，这难道是就近原则？)
+19版本设置为 25dp，其他版本0dp。(在小米4c上不知道为什么使用了 19 版本的 dimen，之后建了一个 21 版本的 dimen ，status_bar_length 设置为0，问题解决，小米4c是 Api22，这难道是就近原则？)
 
 ###3. DrawerLayout 沉浸
 ```
