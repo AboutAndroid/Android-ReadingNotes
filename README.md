@@ -8,7 +8,7 @@ Android阅读笔记，个人成长之路。
 [我为什么不再公开开发Yin语言](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/Finished/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%86%8D%E5%85%AC%E5%BC%80%E5%BC%80%E5%8F%91Yin%E8%AF%AD%E8%A8%80.md)    
 [如何选择开源项目](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/Finished/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE.md)  
 [缓存策略](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/Finished/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.txt)     
-[ToolBar主题 & 沉浸式状态栏](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/Finished/ToolBar%E4%B8%BB%E9%A2%98%20%26%20%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%8A%B6%E6%80%81%E6%A0%8F.md)      
+[ToolBar主题 & 沉浸式状态栏](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/Finished/Toolbar%E4%B8%BB%E9%A2%98%20%26%20%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%8A%B6%E6%80%81%E6%A0%8F.md)      
 [总结这些并没有什么用](https://github.com/ssyijiu/Android-ReadingNotes/blob/master/%E6%80%BB%E7%BB%93%E8%BF%99%E4%BA%9B%E5%B9%B6%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8.md)
 
 
