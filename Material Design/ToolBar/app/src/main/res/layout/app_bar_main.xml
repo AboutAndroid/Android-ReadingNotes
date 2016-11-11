@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.ssyijiu.toolbar.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -14,11 +13,11 @@
         >
 
         <android.support.v7.widget.Toolbar
+            android:layout_marginTop="@dimen/status_bar_length"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:layout_marginTop="@dimen/status_bar_length"
+            android:background="?colorPrimary"
             android:theme="@style/AppTheme.AppBarOverlay"
             app:logo="@mipmap/ic_launcher"
             app:navigationIcon="@drawable/refresh"

@@ -3,9 +3,8 @@ package com.ssyijiu.toolbar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -55,7 +56,13 @@ public class MainActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             mDrawerLayout.setFitsSystemWindows(true);
             mDrawerLayout.setClipToPadding(false);
+//            Window window = getWindow();
+            // Translucent status bar
+//            window.setFlags(
+//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -107,6 +114,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.action_refresh:
                 showToast("refresh");
                 break;
+            default:
+                return false;
 
         }
         return true; // 消费事件
