@@ -2,7 +2,6 @@ package com.ssyijiu.mvpdemo2.base;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,19 +13,19 @@ import com.ssyijiu.library.MLog;
  * E-mail: lxmyijiu@163.com
  */
 
-public abstract class BaseActivity<P extends BasePresenter>
+public abstract class BaseActivity<T extends BasePresenter>
         extends AppCompatActivity implements IView {
 
-    private P mPresenter;
 
+    private T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
-        mPresenter = onLoadPresenter();
 
-        getPresenter().attachView(this);
+        mPresenter = createPresenter();
+        mPresenter.attachView(this);
 
         initEventAndData();
 
@@ -34,35 +33,48 @@ public abstract class BaseActivity<P extends BasePresenter>
             parseIntDataFromIntent(getIntent());
         }
 
-        if (getPresenter() != null) {
-            getPresenter().onStart();
-        }
+        MLog.i("Presenter = " + mPresenter);
+        MLog.i("View = " + mPresenter.getView());
+
+        checkPresenter().onStart();
     }
 
-    public P getPresenter() {
-        return mPresenter;
-    }
+    protected abstract T createPresenter();
+
 
     @Override
     protected void onDestroy() {
 
-        if (getPresenter().isViewAttach()) {
-            mPresenter.detachView();
+        checkPresenter().detachView();
+
+        MLog.i("View = " + mPresenter.getView());
+
+        // Activity意外销毁这个方法不会被执行
+        if(isFinishing()) {
+
+            MLog.i("isFinishing");
+
+            if(!mPresenter.isViewAttached()) {
+                mPresenter = null;
+            }
         }
 
-        if(isFinishing()) {
-            mPresenter = null;
-        }
+        MLog.i("Presenter = " + mPresenter);
 
         super.onDestroy();
     }
-
-    public abstract P onLoadPresenter();
 
     protected abstract int getLayoutResId();
 
     protected abstract void initEventAndData();
 
     protected abstract void parseIntDataFromIntent(Intent intent);
+
+    public T checkPresenter() {
+        if (mPresenter == null) {
+            throw new IllegalStateException("The createPresenter must return non-null");
+        }
+        return mPresenter;
+    }
 
 }

@@ -4,6 +4,8 @@ import android.os.Handler;
 
 import com.ssyijiu.mvpdemo2.base.BasePresenter;
 import com.ssyijiu.mvpdemo2.model.LoginModel;
+import com.ssyijiu.mvpdemo2.model.LoginModelImpl;
+import com.ssyijiu.mvpdemo2.ui.LoginView;
 
 /**
  * Created by ssyijiu on 2016/10/23.
@@ -11,7 +13,7 @@ import com.ssyijiu.mvpdemo2.model.LoginModel;
  * E-mail: lxmyijiu@163.com
  */
 
-public class LoginPresenter extends LoginContract.Presenter {
+public class LoginPresenter extends BasePresenter<LoginView> {
 
     private LoginPresenter() {
         // 在这里 initData 横竖屏切换时不会重复 initData
@@ -24,27 +26,28 @@ public class LoginPresenter extends LoginContract.Presenter {
         return getInstance(LoginPresenter.class);
     }
 
-    @Override
+
     public void login(final String username, final String password) {
 
-        if (isViewAttach()) {
+        if (isViewAttached()) {
             getView().showLoading();
         }
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getModel().getInstance().login(username, password, new LoginModel.LoginListener() {
+
+                LoginModelImpl.getInstance().login(username, password, new LoginModel.LoginListener() {
                     @Override
                     public void onSuccess() {
-                        if (isViewAttach()) {
+                        if (isViewAttached()) {
                             getView().showSuccess();
                         }
                     }
 
                     @Override
                     public void onFailed() {
-                        if (isViewAttach()) {
+                        if (isViewAttached()) {
                             getView().showFailed();
                         }
                     }

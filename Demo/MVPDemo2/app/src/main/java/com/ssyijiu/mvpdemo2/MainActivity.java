@@ -1,11 +1,11 @@
-package com.ssyijiu.mvpdemo2.ui;
+package com.ssyijiu.mvpdemo2;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.ssyijiu.mvpdemo2.R;
+import com.ssyijiu.mvpdemo2.ui.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -9,10 +9,9 @@ import android.widget.Toast;
 
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.R;
-import com.ssyijiu.mvpdemo2.presenter.LoginContract;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
 
 
     EditText et_username;
@@ -23,6 +22,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_login;
+    }
+
+    @Override
+    protected LoginPresenter createPresenter() {
+        return LoginPresenter.getInstance();
     }
 
     @Override
@@ -39,7 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
                 String username = et_username.getText().toString();
                 String password = et_password.getText().toString();
-                getPresenter().login(username, password);
+                checkPresenter().login(username, password);
 
             }
         });
@@ -51,12 +55,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     protected void parseIntDataFromIntent(Intent intent) {
 
     }
-
-    @Override
-    public LoginPresenter onLoadPresenter() {
-        return LoginPresenter.getInstance();
-    }
-
 
     @Override
     public void showLoading() {
