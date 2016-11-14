@@ -1,7 +1,8 @@
 package com.ssyijiu.retrofit.mvp.presenter;
 
-import com.ssyijiu.retrofit.bean.MultiResp;
-import com.ssyijiu.retrofit.mvp.model.MsgManager;
+import com.ssyijiu.retrofit.mvp.model.MsgModel;
+import com.ssyijiu.retrofit.mvp.model.MsgModelImpl;
+import com.ssyijiu.retrofit.mvp.view.MsgView;
 
 /**
  * Created by ssyijiu on 2016/10/17.
@@ -9,39 +10,73 @@ import com.ssyijiu.retrofit.mvp.model.MsgManager;
  * E-mail: lxmyijiu@163.com
  */
 
-public class MsgPresenter implements MsgContract.MsgPresenter {
+public class MsgPresenter extends BasePresenter<MsgView> {
 
-    MsgContract.MsgView mMsgView;
+    private MsgPresenter(){
+    }
 
-    @Override
-    public void getMsg() {
+    private static MsgPresenter instance = null;
 
-        mMsgView.showLoading("Msg loading...");
+    public static MsgPresenter getInstance() {
+        if (instance == null) {
+            synchronized (MsgModelImpl.class) {
+                if (instance == null) {
+                    instance = new MsgPresenter();
+                }
+            }
+        }
 
-        new Thread(new Runnable() {
+        return instance;
+    }
+
+
+    public void getPostMsg() {
+        if(isViewAttached()) {
+            getView().showLoading("POST:loading...");
+        }
+
+        MsgModelImpl.getInstance().getPostMsg(new MsgModel.MsgListener() {
+            @Override
+            public void onSuccess(String resp) {
+                if(isViewAttached()) {
+                    getView().showSuccess(resp);
+                }
+            }
 
             @Override
-            public void run() {
-
-                MsgManager.getInstance().getMsg(new MsgManager.MsgListener() {
-                    @Override
-                    public void getMsgSuccess(MultiResp resp) {
-                        mMsgView.showSuccess(resp.responseParams);
-                    }
-
-                    @Override
-                    public void getMsgFailed(Throwable t) {
-                        mMsgView.showFailed(t.getMessage());
-                    }
-                });
+            public void onFailure(Throwable t) {
+                if(isViewAttached()) {
+                    getView().showFailed(t);
+                }
             }
-        }).start();
+        });
+    }
 
+
+    public void getGetMsg() {
+        if(isViewAttached()) {
+            getView().showLoading("GET:loading...");
+        }
+
+        MsgModelImpl.getInstance().getGetMsg(new MsgModel.MsgListener() {
+            @Override
+            public void onSuccess(String resp) {
+                if(isViewAttached()) {
+                    getView().showSuccess(resp);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if(isViewAttached()) {
+                    getView().showFailed(t);
+                }
+            }
+        });
     }
 
     @Override
-    public void attach(MsgContract.MsgView view) {
-        mMsgView = view;
-        mMsgView.initView();
+    public void onStart() {
+        getView().showLoading("onStart--Mvp--Retrofit");
     }
 }

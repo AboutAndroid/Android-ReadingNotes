@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.mvp;
+package com.ssyijiu.retrofit.mvp.view;
 
 /**
  * Created by ssyijiu on 2016/10/17.
@@ -7,5 +7,4 @@ package com.ssyijiu.retrofit.mvp;
  */
 
 public interface IView {
-    void initView();
 }
