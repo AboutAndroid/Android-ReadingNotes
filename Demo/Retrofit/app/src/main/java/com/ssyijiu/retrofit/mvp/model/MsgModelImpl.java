@@ -60,8 +60,12 @@ public class MsgModelImpl implements MsgModel{
             @Override
             public void onResponse(Call<MultiResp> call, Response<MultiResp> response) {
 
-                MLog.i(response.headers()); // 获取所有的请求头
-                MLog.i(response.body().responseParams);
+                // 获取所有的请求头
+                MLog.i(response.headers());
+
+                // 获取单个请求头
+                okhttp3.Response okResponse = response.raw();
+                MLog.i(okResponse.header("Date"));
                 listener.onSuccess(response.body().responseParams);
 
             }
