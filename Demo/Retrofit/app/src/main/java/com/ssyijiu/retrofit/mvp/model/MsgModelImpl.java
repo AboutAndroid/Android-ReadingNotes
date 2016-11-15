@@ -76,6 +76,9 @@ public class MsgModelImpl implements MsgModel{
                 listener.onFailure(t);
             }
         });
+
+        // 取消调用
+        // call.cancel();
     }
 
     private Call<MultiResp> getPostCall(MultiApi api) {

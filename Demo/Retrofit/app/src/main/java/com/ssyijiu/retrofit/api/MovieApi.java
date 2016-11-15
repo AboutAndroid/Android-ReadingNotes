@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 /**
  * Created by ssyijiu on 2016/10/13.
@@ -27,6 +28,10 @@ public interface MovieApi {
     /* GET */
     @GET("top250")
     Call<MovieResp> getTop250();
+
+    /* GET */
+    @GET("top250")  // 跨过 baseUrl，直接访问 url
+    Call<MovieResp> getTop250(@Url String url,int time);
 
     /* GET with param*/
     @GET("top250?start=0&count=3")

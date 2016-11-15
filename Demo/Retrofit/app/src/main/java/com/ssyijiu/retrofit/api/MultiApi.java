@@ -25,7 +25,7 @@ public interface MultiApi {
     /**
      * https://app.dbjb.com/api/banklist/getBusinessRules?param=b1.unionloginurl.limit;
      */
-    String baseUrl = "https://app.dbjb.com/api/banklist/";
+    String baseUrl = "https://app.dbjb.com/api/banklist/";  // baseUrl 必须以 / 结尾
 
     /* Post */
     @POST("getBusinessRules")
@@ -48,6 +48,19 @@ public interface MultiApi {
     @FormUrlEncoded
     @POST("getBusinessRules")
     Call<MultiResp> useHeaders(@FieldMap Map<String,String> map);
+
+
+    // 同一个请求的同一个请求头在不同地方的设置不会被覆盖，而是会被全部添加进请求头中.
+    // 如果要给每个请求都添加同样的Header时，可以使用okHttp的 Interceptor .
+
+    /* Headers */  // 添加多个 Header
+    @Headers({
+            "Content-type:application/x-www-form-urlencoded;charset=UTF-8",
+            "Accept: application/vnd.github.v3.full+json"
+    })
+    @FormUrlEncoded
+    @POST("getBusinessRules")
+    Call<MultiResp> useHeaders();
 
     /* Header */
     @FormUrlEncoded
