@@ -1,0 +1,25 @@
+一个好的网络请求框架是什么样的？
+
+1. Retrofit + Okhttp + RxJava 目前最流行的网络架构，使用这个进行封装
+
+2. 开发者需要传入的参数
+    (1) url
+    (2) 参数 参数分为 静态参数 如：token、channelId，封装进 Headers 或者 Api中，免去每次调用时都传
+                    动态参数 开发者动态获取传入
+    (3) 返回类型 返回类型做统一处理 通过BaseResp<T> 封装
+
+3. 统一返回 code 处理，比如碰到 unlogin(未登录)，应该由框架自动判断并作出处理，不应该由开发者手动判断处理
+
+4. 统一异常处理
+
+5. 缓存模式的切换
+
+
+参考：
+https://github.com/Aarontaken/Retrofit2
+http://www.open-open.com/lib/view/open1456904039046.html
+https://github.com/yanzhenjie/NoHttp
+https://github.com/drakeet/Meizhi
+https://github.com/JakeWharton/u2020
+https://github.com/JakeWharton/retrofit2-rxjava2-adapter
+https://github.com/Piasy/AndroidTDDBootStrap
