@@ -1,8 +1,12 @@
 package com.ssyijiu.retrofit.helper;
 
+import android.content.Context;
+import android.os.Environment;
+
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
@@ -70,6 +74,27 @@ public enum OKHttpFactory {
     }
 
     private Cache getCacheDir() {
-        return new Cache(App.getContext().getCacheDir(), CACHE_SIZE);
+        return new Cache(getDiskCache(App.getContext(),"retrofit"), CACHE_SIZE);
+    }
+
+    /**
+     * 获取磁盘缓存文件
+     *
+     * @param context
+     * @param fileName
+     * @return  sd卡可用路径为 /sdcard/Android/data/<application package>/cache/fileName
+     *          sd卡不可用路径为 /data/data/<application package>/cache/fileName
+     */
+    public File getDiskCache(Context context, String fileName) {
+
+        String cachePath;
+
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+
+        return new File(cachePath + File.separator + fileName);
     }
 }

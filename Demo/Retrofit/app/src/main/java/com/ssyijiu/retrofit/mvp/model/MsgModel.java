@@ -18,4 +18,6 @@ public interface MsgModel {
     void getPostMsg(MsgListener listener);
 
     void getGetMsg(MsgListener listener);
+
+    void getGoldPrice(MsgListener listener);
 }

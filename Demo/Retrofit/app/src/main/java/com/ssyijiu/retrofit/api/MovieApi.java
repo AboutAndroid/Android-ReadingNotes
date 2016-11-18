@@ -18,12 +18,10 @@ import retrofit2.http.Url;
  */
 
 
-public interface MovieApi {
+public interface MovieApi extends API{
     /**
      * https://api.douban.com/v2/movie/top250?start=0&count=11
      */
-
-    String baseUrl = "https://api.douban.com/v2/movie/";
 
     /* GET */
     @GET("top250")

@@ -1,10 +1,13 @@
 package com.ssyijiu.retrofit.mvp.model;
 
 import com.ssyijiu.library.MLog;
+import com.ssyijiu.retrofit.api.API;
 import com.ssyijiu.retrofit.api.MovieApi;
 import com.ssyijiu.retrofit.api.MultiApi;
+import com.ssyijiu.retrofit.bean.GoldPriceResp;
 import com.ssyijiu.retrofit.bean.MovieResp;
 import com.ssyijiu.retrofit.bean.MultiResp;
+import com.ssyijiu.retrofit.helper.ApiFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,33 +44,37 @@ public class MsgModelImpl implements MsgModel{
         return instance;
     }
 
+
+    @Override
+    public void getGoldPrice(final MsgListener listener) {
+        ApiFactory.INSTANCE.API_MULTI.getGoldPrice().enqueue(new Callback<GoldPriceResp>() {
+            @Override
+            public void onResponse(Call<GoldPriceResp> call, Response<GoldPriceResp> response) {
+                listener.onSuccess(response.body().getResponseParams().getGoldRate());
+            }
+
+            @Override
+            public void onFailure(Call<GoldPriceResp> call, Throwable t) {
+                listener.onFailure(t);
+            }
+        });
+    }
+
     @Override
     public void getPostMsg(final MsgModel.MsgListener listener) {
-        //1. 创建一个 retrofit 对象
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(MultiApi.baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        //2. 创建一个 api 接口对象
-        MultiApi multiApi = retrofit.create(MultiApi.class);
 
-        //3. 创建一个回调 resp 对象
-        Call<MultiResp> call = getPostCall(multiApi);
-
-        //4. 开始请求网络
-        call.enqueue(new Callback<MultiResp>() {
+        ApiFactory.INSTANCE.API_MULTI.getMessage("b1.unionloginurl.limit").enqueue(new Callback<MultiResp>() {
             @Override
             public void onResponse(Call<MultiResp> call, Response<MultiResp> response) {
-
                 // 获取所有的请求头
                 MLog.i(response.headers());
 
                 // 获取单个请求头
                 okhttp3.Response okResponse = response.raw();
                 MLog.i(okResponse.header("Date"));
-                listener.onSuccess(response.body().responseParams);
 
+                listener.onSuccess(response.body().responseParams);
             }
 
             @Override
@@ -90,25 +97,14 @@ public class MsgModelImpl implements MsgModel{
         return api.getMessage("b1.unionloginurl.limit");
     }
 
+
     @Override
     public void getGetMsg(final MsgListener listener) {
-        //1. 创建一个 retrofit 对象
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(MovieApi.baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        //2. 创建一个 api 接口对象
-        MovieApi movieApi = retrofit.create(MovieApi.class);
 
-        //3. 创建一个回调 resp 对象
-        Call<MovieResp> call = getCall(movieApi);
-
-        //4. 开始请求网络
-        call.enqueue(new Callback<MovieResp>() {
+        ApiFactory.INSTANCE.API_MOVIE.getTop250().enqueue(new Callback<MovieResp>() {
             @Override
             public void onResponse(Call<MovieResp> call, Response<MovieResp> response) {
-
                 List<MovieResp.SubjectsBean> subjects = response.body().getSubjects();
                 List<String> movieNames = new ArrayList<String>();
                 for (MovieResp.SubjectsBean sub : subjects) {
@@ -116,7 +112,6 @@ public class MsgModelImpl implements MsgModel{
                 }
 
                 listener.onSuccess(String.valueOf(movieNames));
-
             }
 
             @Override
@@ -125,6 +120,8 @@ public class MsgModelImpl implements MsgModel{
             }
         });
     }
+
+
 
     private Call<MovieResp> getCall(MovieApi api) {
 

@@ -29,4 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="POST" />
+
+    <Button
+        android:id="@+id/btn_gold_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="gold_price" />
 </LinearLayout>

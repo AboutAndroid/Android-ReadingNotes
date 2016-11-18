@@ -1,5 +1,6 @@
 package com.ssyijiu.retrofit.api;
 
+import com.ssyijiu.retrofit.bean.GoldPriceResp;
 import com.ssyijiu.retrofit.bean.MovieParam;
 import com.ssyijiu.retrofit.bean.MultiResp;
 
@@ -20,33 +21,32 @@ import retrofit2.http.POST;
  * E-mail: lxmyijiu@163.com
  */
 
-public interface MultiApi {
+public interface MultiApi extends API{
 
     /**
      * https://app.dbjb.com/api/banklist/getBusinessRules?param=b1.unionloginurl.limit;
      */
-    String baseUrl = "https://app.dbjb.com/api/banklist/";  // baseUrl 必须以 / 结尾
 
     /* Post */
-    @POST("getBusinessRules")
+    @POST("api/banklist/getBusinessRules")
     Call<MultiResp> getMessage(@Body MovieParam movieParam); // 请求体 {"count":3,"start":5}
 
 
     /* FormUrlEncoded Field */
     @FormUrlEncoded
-    @POST("getBusinessRules")
+    @POST("api/banklist/getBusinessRules")
     Call<MultiResp> getMessage(@Field("param") String param);
 
     /* FormUrlEncoded FieldMap */
     @FormUrlEncoded
-    @POST("getBusinessRules")
+    @POST("api/banklist/getBusinessRules")
     Call<MultiResp> getMessage(@FieldMap Map<String,String> map);/* FormUrlEncoded FieldMap */
 
 
     /* Headers */
     @Headers("Content-type:application/x-www-form-urlencoded;charset=UTF-8")
     @FormUrlEncoded
-    @POST("getBusinessRules")
+    @POST("api/banklist/getBusinessRules")
     Call<MultiResp> useHeaders(@FieldMap Map<String,String> map);
 
 
@@ -59,13 +59,16 @@ public interface MultiApi {
             "Accept: application/vnd.github.v3.full+json"
     })
     @FormUrlEncoded
-    @POST("getBusinessRules")
+    @POST("api/banklist/getBusinessRules")
     Call<MultiResp> useHeaders();
 
     /* Header */
     @FormUrlEncoded
-    @POST("getBusinessRules")
+    @POST("api/banklist/getBusinessRules")
     Call<MultiResp> useHeader(@Header("Content-type") String contentType);
 
+
+    @POST("api/inrate/getGoldRateAndSysTime")
+    Call<GoldPriceResp> getGoldPrice();
 
 }

@@ -30,6 +30,28 @@ public class MsgPresenter extends BasePresenter<MsgView> {
     }
 
 
+    public void getGoldPrice() {
+        if(isViewAttached()) {
+            getView().showLoading("POST:loading...");
+        }
+
+        MsgModelImpl.getInstance().getGoldPrice(new MsgModel.MsgListener() {
+            @Override
+            public void onSuccess(String resp) {
+                if(isViewAttached()) {
+                    getView().showSuccess(resp);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if(isViewAttached()) {
+                    getView().showFailed(t);
+                }
+            }
+        });
+    }
+
     public void getPostMsg() {
         if(isViewAttached()) {
             getView().showLoading("POST:loading...");
