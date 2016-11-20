@@ -4,7 +4,7 @@
 
 2. 开发者需要传入的参数
     (1) url
-    (2) 参数 参数分为 静态参数 如：token、channelId，封装进 Headers 或者 Api中，免去每次调用时都传
+    (2) 参数 参数分为 公共参数 如：token、channelId，封装进 Headers 或者 Api中，免去每次调用时都传
                     动态参数 开发者动态获取传入
     (3) 返回类型 返回类型做统一处理 通过BaseResp<T> 封装
 
@@ -16,6 +16,7 @@
 
 
 参考：
+http://www.jianshu.com/p/1a5f14b63f47
 https://github.com/liuguangqiang/AndroidMan/blob/master/posts/Retrofit2%2BRxJava%2BLoganSquare%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.md
 http://www.open-open.com/lib/view/open1456904039046.html
 https://github.com/yanzhenjie/NoHttp
@@ -26,5 +27,14 @@ https://github.com/Piasy/AndroidTDDBootStrap
 https://github.com/liuguangqiang/Idaily
 
 
-channelId=23&token=5FHiEocw5cWq5xXiFi6K8JSHYCwdt%252FIXmbf4%252F3Ew9A9ej93%252F6Rd6yA%253D%253D.869545025161286
+解决方案：
+1. 公共参数
+    公司服务器取 token 只能通过参数去，不能通过 Headers 取，
+    将 token 封装进 Api，
+    Retrofit 没有提供，
+    可以通过设置OKHttp的拦截来实现，但是这样无法保证OKHttpClient的单例
+
+    创建一个单例的 map 使用前先 clear 然后放入 token，封装进 getTokenMap()
+
+
 

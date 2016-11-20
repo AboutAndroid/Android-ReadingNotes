@@ -1,22 +1,23 @@
 package com.ssyijiu.retrofit.mvp.model;
 
 import com.ssyijiu.library.MLog;
-import com.ssyijiu.retrofit.api.API;
 import com.ssyijiu.retrofit.api.MovieApi;
-import com.ssyijiu.retrofit.api.MultiApi;
+import com.ssyijiu.retrofit.api.ParamsMap;
+import com.ssyijiu.retrofit.api.PostApi;
+import com.ssyijiu.retrofit.bean.FinancingListResp;
 import com.ssyijiu.retrofit.bean.GoldPriceResp;
 import com.ssyijiu.retrofit.bean.MovieResp;
-import com.ssyijiu.retrofit.bean.MultiResp;
+import com.ssyijiu.retrofit.bean.PostResp;
 import com.ssyijiu.retrofit.helper.ApiFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -44,6 +45,26 @@ public class MsgModelImpl implements MsgModel{
         return instance;
     }
 
+    @Override
+    public void getFinancingList(final MsgListener listener) {
+
+
+        Map<String,String> map = ParamsMap.INSTANCE.getTokenMap();
+        map.put("prdType","1");
+//        map.put("channelId","23");
+
+        ApiFactory.INSTANCE.API_MULTI.getFinancingList(map).enqueue(new Callback<FinancingListResp>() {
+            @Override
+            public void onResponse(Call<FinancingListResp> call, Response<FinancingListResp> response) {
+                listener.onSuccess(response.body().getResponseParams().get(0).getTBaseLCProcuct().getAdMemo());
+            }
+
+            @Override
+            public void onFailure(Call<FinancingListResp> call, Throwable t) {
+                listener.onFailure(t);
+            }
+        });
+    }
 
     @Override
     public void getGoldPrice(final MsgListener listener) {
@@ -64,9 +85,9 @@ public class MsgModelImpl implements MsgModel{
     public void getPostMsg(final MsgModel.MsgListener listener) {
 
 
-        ApiFactory.INSTANCE.API_MULTI.getMessage("b1.unionloginurl.limit").enqueue(new Callback<MultiResp>() {
+        ApiFactory.INSTANCE.API_POST.getMessage("b1.unionloginurl.limit").enqueue(new Callback<PostResp>() {
             @Override
-            public void onResponse(Call<MultiResp> call, Response<MultiResp> response) {
+            public void onResponse(Call<PostResp> call, Response<PostResp> response) {
                 // 获取所有的请求头
                 MLog.i(response.headers());
 
@@ -78,7 +99,7 @@ public class MsgModelImpl implements MsgModel{
             }
 
             @Override
-            public void onFailure(Call<MultiResp> call, Throwable t) {
+            public void onFailure(Call<PostResp> call, Throwable t) {
                 MLog.e(t.getMessage());
                 listener.onFailure(t);
             }
@@ -88,7 +109,7 @@ public class MsgModelImpl implements MsgModel{
         // call.cancel();
     }
 
-    private Call<MultiResp> getPostCall(MultiApi api) {
+    private Call<PostResp> getPostCall(PostApi api) {
 
 //        Map<String,String> params = new HashMap<>();
 //        params.put("param","b1.unionloginurl.limit");

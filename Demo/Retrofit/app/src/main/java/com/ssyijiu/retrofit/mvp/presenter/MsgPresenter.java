@@ -10,7 +10,7 @@ import com.ssyijiu.retrofit.mvp.view.MsgView;
  * E-mail: lxmyijiu@163.com
  */
 
-public class MsgPresenter extends BasePresenter<MsgView> {
+public class MsgPresenter extends BasePresenter<MsgView>{
 
     private MsgPresenter(){
     }
@@ -29,76 +29,56 @@ public class MsgPresenter extends BasePresenter<MsgView> {
         return instance;
     }
 
+    public void getFinancingList() {
+        loading("POST:loading...");
+
+        MsgModelImpl.getInstance().getFinancingList(new MsgListener());
+    }
 
     public void getGoldPrice() {
-        if(isViewAttached()) {
-            getView().showLoading("POST:loading...");
-        }
+        loading("POST:loading...");
 
-        MsgModelImpl.getInstance().getGoldPrice(new MsgModel.MsgListener() {
-            @Override
-            public void onSuccess(String resp) {
-                if(isViewAttached()) {
-                    getView().showSuccess(resp);
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                if(isViewAttached()) {
-                    getView().showFailed(t);
-                }
-            }
-        });
+        MsgModelImpl.getInstance().getGoldPrice(new MsgListener());
     }
 
     public void getPostMsg() {
-        if(isViewAttached()) {
-            getView().showLoading("POST:loading...");
-        }
+        loading("POST:loading...");
 
-        MsgModelImpl.getInstance().getPostMsg(new MsgModel.MsgListener() {
-            @Override
-            public void onSuccess(String resp) {
-                if(isViewAttached()) {
-                    getView().showSuccess(resp);
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                if(isViewAttached()) {
-                    getView().showFailed(t);
-                }
-            }
-        });
+        MsgModelImpl.getInstance().getPostMsg(new MsgListener());
     }
 
 
     public void getGetMsg() {
-        if(isViewAttached()) {
-            getView().showLoading("GET:loading...");
+        loading("GET:loading...");
+
+        MsgModelImpl.getInstance().getGetMsg(new MsgListener());
+    }
+
+    private void loading(String loadingMsg) {
+        if (isViewAttached()) {
+            getView().showLoading(loadingMsg);
+        }
+    }
+
+    private class MsgListener implements MsgModel.MsgListener {
+
+        @Override
+        public void onSuccess(String resp) {
+            if(isViewAttached()) {
+                getView().showSuccess(resp);
+            }
         }
 
-        MsgModelImpl.getInstance().getGetMsg(new MsgModel.MsgListener() {
-            @Override
-            public void onSuccess(String resp) {
-                if(isViewAttached()) {
-                    getView().showSuccess(resp);
-                }
+        @Override
+        public void onFailure(Throwable t) {
+            if(isViewAttached()) {
+                getView().showFailed(t);
             }
-
-            @Override
-            public void onFailure(Throwable t) {
-                if(isViewAttached()) {
-                    getView().showFailed(t);
-                }
-            }
-        });
+        }
     }
 
     @Override
     public void onStart() {
-        getView().showLoading("onStart--Mvp--Retrofit");
+        getView().showLoading("onStart");
     }
 }

@@ -13,7 +13,7 @@ import okhttp3.Response;
  */
 
 
-// 一般用来设置 UA、设置缓存策略 、打印 Log 等
+// Interceptor 一般用来设置 请求头(UA)、设置缓存策略 、打印 Log 等
 // 这里来设置 UA
 public class UserAgentInterceptor implements Interceptor {  // 实现接口
 
@@ -32,6 +32,8 @@ public class UserAgentInterceptor implements Interceptor {  // 实现接口
                 .removeHeader(USER_AGENT_HEADER_NAME)
                 //设置 UA
                 .addHeader(USER_AGENT_HEADER_NAME, userAgentHeaderValue)
+                // 设置其他的请求头
+                .addHeader("ssyijiu","android")
 
                 .build();
         return chain.proceed(requestWithUserAgent);

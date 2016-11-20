@@ -5,11 +5,14 @@ import android.os.Environment;
 
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
+import com.ssyijiu.retrofit.interceptors.CommonParamsInterceptor;
+import com.ssyijiu.retrofit.interceptors.UserAgentInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -34,31 +37,32 @@ public enum OKHttpFactory {
 
     OKHttpFactory() {
 
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                // 添加缓存
+                .cache(getCacheDir())
+                // 设置超时和重连
+                .connectTimeout(TIMEOUT_CONNECTION, TimeUnit.SECONDS)
+                .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)
+                .writeTimeout(TIMEOUT_WRITE, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
+                // 添加公共参数 如：channelId
+                //.addInterceptor(new CommonParamsInterceptor())
+                // 设置请求头(UA)
+                .addInterceptor(new UserAgentInterceptor("ssyijiu-retrofit"));
 
         // 添加 log 信息拦截器
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(getLoggingInterceptor());
         }
 
-        // 添加缓存
-        builder.cache(getCacheDir());
-
-        // 设置超时和错误重连
-        builder.connectTimeout(TIMEOUT_CONNECTION, TimeUnit.SECONDS)
-               .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)
-               .writeTimeout(TIMEOUT_WRITE, TimeUnit.SECONDS)
-               .retryOnConnectionFailure(true);
-
         okHttpClient = builder.build();
 
-                //stetho,可以在chrome中查看请求
+        //stetho,可以在chrome中查看请求
 //                .addNetworkInterceptor(new StethoInterceptor())
-                //添加UA
-//                .addInterceptor(new UserAgentInterceptor(HttpHelper.getUserAgent()))
-                //必须是设置Cache目录
+
+        //必须是设置Cache目录
 //                .cache(cache)
-                //走缓存，两个都要设置
+        //走缓存，两个都要设置
 //                .addInterceptor(new OnOffLineCachedInterceptor())
 //                .addNetworkInterceptor(new OnOffLineCachedInterceptor())
 
@@ -74,16 +78,16 @@ public enum OKHttpFactory {
     }
 
     private Cache getCacheDir() {
-        return new Cache(getDiskCache(App.getContext(),"retrofit"), CACHE_SIZE);
+        return new Cache(getDiskCache(App.getContext(), "retrofit"), CACHE_SIZE);
     }
 
     /**
-     * 获取磁盘缓存文件
+     * 获取磁盘缓存文件位置
      *
      * @param context
      * @param fileName
-     * @return  sd卡可用路径为 /sdcard/Android/data/<application package>/cache/fileName
-     *          sd卡不可用路径为 /data/data/<application package>/cache/fileName
+     * @return sd卡可用路径为 /sdcard/Android/data/<application package>/cache/fileName
+     * sd卡不可用路径为 /data/data/<application package>/cache/fileName
      */
     public File getDiskCache(Context context, String fileName) {
 

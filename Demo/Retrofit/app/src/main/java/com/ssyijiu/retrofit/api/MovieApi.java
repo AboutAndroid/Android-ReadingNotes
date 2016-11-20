@@ -18,7 +18,7 @@ import retrofit2.http.Url;
  */
 
 
-public interface MovieApi extends API{
+public interface MovieApi {
     /**
      * https://api.douban.com/v2/movie/top250?start=0&count=11
      */

@@ -6,7 +6,7 @@ package com.ssyijiu.retrofit.bean;
  * E-mail: lxmyijiu@163.com
  */
 
-public class MultiResp {
+public class PostResp {
     public String rntCodeValue;
     public String rntCode;
     public String rntMsg;

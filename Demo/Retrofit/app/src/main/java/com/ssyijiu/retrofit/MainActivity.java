@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity implements MsgView {
         findViewById(R.id.btn_gold_price).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.getGoldPrice();
+//                presenter.getGoldPrice();
+                presenter.getFinancingList();
 
             }
         });
