@@ -1,8 +1,8 @@
 package com.ssyijiu.retrofit.retrofit2;
 
-import com.ssyijiu.retrofit.api.MovieApi;
-import com.ssyijiu.retrofit.api.MultiApi;
-import com.ssyijiu.retrofit.api.PostApi;
+import com.ssyijiu.retrofit.retrofit2.api.MovieApi;
+import com.ssyijiu.retrofit.retrofit2.api.MultiApi;
+import com.ssyijiu.retrofit.retrofit2.api.PostApi;
 
 /**
  * Created by ssyijiu on 2016/11/17.

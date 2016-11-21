@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.api;
+package com.ssyijiu.retrofit.retrofit2.api;
 
 /**
  * Created by ssyijiu on 2016/11/19.

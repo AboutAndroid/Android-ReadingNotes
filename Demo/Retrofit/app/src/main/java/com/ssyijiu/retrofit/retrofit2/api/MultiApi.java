@@ -1,19 +1,14 @@
-package com.ssyijiu.retrofit.api;
+package com.ssyijiu.retrofit.retrofit2.api;
 
 import com.ssyijiu.retrofit.bean.FinancingListResp;
 import com.ssyijiu.retrofit.bean.GoldPriceResp;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import retrofit2.Call;
-import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
-
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by ssyijiu on 2016/11/19.

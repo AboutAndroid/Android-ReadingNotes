@@ -1,14 +1,14 @@
 package com.ssyijiu.retrofit.mvp.model;
 
 import com.ssyijiu.library.MLog;
-import com.ssyijiu.retrofit.api.MovieApi;
-import com.ssyijiu.retrofit.api.ParamsMap;
-import com.ssyijiu.retrofit.api.PostApi;
 import com.ssyijiu.retrofit.bean.FinancingListResp;
 import com.ssyijiu.retrofit.bean.GoldPriceResp;
 import com.ssyijiu.retrofit.bean.MovieResp;
 import com.ssyijiu.retrofit.bean.PostResp;
 import com.ssyijiu.retrofit.retrofit2.ApiFactory;
+import com.ssyijiu.retrofit.retrofit2.api.MovieApi;
+import com.ssyijiu.retrofit.retrofit2.api.ParamsMap;
+import com.ssyijiu.retrofit.retrofit2.api.PostApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +50,6 @@ public class MsgModelImpl implements MsgModel{
 
         Map<String,String> map = ParamsMap.INSTANCE.getTokenMap();
         map.put("prdType","1");
-//        map.put("channelId","23");
 
         ApiFactory.INSTANCE.API_MULTI.getFinancingList(map).enqueue(new Callback<FinancingListResp>() {
             @Override

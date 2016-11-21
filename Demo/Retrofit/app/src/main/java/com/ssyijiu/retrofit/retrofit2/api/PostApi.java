@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.api;
+package com.ssyijiu.retrofit.retrofit2.api;
 
 import com.ssyijiu.retrofit.bean.MovieParam;
 import com.ssyijiu.retrofit.bean.PostResp;

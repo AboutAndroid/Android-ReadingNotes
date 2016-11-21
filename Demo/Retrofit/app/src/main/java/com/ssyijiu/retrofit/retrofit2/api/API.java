@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.api;
+package com.ssyijiu.retrofit.retrofit2.api;
 
 /**
  * Created by lxm on 2016/10/13.

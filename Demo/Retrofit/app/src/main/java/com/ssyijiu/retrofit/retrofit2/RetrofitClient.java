@@ -1,6 +1,6 @@
 package com.ssyijiu.retrofit.retrofit2;
 
-import com.ssyijiu.retrofit.api.API;
+import com.ssyijiu.retrofit.retrofit2.api.API;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

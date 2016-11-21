@@ -1,6 +1,6 @@
 package com.ssyijiu.retrofit.retrofit2.interceptors;
 
-import com.ssyijiu.retrofit.api.CommonParams;
+import com.ssyijiu.retrofit.retrofit2.api.CommonParams;
 
 import java.io.IOException;
 
@@ -21,15 +21,15 @@ public class CommonParamsInterceptor implements Interceptor {
 
         Request originalRequest = chain.request();
 
-        HttpUrl.Builder commonParamsUrlBuilder = originalRequest.url()
+        HttpUrl.Builder originalHttpUrl = originalRequest.url()
                 .newBuilder()
-                .scheme(originalRequest.url().scheme())
-                .host(originalRequest.url().host())
+//                .scheme(originalRequest.url().scheme())
+//                .host(originalRequest.url().host())
                 .addQueryParameter(CommonParams.CHANNEL_ID, "23");
 
         Request newRequest = originalRequest.newBuilder()
-                .method(originalRequest.method(), originalRequest.body())
-                .url(commonParamsUrlBuilder.build())
+//                .method(originalRequest.method(), originalRequest.body())
+                .url(originalHttpUrl.build())
                 .build();
 
         return chain.proceed(newRequest);
