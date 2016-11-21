@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.helper;
+package com.ssyijiu.retrofit.retrofit2;
 
 import com.ssyijiu.retrofit.api.MovieApi;
 import com.ssyijiu.retrofit.api.MultiApi;
@@ -20,5 +20,6 @@ public enum ApiFactory {
         API_MOVIE = RetrofitClient.MOVIE_INSTANCE.getRetrofit().create(MovieApi.class);
         API_POST = RetrofitClient.MULTI_INSTANCE.getRetrofit().create(PostApi.class);
         API_MULTI = RetrofitClient.MULTI_INSTANCE.getRetrofit().create(MultiApi.class);
+
     }
 }

@@ -1,18 +1,17 @@
-package com.ssyijiu.retrofit.helper;
+package com.ssyijiu.retrofit.retrofit2;
 
 import android.content.Context;
 import android.os.Environment;
 
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
-import com.ssyijiu.retrofit.interceptors.CommonParamsInterceptor;
-import com.ssyijiu.retrofit.interceptors.UserAgentInterceptor;
+import com.ssyijiu.retrofit.retrofit2.cookies.CookieManger;
+import com.ssyijiu.retrofit.retrofit2.interceptors.UserAgentInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
-import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -26,7 +25,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public enum OKHttpFactory {
     INSTANCE;
 
-    private final OkHttpClient okHttpClient;
+    private final Context mContext = App.getContext();
+    private final OkHttpClient mOkHttpClient;
 
     private static final int TIMEOUT_READ = 20;
     private static final int TIMEOUT_CONNECTION = 10;
@@ -40,6 +40,8 @@ public enum OKHttpFactory {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 // 添加缓存
                 .cache(getCacheDir())
+                // 设置 Cookie
+                .cookieJar(new CookieManger(mContext))
                 // 设置超时和重连
                 .connectTimeout(TIMEOUT_CONNECTION, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)
@@ -55,7 +57,7 @@ public enum OKHttpFactory {
             builder.addInterceptor(getLoggingInterceptor());
         }
 
-        okHttpClient = builder.build();
+        mOkHttpClient = builder.build();
 
         //stetho,可以在chrome中查看请求
 //                .addNetworkInterceptor(new StethoInterceptor())
@@ -74,11 +76,11 @@ public enum OKHttpFactory {
     }
 
     public OkHttpClient getOkHttpClient() {
-        return okHttpClient;
+        return mOkHttpClient;
     }
 
     private Cache getCacheDir() {
-        return new Cache(getDiskCache(App.getContext(), "retrofit"), CACHE_SIZE);
+        return new Cache(getDiskCache(mContext, "retrofit"), CACHE_SIZE);
     }
 
     /**

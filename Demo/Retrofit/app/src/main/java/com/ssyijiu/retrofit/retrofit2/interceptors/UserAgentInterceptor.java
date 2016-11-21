@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.interceptors;
+package com.ssyijiu.retrofit.retrofit2.interceptors;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import okhttp3.Response;
 
 
 // Interceptor 一般用来设置 请求头(UA)、设置缓存策略 、打印 Log 等
-// 这里来设置 UA
+// 这里来设置 请求头(UA)
 public class UserAgentInterceptor implements Interceptor {  // 实现接口
 
     private static final String USER_AGENT_HEADER_NAME = "User-Agent";
@@ -32,9 +32,10 @@ public class UserAgentInterceptor implements Interceptor {  // 实现接口
                 .removeHeader(USER_AGENT_HEADER_NAME)
                 //设置 UA
                 .addHeader(USER_AGENT_HEADER_NAME, userAgentHeaderValue)
-                // 设置其他的请求头
+                // 设置其他的请求头 - 不会覆盖之前的请求头
                 .addHeader("ssyijiu","android")
-
+                // 设置其他的请求头 - 会覆盖之前的请求头
+                .header("ssyijiu","java")
                 .build();
         return chain.proceed(requestWithUserAgent);
     }

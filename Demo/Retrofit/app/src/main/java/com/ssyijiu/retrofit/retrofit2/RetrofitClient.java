@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.helper;
+package com.ssyijiu.retrofit.retrofit2;
 
 import com.ssyijiu.retrofit.api.API;
 

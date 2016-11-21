@@ -8,10 +8,9 @@ import com.ssyijiu.retrofit.bean.FinancingListResp;
 import com.ssyijiu.retrofit.bean.GoldPriceResp;
 import com.ssyijiu.retrofit.bean.MovieResp;
 import com.ssyijiu.retrofit.bean.PostResp;
-import com.ssyijiu.retrofit.helper.ApiFactory;
+import com.ssyijiu.retrofit.retrofit2.ApiFactory;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

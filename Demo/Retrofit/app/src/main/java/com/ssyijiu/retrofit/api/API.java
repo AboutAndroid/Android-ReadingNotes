@@ -6,6 +6,5 @@ package com.ssyijiu.retrofit.api;
 public interface API {
 
    String MOVIE_API_BASEURL = "https://api.douban.com/v2/movie/";
-   String MULTI_API_BASEURL = "https://app.dbjb.com/";  // baseUrl 必须以 / 结尾
-
+   String MULTI_API_BASEURL = "https://app.dbjb.com/";
 }
