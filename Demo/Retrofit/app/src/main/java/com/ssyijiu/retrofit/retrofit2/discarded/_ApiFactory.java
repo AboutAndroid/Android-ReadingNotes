@@ -19,6 +19,8 @@ public enum _ApiFactory {
 
         /**
          * 会把所有的 Api.class 加载进内存
+         * Api.class 按业务逻辑分开
+         * 考虑到调用方便，ApiFactory 只能有一个，不考虑 enum
          */
 
         API_MOVIE = _RetrofitFactory.MOVIE_INSTANCE.getRetrofit().create(MovieApi.class);

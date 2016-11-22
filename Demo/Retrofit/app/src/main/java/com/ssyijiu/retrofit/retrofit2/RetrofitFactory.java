@@ -13,19 +13,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
 
-    private Retrofit mRetrofit;
+    private Retrofit RETROFIT;
 
     /**
      * 服务器有几个 HOST, 创建几个 retrofit 单例。
+     * 当一个单例被加载时，其他单例也会被加载到内存。
      */
     public static final class INSTANCE {
-        public static Retrofit MULTI_INSTANCE = new RetrofitFactory(API.MULTI_API_BASEURL).mRetrofit;
-        public static Retrofit MOVIE_INSTANCE = new RetrofitFactory(API.MOVIE_API_BASEURL).mRetrofit;
+        public static final Retrofit MULTI_INSTANCE = new RetrofitFactory(API.MULTI_API_BASEURL).RETROFIT;
+        public static final Retrofit MOVIE_INSTANCE = new RetrofitFactory(API.MOVIE_API_BASEURL).RETROFIT;
     }
 
-
     private RetrofitFactory(String baseUrl) {
-        mRetrofit = new Retrofit.Builder()
+        RETROFIT = new Retrofit.Builder()
                 //设置OKHttpClient
                 .client(OKHttpFactory.INSTANCE.getOkHttpClient())
                 //baseUrl
