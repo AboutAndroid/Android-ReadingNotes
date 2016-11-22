@@ -30,13 +30,13 @@ public class MsgPresenter extends BasePresenter<MsgView>{
     }
 
     public void getFinancingList() {
-        loading("POST:loading...");
+        loading("FinancingList:loading...");
 
         MsgModelImpl.getInstance().getFinancingList(new MsgListener());
     }
 
     public void getGoldPrice() {
-        loading("POST:loading...");
+        loading("GoldPrice:loading...");
 
         MsgModelImpl.getInstance().getGoldPrice(new MsgListener());
     }

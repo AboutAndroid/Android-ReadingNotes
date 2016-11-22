@@ -6,7 +6,6 @@ import android.os.Environment;
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
 import com.ssyijiu.retrofit.retrofit2.cookies.CookieManger;
-import com.ssyijiu.retrofit.retrofit2.interceptors.CommonParamsInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.UserAgentInterceptor;
 
 import java.io.File;
@@ -41,6 +40,7 @@ public enum OKHttpFactory {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 // 添加缓存
                 .cache(getCacheDir())
+//                .addInterceptor(new CacheInterceptor())
                 // 设置 Cookie
                 .cookieJar(new CookieManger(mContext))
                 // 设置超时和重连
@@ -49,7 +49,7 @@ public enum OKHttpFactory {
                 .writeTimeout(TIMEOUT_WRITE, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 // 添加公共参数 如：channelId
-                .addInterceptor(new CommonParamsInterceptor())
+//                .addInterceptor(new CommonParamsInterceptor())
                 // 设置请求头(UA)
                 .addInterceptor(new UserAgentInterceptor("ssyijiu-retrofit"));
 

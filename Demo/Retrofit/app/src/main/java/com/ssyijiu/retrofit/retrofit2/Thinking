@@ -16,7 +16,8 @@
 
 
 参考：
-http://www.jianshu.com/p/e02cfaa671e4
+http://www.jianshu.com/p/b1979c25634f
+http://blog.piasy.com/tags/#安卓开发
 https://github.com/liuguangqiang/AndroidMan/blob/master/posts/Retrofit2%2BRxJava%2BLoganSquare%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.md
 http://www.open-open.com/lib/view/open1456904039046.html
 https://github.com/yanzhenjie/NoHttp
@@ -35,6 +36,12 @@ https://github.com/liuguangqiang/Idaily
     可以通过设置OKHttp的拦截来实现，但是这样无法保证OKHttpClient的单例
 
     创建一个单例的 map 使用前先 clear 然后放入 token，封装进 getTokenMap()
+
+2. Cookie
+3. baseUrl
+4. 缓存
+
+
 
 
 

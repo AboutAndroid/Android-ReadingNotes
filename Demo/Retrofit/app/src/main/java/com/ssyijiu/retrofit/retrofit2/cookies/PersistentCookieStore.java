@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import okhttp3.Cookie;
@@ -32,13 +33,13 @@ public class PersistentCookieStore {
     private static final String COOKIE_PREFS = "Cookies_Prefs";
 
     // 一个 url 对应一组 cookie
-    private final Map<String, ConcurrentHashMap<String, Cookie>> cookies;
+    private final Map<String, ConcurrentHashMap<String, Cookie>> urlCookieMaps;
     private final SharedPreferences cookiePrefs;
 
 
     public PersistentCookieStore(Context context) {
         cookiePrefs = context.getSharedPreferences(COOKIE_PREFS, 0);
-        cookies = new HashMap<>();
+        urlCookieMaps = new HashMap<>();
 
         //将持久化的 cookies 缓存到内存中 即map cookies
         Map<String, ?> prefsMap = cookiePrefs.getAll();
@@ -49,10 +50,10 @@ public class PersistentCookieStore {
                 if (encodedCookie != null) {
                     Cookie decodedCookie = decodeCookie(encodedCookie);
                     if (decodedCookie != null) {
-                        if (!cookies.containsKey(entry.getKey())) {
-                            cookies.put(entry.getKey(), new ConcurrentHashMap<String, Cookie>());
+                        if (!urlCookieMaps.containsKey(entry.getKey())) {
+                            urlCookieMaps.put(entry.getKey(), new ConcurrentHashMap<String, Cookie>());
                         }
-                        cookies.get(entry.getKey()).put(name, decodedCookie);
+                        urlCookieMaps.get(entry.getKey()).put(name, decodedCookie);
                     }
                 }
             }
@@ -68,29 +69,38 @@ public class PersistentCookieStore {
 
         // cookie未过期，添加到 cookies
         if (!cookie.persistent()) {
-            if (!cookies.containsKey(url.host())) {
-                cookies.put(url.host(), new ConcurrentHashMap<String, Cookie>());
+            if (!urlCookieMaps.containsKey(url.host())) {
+                urlCookieMaps.put(url.host(), new ConcurrentHashMap<String, Cookie>());
             }
-            cookies.get(url.host()).put(name, cookie);
+            urlCookieMaps.get(url.host()).put(name, cookie);
         } else {
 
             // cookie 过期，从 cookies 中移除
-            if (cookies.containsKey(url.host())) {
-                cookies.get(url.host()).remove(name);
+            if (urlCookieMaps.containsKey(url.host())) {
+                urlCookieMaps.get(url.host()).remove(name);
             }
         }
 
         //将 cookies 持久化到本地
         SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
-        prefsWriter.putString(url.host(), TextUtils.join(",", cookies.get(url.host()).keySet()));
-        prefsWriter.putString(name, encodeCookie(new OkHttpCookies(cookie)));
-        prefsWriter.apply();
+
+        ConcurrentHashMap<String, Cookie> cookieMap = urlCookieMaps.get(url.host());
+
+        if(cookieMap != null) {
+            Set<String> cookieSet = cookieMap.keySet();
+            if(cookieSet != null) {
+                String urlCookies = TextUtils.join(",", cookieSet);
+                prefsWriter.putString(url.host(), urlCookies);
+                prefsWriter.putString(name, encodeCookie(new OkHttpCookies(cookie)));
+                prefsWriter.apply();
+            }
+        }
     }
 
     public List<Cookie> get(HttpUrl url) {
         ArrayList<Cookie> ret = new ArrayList<>();
-        if (cookies.containsKey(url.host()))
-            ret.addAll(cookies.get(url.host()).values());
+        if (urlCookieMaps.containsKey(url.host()))
+            ret.addAll(urlCookieMaps.get(url.host()).values());
         return ret;
     }
 
@@ -98,21 +108,21 @@ public class PersistentCookieStore {
         SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
         prefsWriter.clear();
         prefsWriter.apply();
-        cookies.clear();
+        urlCookieMaps.clear();
         return true;
     }
 
     public boolean remove(HttpUrl url, Cookie cookie) {
         String name = getCookieToken(cookie);
 
-        if (cookies.containsKey(url.host()) && cookies.get(url.host()).containsKey(name)) {
-            cookies.get(url.host()).remove(name);
+        if (urlCookieMaps.containsKey(url.host()) && urlCookieMaps.get(url.host()).containsKey(name)) {
+            urlCookieMaps.get(url.host()).remove(name);
 
             SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
             if (cookiePrefs.contains(name)) {
                 prefsWriter.remove(name);
             }
-            prefsWriter.putString(url.host(), TextUtils.join(",", cookies.get(url.host()).keySet()));
+            prefsWriter.putString(url.host(), TextUtils.join(",", urlCookieMaps.get(url.host()).keySet()));
             prefsWriter.apply();
 
             return true;
@@ -123,8 +133,8 @@ public class PersistentCookieStore {
 
     public List<Cookie> getCookies() {
         ArrayList<Cookie> ret = new ArrayList<>();
-        for (String key : cookies.keySet())
-            ret.addAll(cookies.get(key).values());
+        for (String key : urlCookieMaps.keySet())
+            ret.addAll(urlCookieMaps.get(key).values());
 
         return ret;
     }

@@ -1,5 +1,6 @@
-package com.ssyijiu.retrofit.retrofit2;
+package com.ssyijiu.retrofit.retrofit2.discarded;
 
+import com.ssyijiu.retrofit.retrofit2.OKHttpFactory;
 import com.ssyijiu.retrofit.retrofit2.api.API;
 
 import retrofit2.Retrofit;
@@ -11,13 +12,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * E-mail: lxmyijiu@163.com
  */
 
-public enum RetrofitClient {
+public enum _RetrofitFactory {
 
     MOVIE_INSTANCE(API.MOVIE_API_BASEURL),
     MULTI_INSTANCE(API.MULTI_API_BASEURL);
 
     private final Retrofit retrofit;
-    RetrofitClient(String baseUrl) {
+    _RetrofitFactory(String baseUrl) {
         retrofit = new Retrofit.Builder()
                 //设置OKHttpClient
                 .client(OKHttpFactory.INSTANCE.getOkHttpClient())

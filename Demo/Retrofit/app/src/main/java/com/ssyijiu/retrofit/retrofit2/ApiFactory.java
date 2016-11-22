@@ -10,16 +10,15 @@ import com.ssyijiu.retrofit.retrofit2.api.PostApi;
  * E-mail: lxmyijiu@163.com
  */
 
-public enum ApiFactory {
-    INSTANCE;
-    public final MovieApi API_MOVIE;
-    public final PostApi API_POST;
-    public final MultiApi API_MULTI;
-    ApiFactory() {
+public class ApiFactory {
 
-        API_MOVIE = RetrofitClient.MOVIE_INSTANCE.getRetrofit().create(MovieApi.class);
-        API_POST = RetrofitClient.MULTI_INSTANCE.getRetrofit().create(PostApi.class);
-        API_MULTI = RetrofitClient.MULTI_INSTANCE.getRetrofit().create(MultiApi.class);
-
+    private ApiFactory(){
     }
+
+    public static final class INSTANCE {
+        public static final MovieApi API_MOVIE = RetrofitFactory.INSTANCE.MOVIE_INSTANCE.create(MovieApi.class);
+        public static final PostApi API_POST = RetrofitFactory.INSTANCE.MULTI_INSTANCE.create(PostApi.class);
+        public static final MultiApi API_MULTI = RetrofitFactory.INSTANCE.MULTI_INSTANCE.create(MultiApi.class);
+    }
+
 }

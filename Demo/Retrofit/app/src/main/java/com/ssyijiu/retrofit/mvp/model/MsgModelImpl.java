@@ -82,7 +82,6 @@ public class MsgModelImpl implements MsgModel{
     @Override
     public void getPostMsg(final MsgModel.MsgListener listener) {
 
-
         ApiFactory.INSTANCE.API_POST.getMessage("b1.unionloginurl.limit").enqueue(new Callback<PostResp>() {
             @Override
             public void onResponse(Call<PostResp> call, Response<PostResp> response) {
