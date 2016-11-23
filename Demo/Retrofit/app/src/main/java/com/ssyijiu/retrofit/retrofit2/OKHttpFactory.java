@@ -6,15 +6,19 @@ import android.os.Environment;
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
 import com.ssyijiu.retrofit.retrofit2.cookies.CookieManger;
-import com.ssyijiu.retrofit.retrofit2.interceptors.CacheInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors.AddCookiesInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.LoggingInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors.ReceivedCookiesInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.UserAgentInterceptor;
 
 import java.io.File;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.Interceptor;
+import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 
 /**
@@ -38,6 +42,9 @@ public enum OKHttpFactory {
 
     OKHttpFactory() {
 
+        CookieManager cookieManager = new CookieManager();
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
 
                 // 设置超时和重连
@@ -51,13 +58,11 @@ public enum OKHttpFactory {
 
                 // 添加 log 信息拦截器
                 .addInterceptor(getLoggingInterceptor())
-
-                // 添加缓存
-                .cache(getCacheDir())
-                .addInterceptor(new CacheInterceptor())
+//                .addInterceptor(new ReceivedCookiesInterceptor())
+//                .addInterceptor(new AddCookiesInterceptor());
 
                 // 设置 Cookie
-                .cookieJar(new CookieManger(mContext));
+                .cookieJar(new CookieManger(App.getContext()));
 
 
 

@@ -60,9 +60,12 @@ https://shadowzwy.github.io/2016/11/17/Retrofit-2.0-%E5%BA%94%E7%94%A8%E5%9C%BA%
 
     自己写缓存 参考NoHttp
 
-5. _token过期
+5. token过期
 
-    token 过期？ 被别人顶下去？
+    token 过期、被别人顶下去
+
+    跳转登录也获取token? 直接调用获取token接口?
+
 
 
 

@@ -33,12 +33,11 @@ public class CookieManger implements CookieJar {
 
     @Override
     public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-//        MLog.i(cookies);
+        MLog.i(cookies);
 
         if (cookies != null && cookies.size() > 0) {
             for (Cookie item : cookies) {
-//                MLog.i(url);
-//                MLog.i(item);
+
                 cookieStore.add(url, item);
             }
         }
@@ -47,6 +46,7 @@ public class CookieManger implements CookieJar {
     @Override
     public List<Cookie> loadForRequest(HttpUrl url) {
         List<Cookie> cookies = cookieStore.get(url);
+        MLog.e(cookies);
         return cookies;
     }
 }

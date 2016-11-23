@@ -21,12 +21,12 @@ public class NetUtil {
         throw new UnsupportedOperationException("NetUtil cannot be instantiated !");
     }
 
-    public static final int NET_WIFI = 1;
-    public static final int NET_4G = 4;
-    public static final int NET_3G = 3;
-    public static final int NET_2G = 2;
-    public static final int NET_UNKNOWN = 5;
-    public static final int NET_NO = -1;
+    private static final int NET_WIFI = 1;
+    private static final int NET_4G = 4;
+    private static final int NET_3G = 3;
+    private static final int NET_2G = 2;
+    private static final int NET_UNKNOWN = 5;
+    private static final int NET_NO = -1;
 
 
     /**
