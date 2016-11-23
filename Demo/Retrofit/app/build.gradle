@@ -30,11 +30,13 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
+
     compile 'com.github.ssyijiu:MLog:1.0.9'
+    compile 'com.elvishew:xlog:1.1.0'
+
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.4.2'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+    //compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
     compile "com.google.auto.value:auto-value:1.2"
     apt 'com.google.auto.value:auto-value:1.2'

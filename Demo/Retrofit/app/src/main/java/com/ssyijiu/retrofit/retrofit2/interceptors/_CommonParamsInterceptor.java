@@ -15,7 +15,7 @@ import okhttp3.Response;
  * E-mail: lxmyijiu@163.com
  */
 
-public class CommonParamsInterceptor implements Interceptor {
+public class _CommonParamsInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
@@ -23,12 +23,9 @@ public class CommonParamsInterceptor implements Interceptor {
 
         HttpUrl.Builder originalHttpUrl = originalRequest.url()
                 .newBuilder()
-//                .scheme(originalRequest.url().scheme())
-//                .host(originalRequest.url().host())
                 .addQueryParameter(CommonParams.CHANNEL_ID, "23");
 
         Request newRequest = originalRequest.newBuilder()
-//                .method(originalRequest.method(), originalRequest.body())
                 .url(originalHttpUrl.build())
                 .build();
 

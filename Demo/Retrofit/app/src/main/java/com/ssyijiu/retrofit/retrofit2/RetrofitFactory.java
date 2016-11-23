@@ -1,5 +1,6 @@
 package com.ssyijiu.retrofit.retrofit2;
 
+import com.google.gson.Gson;
 import com.ssyijiu.retrofit.retrofit2.api.API;
 
 import retrofit2.Retrofit;
@@ -31,8 +32,10 @@ public class RetrofitFactory {
                 //baseUrl
                 .baseUrl(baseUrl)
                 //gson转化器
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(mGson))
                 .build();
     }
+
+    private static final Gson mGson = new Gson();
 
 }

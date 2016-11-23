@@ -6,6 +6,8 @@ import android.os.Environment;
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
 import com.ssyijiu.retrofit.retrofit2.cookies.CookieManger;
+import com.ssyijiu.retrofit.retrofit2.interceptors.CacheInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors.LoggingInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.UserAgentInterceptor;
 
 import java.io.File;
@@ -14,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Created by ssyijiu on 2016/11/15.
@@ -38,42 +39,43 @@ public enum OKHttpFactory {
     OKHttpFactory() {
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                // 添加缓存
-                .cache(getCacheDir())
-//                .addInterceptor(new CacheInterceptor())
-                // 设置 Cookie
-                .cookieJar(new CookieManger(mContext))
+
                 // 设置超时和重连
                 .connectTimeout(TIMEOUT_CONNECTION, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT_WRITE, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
-                // 添加公共参数 如：channelId
-//                .addInterceptor(new CommonParamsInterceptor())
-                // 设置请求头(UA)
-                .addInterceptor(new UserAgentInterceptor("ssyijiu-retrofit"));
 
-        // 添加 log 信息拦截器
-        if (BuildConfig.DEBUG) {
-            builder.addInterceptor(getLoggingInterceptor());
-        }
+                // 设置请求头(UA)
+                .addInterceptor(new UserAgentInterceptor("ssyijiu-retrofit"))
+
+                // 添加 log 信息拦截器
+                .addInterceptor(getLoggingInterceptor())
+
+                // 添加缓存
+                .cache(getCacheDir())
+                .addInterceptor(new CacheInterceptor())
+
+                // 设置 Cookie
+                .cookieJar(new CookieManger(mContext));
+
+
+
 
         mOkHttpClient = builder.build();
 
         //stetho,可以在chrome中查看请求
 //                .addNetworkInterceptor(new StethoInterceptor())
 
-        //必须是设置Cache目录
-//                .cache(cache)
-        //走缓存，两个都要设置
-//                .addInterceptor(new OnOffLineCachedInterceptor())
-//                .addNetworkInterceptor(new OnOffLineCachedInterceptor())
+
 
     }
 
     private Interceptor getLoggingInterceptor() {
-        return new HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        return new LoggingInterceptor(BuildConfig.DEBUG);
+//        return new HttpLoggingInterceptor()
+//                .setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
     }
 
     public OkHttpClient getOkHttpClient() {

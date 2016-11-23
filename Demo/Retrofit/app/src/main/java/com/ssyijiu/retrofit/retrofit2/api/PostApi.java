@@ -32,6 +32,7 @@ public interface PostApi {
 
 
     /* FormUrlEncoded Field */
+    @Headers("Cache-Control: public, max-age=60")  // 60 秒缓存
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
     Call<PostResp> getMessage(@Field("param") String param);
