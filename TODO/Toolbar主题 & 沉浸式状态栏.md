@@ -122,6 +122,10 @@ if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 [Android 状态栏着色实践](http://www.jianshu.com/p/bae25b5eb867)   
 [薄荷TOOLBAR(ACTIONBAR)的适配方案](http://stormzhang.com/android/2015/08/16/boohee-toolbar/)   
 
+http://imxie.cc/2016/11/08/jike_Immersive_project/
+http://jaeger.itscoder.com/android/2016/03/27/statusbar-util.html
+http://jaeger.itscoder.com/android/2016/02/15/status-bar-demo.html
+
 ## 联系作者
 - Github : [ssyijiu](https://github.com/ssyijiu)
 - E-mail : lxmyijiu@163.com
