@@ -3,22 +3,22 @@ package com.ssyijiu.retrofit.retrofit2;
 import android.content.Context;
 import android.os.Environment;
 
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
-import com.ssyijiu.retrofit.retrofit2.cookies.CookieManger;
-import com.ssyijiu.retrofit.retrofit2.interceptors.AddCookiesInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors.TokenInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors._AddCookiesInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.LoggingInterceptor;
-import com.ssyijiu.retrofit.retrofit2.interceptors.ReceivedCookiesInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors._ReceivedCookiesInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.UserAgentInterceptor;
 
 import java.io.File;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.Interceptor;
-import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 
 /**
@@ -42,9 +42,6 @@ public enum OKHttpFactory {
 
     OKHttpFactory() {
 
-        CookieManager cookieManager = new CookieManager();
-        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
 
                 // 设置超时和重连
@@ -58,20 +55,19 @@ public enum OKHttpFactory {
 
                 // 添加 log 信息拦截器
                 .addInterceptor(getLoggingInterceptor())
-//                .addInterceptor(new ReceivedCookiesInterceptor())
-//                .addInterceptor(new AddCookiesInterceptor());
+
+                // 添加公共参数 token
+                .addInterceptor(new TokenInterceptor())
 
                 // 设置 Cookie
-                .cookieJar(new CookieManger(App.getContext()));
-
-
+                .cookieJar(new PersistentCookieJar(new SetCookieCache(),
+                        new SharedPrefsCookiePersistor(App.getContext())));
 
 
         mOkHttpClient = builder.build();
 
         //stetho,可以在chrome中查看请求
 //                .addNetworkInterceptor(new StethoInterceptor())
-
 
 
     }

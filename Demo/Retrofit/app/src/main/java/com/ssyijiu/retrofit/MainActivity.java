@@ -30,26 +30,19 @@ public class MainActivity extends AppCompatActivity implements MsgView {
 
         presenter.onStart();
 
-        findViewById(R.id.btn_get).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.getGetMsg();
-            }
+        findViewById(R.id.btn_get).setOnClickListener((view)->{
+            presenter.getGetMsg();
         });
-        findViewById(R.id.btn_post).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.getPostMsg();
-            }
+        findViewById(R.id.btn_post).setOnClickListener((view)->{
+            presenter.getPostMsg();
         });
 
-        findViewById(R.id.btn_gold_price).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                presenter.getGoldPrice();
-                presenter.getFinancingList();
+        findViewById(R.id.btn_gold_price).setOnClickListener((view)->{
+            presenter.getGoldPrice();
+        });
 
-            }
+        findViewById(R.id.btn_financing_list).setOnClickListener((view)->{
+            presenter.getFinancingList();
         });
 
 

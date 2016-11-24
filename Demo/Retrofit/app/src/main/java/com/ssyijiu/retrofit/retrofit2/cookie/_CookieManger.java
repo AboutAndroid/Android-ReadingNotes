@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.retrofit2.cookies;
+package com.ssyijiu.retrofit.retrofit2.cookie;
 
 import android.content.Context;
 
@@ -17,16 +17,16 @@ import okhttp3.HttpUrl;
  */
 
 // CookieManger 用来统一管理所有的 cookie
-public class CookieManger implements CookieJar {
+public class _CookieManger implements CookieJar {
 
     private static Context mContext;
 
-    private static PersistentCookieStore cookieStore;
+    private static _PersistentCookieStore cookieStore;
 
-    public CookieManger(Context context) {
+    public _CookieManger(Context context) {
         mContext = context;
         if (cookieStore == null) {
-            cookieStore = new PersistentCookieStore(mContext);
+            cookieStore = new _PersistentCookieStore(mContext);
         }
 
     }

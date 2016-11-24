@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.retrofit2.cookies;
+package com.ssyijiu.retrofit.retrofit2.cookie;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,11 +13,11 @@ import okhttp3.Cookie;
  * E-mail: lxmyijiu@163.com
  */
 
-public class OkHttpCookies implements Serializable{
+public class _OkHttpCookies implements Serializable{
     private transient final Cookie cookies;
     private transient Cookie clientCookies;
 
-    public OkHttpCookies(Cookie cookies) {
+    public _OkHttpCookies(Cookie cookies) {
         this.cookies = cookies;
     }
 

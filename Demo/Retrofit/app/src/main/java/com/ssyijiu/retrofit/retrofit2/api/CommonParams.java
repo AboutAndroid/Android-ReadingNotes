@@ -8,4 +8,5 @@ package com.ssyijiu.retrofit.retrofit2.api;
 
 public interface CommonParams {
     String CHANNEL_ID = "channelId";
+    String CHANNEL_ID_VALUE = "23";
 }

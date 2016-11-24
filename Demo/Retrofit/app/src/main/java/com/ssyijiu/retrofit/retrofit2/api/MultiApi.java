@@ -1,7 +1,7 @@
 package com.ssyijiu.retrofit.retrofit2.api;
 
-import com.ssyijiu.retrofit.bean.FinancingListResp;
-import com.ssyijiu.retrofit.bean.GoldPriceResp;
+import com.ssyijiu.retrofit.bean.resp.FinancingListResp;
+import com.ssyijiu.retrofit.bean.resp.GoldPriceResp;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public interface MultiApi {
     Call<GoldPriceResp> getGoldPrice();
 
 
-    @Headers("Cache-Control: public, max-age=30")
+    @Headers("Auth-Type:TOKEN")
     @FormUrlEncoded
     @POST("api/banklist/queryLcDetailForUseNew")
     Call<FinancingListResp> getFinancingList(

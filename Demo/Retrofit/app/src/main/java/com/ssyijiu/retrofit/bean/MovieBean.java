@@ -7,7 +7,7 @@ import java.util.List;
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  */
-public class MovieResp {
+public class MovieBean {
 
     /**
      * count : 20

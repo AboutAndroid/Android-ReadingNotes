@@ -1,7 +1,7 @@
 package com.ssyijiu.retrofit.retrofit2.api;
 
 import com.ssyijiu.retrofit.bean.MovieParam;
-import com.ssyijiu.retrofit.bean.PostResp;
+import com.ssyijiu.retrofit.bean.resp.StringResp;
 
 import java.util.Map;
 
@@ -28,26 +28,26 @@ public interface PostApi {
 
     /* Post */
     @POST("api/banklist/getBusinessRules")
-    Call<PostResp> getMessage(@Body MovieParam movieParam); // 请求体 {"count":3,"start":5}
+    Call<StringResp> getMessage(@Body MovieParam movieParam); // 请求体 {"count":3,"start":5}
 
 
     /* FormUrlEncoded Field */
     @Headers("Cache-Control: public, max-age=60")  // 60 秒缓存
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<PostResp> getMessage(@Field("param") String param);
+    Call<StringResp> getMessage(@Field("param") String param);
 
     /* FormUrlEncoded FieldMap */
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<PostResp> getMessage(@FieldMap Map<String,String> map);/* FormUrlEncoded FieldMap */
+    Call<StringResp> getMessage(@FieldMap Map<String,String> map);/* FormUrlEncoded FieldMap */
 
 
     /* Headers */
     @Headers("Content-type:application/x-www-form-urlencoded;charset=UTF-8")
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<PostResp> useHeaders(@FieldMap Map<String,String> map);
+    Call<StringResp> useHeaders(@FieldMap Map<String,String> map);
 
 
     // 同一个请求的同一个请求头在不同地方的设置不会被覆盖，而是会被全部添加进请求头中.
@@ -60,12 +60,12 @@ public interface PostApi {
     })
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<PostResp> useHeaders();
+    Call<StringResp> useHeaders();
 
     /* Header */
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<PostResp> useHeader(@Header("Content-type") String contentType);
+    Call<StringResp> useHeader(@Header("Content-type") String contentType);
 
 
 

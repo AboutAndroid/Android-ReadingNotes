@@ -15,8 +15,9 @@ import okhttp3.Response;
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  *
+ * OkHttp 使用 HTTP缓存
  * http://blog.csdn.net/qq_17766199/article/details/53186874
- * 注意：这个缓存不支持 POST 见 http://www.w3school.com.cn/tags/html_ref_httpmethods.asp
+ * 注意：HTTP缓存不支持 POST 见 http://www.w3school.com.cn/tags/html_ref_httpmethods.asp
  */
 
 public class _CacheInterceptor implements Interceptor {

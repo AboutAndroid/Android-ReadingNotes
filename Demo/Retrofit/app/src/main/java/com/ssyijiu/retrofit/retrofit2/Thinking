@@ -18,49 +18,64 @@
 
 
 参考：
-https://github.com/hongyangAndroid/okhttputils
-https://github.com/jeasonlzy/okhttp-OkGo
-http://blog.csdn.net/qq_17766199/article/details/53186874
+http://tech.glowing.com/cn/tan-tan-yi-dong-ying-yong-de-an-quan-xing-shi-jian/
+http://tech.glowing.com/cn/glow-android-you-hua-shi-jian/
+http://blog.csdn.net/column/details/retrofit.html
 http://www.jianshu.com/p/b1979c25634f
 http://blog.piasy.com/tags/#安卓开发
 https://github.com/liuguangqiang/AndroidMan/blob/master/posts/Retrofit2%2BRxJava%2BLoganSquare%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.md
-https://github.com/yanzhenjie/NoHttp
 https://github.com/drakeet/Meizhi
 https://github.com/JakeWharton/u2020
-https://github.com/JakeWharton/retrofit2-rxjava2-adapter
-https://github.com/Piasy/AndroidTDDBootStrap
 https://github.com/liuguangqiang/Idaily
 https://shadowzwy.github.io/2016/11/17/Retrofit-2.0-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A6%82%E8%BF%B0.html
+cache
+http://blog.csdn.net/jdsjlzx/article/details/51550400
+http://blog.csdn.net/jdsjlzx/article/details/51550269
 
-
+https://github.com/JakeWharton/retrofit2-rxjava2-adapter
+https://github.com/Piasy/AndroidTDDBootStrap
+https://github.com/yanzhenjie/NoHttp
+https://github.com/hongyangAndroid/okhttputils
+https://github.com/jeasonlzy/okhttp-OkGo
 
 解决方案：
+
 1. 公共参数
+
     公司服务器取 token 只能通过参数去，不能通过 Headers 取，
-    将 token 封装进 Api，Retrofit 没有提供 ???
-    可以通过设置OKHttp的拦截来实现，但是这样无法保证OKHttpClient的单例
+    将 token 封装进 Api，Retrofit 没有提供
 
-    创建一个单例的 map 使用前先 clear 然后放入 token，封装进 getTokenMap()
+    （1）可以通过设置OKHttp的拦截来实现
 
-2. _Cookie 丢失
+    （2）创建一个单例的 map 使用前先 clear 然后放入 token，封装进 getTokenMap()
+
+2. Cookie 管理
+
+    开源框架：https://github.com/franmontiel/PersistentCookieJar
+
+    webview 与 cookie ?
+
 
 3. baseUrl & api
+
     公司服务器有 5 个 HOST，使用静态内部类的单例，创建 5 个 Retrofit，
     底层公用一个 OkHttpClient(枚举单例)，
     将他们按照使用的频繁程度分为这两组，进行懒加载（因为懒加载放弃了枚举单例的使用）。
 
     使用相同的方法将 Api.class 按照业务逻辑分类，进行懒加载。
 
-4. _缓存
+_4. 缓存
 
-    在线缓存时间 30 秒，30 秒内请求返回缓存数据 + 离线缓存
+    post 不支持 http 缓存
+
+    在线缓存时间 30 秒，30 秒内请求返回缓存数据
     有些接口不应该有缓存，比如：实时金价、登录
+    离线缓存
+    请求失败使用缓存
 
-    Cache-Control 无法实现 post 缓存
+    自己写缓存 参考 OkGo | RxCache
 
-    自己写缓存 参考NoHttp
-
-5. token过期
+_5. token
 
     token 过期、被别人顶下去
 

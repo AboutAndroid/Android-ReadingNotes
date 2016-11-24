@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.retrofit2.cookies;
+package com.ssyijiu.retrofit.retrofit2.cookie;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,7 +27,7 @@ import okhttp3.HttpUrl;
  * E-mail: lxmyijiu@163.com
  */
 
-public class PersistentCookieStore {
+public class _PersistentCookieStore {
 
     private static final String LOG_TAG = "PersistentCookieStore";
     private static final String COOKIE_PREFS = "Cookies_Prefs";
@@ -37,7 +37,7 @@ public class PersistentCookieStore {
     private final SharedPreferences cookiePrefs;
 
 
-    public PersistentCookieStore(Context context) {
+    public _PersistentCookieStore(Context context) {
         cookiePrefs = context.getSharedPreferences(COOKIE_PREFS, 0);
         urlCookieMaps = new HashMap<>();
 
@@ -91,7 +91,7 @@ public class PersistentCookieStore {
             if(cookieSet != null) {
                 String urlCookies = TextUtils.join(",", cookieSet);
                 prefsWriter.putString(url.host(), urlCookies);
-                prefsWriter.putString(name, encodeCookie(new OkHttpCookies(cookie)));
+                prefsWriter.putString(name, encodeCookie(new _OkHttpCookies(cookie)));
                 prefsWriter.apply();
             }
         }
@@ -145,7 +145,7 @@ public class PersistentCookieStore {
      * @param cookie 要序列化的cookie
      * @return 序列化之后的string
      */
-    protected String encodeCookie(OkHttpCookies cookie) {
+    protected String encodeCookie(_OkHttpCookies cookie) {
         if (cookie == null)
             return null;
         ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -172,7 +172,7 @@ public class PersistentCookieStore {
         Cookie cookie = null;
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
-            cookie = ((OkHttpCookies) objectInputStream.readObject()).getCookies();
+            cookie = ((_OkHttpCookies) objectInputStream.readObject()).getCookies();
         } catch (IOException e) {
             Log.d(LOG_TAG, "IOException in decodeCookie", e);
         } catch (ClassNotFoundException e) {

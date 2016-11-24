@@ -1,16 +1,17 @@
 package com.ssyijiu.retrofit.mvp.model;
 
 import com.ssyijiu.library.MLog;
-import com.ssyijiu.retrofit.bean.FinancingListResp;
-import com.ssyijiu.retrofit.bean.GoldPriceResp;
-import com.ssyijiu.retrofit.bean.MovieResp;
-import com.ssyijiu.retrofit.bean.PostResp;
+import com.ssyijiu.retrofit.bean.resp.FinancingListResp;
+import com.ssyijiu.retrofit.bean.resp.GoldPriceResp;
+import com.ssyijiu.retrofit.bean.MovieBean;
+import com.ssyijiu.retrofit.bean.resp.StringResp;
 import com.ssyijiu.retrofit.retrofit2.ApiFactory;
 import com.ssyijiu.retrofit.retrofit2.api.MovieApi;
 import com.ssyijiu.retrofit.retrofit2.api.ParamsMap;
 import com.ssyijiu.retrofit.retrofit2.api.PostApi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,13 +49,14 @@ public class MsgModelImpl implements MsgModel{
     public void getFinancingList(final MsgListener listener) {
 
 
-        Map<String,String> map = ParamsMap.INSTANCE.getTokenMap();
+//        Map<String,String> map = ParamsMap.INSTANCE.getTokenMap();
+        Map<String,String> map = new HashMap<>();
         map.put("prdType","1");
 
         ApiFactory.INSTANCE.API_MULTI.getFinancingList(map).enqueue(new Callback<FinancingListResp>() {
             @Override
             public void onResponse(Call<FinancingListResp> call, Response<FinancingListResp> response) {
-                listener.onSuccess(response.body().getResponseParams().get(0).getTBaseLCProcuct().getAdMemo());
+                listener.onSuccess(response.body().responseParams.get(0).tBaseLCProcuct.adMemo);
             }
 
             @Override
@@ -69,7 +71,7 @@ public class MsgModelImpl implements MsgModel{
         ApiFactory.INSTANCE.API_MULTI.getGoldPrice().enqueue(new Callback<GoldPriceResp>() {
             @Override
             public void onResponse(Call<GoldPriceResp> call, Response<GoldPriceResp> response) {
-                listener.onSuccess(response.body().getResponseParams().getGoldRate());
+                listener.onSuccess(response.body().responseParams.goldRate);
             }
 
             @Override
@@ -82,9 +84,9 @@ public class MsgModelImpl implements MsgModel{
     @Override
     public void getPostMsg(final MsgModel.MsgListener listener) {
 
-        ApiFactory.INSTANCE.API_POST.getMessage("b1.unionloginurl.limit").enqueue(new Callback<PostResp>() {
+        ApiFactory.INSTANCE.API_POST.getMessage("b1.unionloginurl.limit").enqueue(new Callback<StringResp>() {
             @Override
-            public void onResponse(Call<PostResp> call, Response<PostResp> response) {
+            public void onResponse(Call<StringResp> call, Response<StringResp> response) {
                 // 获取所有的请求头
 //                MLog.i(response.headers());
 
@@ -96,7 +98,7 @@ public class MsgModelImpl implements MsgModel{
             }
 
             @Override
-            public void onFailure(Call<PostResp> call, Throwable t) {
+            public void onFailure(Call<StringResp> call, Throwable t) {
                 MLog.e(t.getMessage());
                 listener.onFailure(t);
             }
@@ -106,7 +108,7 @@ public class MsgModelImpl implements MsgModel{
         // call.cancel();
     }
 
-    private Call<PostResp> getPostCall(PostApi api) {
+    private Call<StringResp> getPostCall(PostApi api) {
 
 //        Map<String,String> params = new HashMap<>();
 //        params.put("param","b1.unionloginurl.limit");
@@ -120,12 +122,12 @@ public class MsgModelImpl implements MsgModel{
     public void getGetMsg(final MsgListener listener) {
 
 
-        ApiFactory.INSTANCE.API_MOVIE.getTop250().enqueue(new Callback<MovieResp>() {
+        ApiFactory.INSTANCE.API_MOVIE.getTop250().enqueue(new Callback<MovieBean>() {
             @Override
-            public void onResponse(Call<MovieResp> call, Response<MovieResp> response) {
-                List<MovieResp.SubjectsBean> subjects = response.body().getSubjects();
+            public void onResponse(Call<MovieBean> call, Response<MovieBean> response) {
+                List<MovieBean.SubjectsBean> subjects = response.body().getSubjects();
                 List<String> movieNames = new ArrayList<String>();
-                for (MovieResp.SubjectsBean sub : subjects) {
+                for (MovieBean.SubjectsBean sub : subjects) {
                     movieNames.add(sub.getTitle());
                 }
 
@@ -133,7 +135,7 @@ public class MsgModelImpl implements MsgModel{
             }
 
             @Override
-            public void onFailure(Call<MovieResp> call, Throwable t) {
+            public void onFailure(Call<MovieBean> call, Throwable t) {
                 listener.onFailure(t);
             }
         });
@@ -141,7 +143,7 @@ public class MsgModelImpl implements MsgModel{
 
 
 
-    private Call<MovieResp> getCall(MovieApi api) {
+    private Call<MovieBean> getCall(MovieApi api) {
 
 //        Map<String,Integer> params = new HashMap<>();
 //        params.put("start",2);

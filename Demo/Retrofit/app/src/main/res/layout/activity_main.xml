@@ -35,4 +35,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="gold_price" />
+
+    <Button
+        android:id="@+id/btn_financing_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="financing_list" />
 </LinearLayout>
