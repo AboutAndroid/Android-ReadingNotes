@@ -11,7 +11,7 @@ package com.ssyijiu.retrofit.bean.resp;
 
 public class BaseResp<T> {
 
-    /**
+    /**d
      * rntCodeValue : 1
      * responseParams : http://openapi.gome.com.cn/oauth2/authorizeMobile?app_id=f420b4bf6c&redirect_uri=https://m.dbjb.com/login/codecallback&response_type=code&state=online
      * rntMsg :

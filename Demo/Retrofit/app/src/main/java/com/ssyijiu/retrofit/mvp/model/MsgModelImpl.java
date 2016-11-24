@@ -56,7 +56,7 @@ public class MsgModelImpl implements MsgModel{
         ApiFactory.INSTANCE.API_MULTI.getFinancingList(map).enqueue(new Callback<FinancingListResp>() {
             @Override
             public void onResponse(Call<FinancingListResp> call, Response<FinancingListResp> response) {
-                listener.onSuccess(response.body().responseParams.get(0).tBaseLCProcuct.adMemo);
+                listener.onSuccess(response.body().transform().toString());
             }
 
             @Override

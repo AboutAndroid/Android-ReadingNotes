@@ -1,5 +1,11 @@
 package com.ssyijiu.retrofit.bean.resp;
 
+import android.text.TextUtils;
+
+import com.ssyijiu.retrofit.bean.vo.Financing;
+import com.ssyijiu.retrofit.bean.vo.Mapper;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,10 +14,22 @@ import java.util.List;
  * E-mail: lxmyijiu@163.com
  */
 
-public class FinancingListResp extends BaseResp<List<FinancingListResp.ResponseParamsBean>>{
+public class FinancingListResp
+        extends BaseResp<List<FinancingListResp.ResponseParamsBean>>
+        implements Mapper<List<Financing>> {
 
 
-    public static class ResponseParamsBean {
+    @Override
+    public List<Financing> transform() {
+        List<Financing> financingList = new ArrayList<>();
+        for (ResponseParamsBean bean : responseParams) {
+            financingList.add(bean.transform());
+        }
+
+        return financingList;
+    }
+
+    public static class ResponseParamsBean implements Mapper<Financing> {
         public String balance;
         public String allEarnings;
 
@@ -21,9 +39,16 @@ public class FinancingListResp extends BaseResp<List<FinancingListResp.ResponseP
         public int totalGoldUsed;
         public List<?> actDefinedList;
 
+        @Override
+        public Financing transform() {
+            Financing financing = new Financing();
+            financing.name = TextUtils.isEmpty(tBaseLCProcuct.adMemo) ?
+                    "" : tBaseLCProcuct.adMemo;
+            return financing;
+        }
+
 
         public static class TBaseLCProcuctBean {
-
 
             public CreateTimeBean createTime;
             public String riskLevel;
@@ -83,6 +108,7 @@ public class FinancingListResp extends BaseResp<List<FinancingListResp.ResponseP
             public String updateUser;
 
             public List<BaseListBean> baseList;
+
             public static class CreateTimeBean {
                 public long time;
                 public int minutes;
