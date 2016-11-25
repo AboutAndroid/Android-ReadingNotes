@@ -1,2 +1,9 @@
-https://drakeet.me/retrofit-2-0-okhttp-3-0-config
-http://blog.csdn.net/qq_17766199/article/details/53186874
+https://drakeet.me/retrofit-2-0-okhttp-3-0-config           // Retrofit 2.0 + OkHttp 3.0 配置
+http://blog.csdn.net/qq_17766199/article/details/53186874   // 一些你可能需要的okhttp实现
+
+http://www.jianshu.com/p/c9384eef179e                       // DTO -> VO
+
+// Piasy 网络前两篇、model下篇
+http://blog.piasy.com/2016/08/29/RESTful-Android-Network-Solution-1/
+http://blog.piasy.com/2016/09/04/RESTful-Android-Network-Solution-2/
+http://blog.piasy.com/2016/05/12/Perfect-Android-Model-Layer-2/

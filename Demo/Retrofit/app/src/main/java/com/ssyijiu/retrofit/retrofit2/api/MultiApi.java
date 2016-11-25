@@ -23,7 +23,7 @@ public interface MultiApi {
     Call<GoldPriceResp> getGoldPrice();
 
 
-    @Headers("Auth-Type:TOKEN")
+    @Headers(ApiConfig.HEADER_WITH_TOKEN)
     @FormUrlEncoded
     @POST("api/banklist/queryLcDetailForUseNew")
     Call<FinancingListResp> getFinancingList(

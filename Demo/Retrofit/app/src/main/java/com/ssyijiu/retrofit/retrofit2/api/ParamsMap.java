@@ -21,7 +21,7 @@ public enum  ParamsMap {
 
     public Map<String,String> getTokenMap() {
         tokenMap.clear();
-        tokenMap.put(CommonParams.CHANNEL_ID,"23");
+        tokenMap.put(ApiConfig.CHANNEL_ID,"23");
         return tokenMap;
     }
 }

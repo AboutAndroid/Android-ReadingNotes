@@ -1,4 +1,4 @@
-package com.ssyijiu.retrofit.bean;
+package com.ssyijiu.retrofit.bean.autovalue;
 
 import com.google.auto.value.AutoValue;
 
@@ -7,8 +7,7 @@ import com.google.auto.value.AutoValue;
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  *
- * https://github.com/google/auto/blob/master/value/userguide/index.md
- * http://blog.piasy.com/2016/05/06/Perfect-Android-Model-Layer/
+ * http://www.jianshu.com/p/0e2be3536a4e
  */
 
 @AutoValue

@@ -1,4 +1,7 @@
-package com.ssyijiu.retrofit.bean.vo;
+package com.ssyijiu.retrofit.bean.resp;
+
+import com.ssyijiu.retrofit.bean.vo.Mapper;
+import com.ssyijiu.retrofit.bean.vo.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +12,7 @@ import java.util.List;
  * E-mail: lxmyijiu@163.com
  */
 
-public class UserListDTO implements Mapper<List<User>>{
+public class UserListResp implements Mapper<List<User>> {
     public int version;  // 一个与View无关的属性
     private List<UserDTO> userList;
 

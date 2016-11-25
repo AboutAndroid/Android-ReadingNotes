@@ -41,9 +41,10 @@ public class FinancingListResp
 
         @Override
         public Financing transform() {
-            Financing financing = new Financing();
-            financing.name = TextUtils.isEmpty(tBaseLCProcuct.adMemo) ?
+            String name = TextUtils.isEmpty(tBaseLCProcuct.adMemo) ?
                     "" : tBaseLCProcuct.adMemo;
+            Financing financing = Financing.create(name);
+
             return financing;
         }
 

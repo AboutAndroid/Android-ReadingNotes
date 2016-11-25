@@ -49,8 +49,8 @@ public class MsgModelImpl implements MsgModel{
     public void getFinancingList(final MsgListener listener) {
 
 
-//        Map<String,String> map = ParamsMap.INSTANCE.getTokenMap();
-        Map<String,String> map = new HashMap<>();
+        Map<String,String> map = ParamsMap.INSTANCE.getTokenMap();
+//        Map<String,String> map = new HashMap<>();
         map.put("prdType","1");
 
         ApiFactory.INSTANCE.API_MULTI.getFinancingList(map).enqueue(new Callback<FinancingListResp>() {
