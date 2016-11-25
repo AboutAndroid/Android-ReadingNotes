@@ -1,0 +1,8 @@
+https://drakeet.me/mvp-and-thinking-in-android
+https://github.com/hehonghui/android-tech-frontier/blob/master/issue-12%2FAndroid%E4%B8%8AMVP%E7%9A%84%E4%BB%8B%E7%BB%8D.md#使用mvp
+
+1. getView != null ？ 在 view 中set presenter 能解决吗？
+
+2. 业务逻辑应该放在 presenter 还是 model
+
+3. presenter 需要接口吗？
