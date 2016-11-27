@@ -11,16 +11,8 @@ package com.ssyijiu.retrofit.bean.resp;
 
 public class BaseResp<T> {
 
-    /**d
-     * rntCodeValue : 1
-     * responseParams : http://openapi.gome.com.cn/oauth2/authorizeMobile?app_id=f420b4bf6c&redirect_uri=https://m.dbjb.com/login/codecallback&response_type=code&state=online
-     * rntMsg :
-     * errorMsg : 错误码:1,错误信息:
-     * rntCode : OK
-     */
-
     public int rntCodeValue;
-    public T responseParams;
+    public T responseParams;  // 键不一样该怎么办？
     public String rntMsg;
     public String errorMsg;
     public String rntCode;

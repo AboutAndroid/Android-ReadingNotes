@@ -1,7 +1,6 @@
 package com.ssyijiu.retrofit.bean.vo;
 
 import android.os.Parcelable;
-
 import com.google.auto.value.AutoValue;
 
 /**

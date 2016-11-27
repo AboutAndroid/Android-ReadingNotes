@@ -3,7 +3,12 @@
     <words>
       <w>banklist</w>
       <w>baseurl</w>
+      <w>cname</w>
+      <w>cscore</w>
       <w>inrate</w>
+      <w>reactivex</w>
+      <w>rxandroid</w>
+      <w>rxjava</w>
     </words>
   </dictionary>
 </component>
