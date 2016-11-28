@@ -8,15 +8,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ssyijiu.mvpdemo2.base.BaseActivity;
+import com.ssyijiu.mvpdemo2.MainActivity;
 import com.ssyijiu.mvpdemo2.R;
-import com.ssyijiu.mvpdemo2.base.IPresenter;
+import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
-import com.ssyijiu.mvpdemo2.presenter.OtherPresenter;
+import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 import icepick.State;
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
+public class LoginActivity extends BaseActivity<LoginPresenter>
+        implements LoginContract.View {
 
     EditText et_username;
     EditText et_password;
@@ -36,10 +37,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         return LoginPresenter.getInstance();
     }
 
-    @Override
-    protected IPresenter[] getPresenters() {
-        return new IPresenter[] {OtherPresenter.getInstance()};
-    }
 
     @Override
     protected void initEventAndData() {
@@ -53,9 +50,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             @Override
             public void onClick(android.view.View view) {
 
-                String username = et_username.getText().toString();
-                String password = et_password.getText().toString();
-                getPresenter().login(username, password);
+                String username = et_username.getText().toString().trim();
+                String password = et_password.getText().toString().trim();
+                checkPresenter().login(username, password);
 
             }
         });
@@ -74,9 +71,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    public void showSuccess() {
-        login_status.setText(R.string.success);
-        saveStatus();
+    public void toUserInfo() {
+        startActivity(new Intent(this,UserInfoActivity.class));
     }
 
     @Override
@@ -90,7 +86,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         if(TextUtils.isEmpty(status)) {
             status = getResources().getString(R.string.hello);
         }
-        login_status.setText(R.string.hello);
+        login_status.setText(status);
         Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
         saveStatus();
     }

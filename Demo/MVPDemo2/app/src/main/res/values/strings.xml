@@ -4,4 +4,5 @@
     <string name="success">success</string>
     <string name="failed">failed</string>
     <string name="hello">hello</string>
+    <string name="press_to_show">press button to show you info !</string>
 </resources>

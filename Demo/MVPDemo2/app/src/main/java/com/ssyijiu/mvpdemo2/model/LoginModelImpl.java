@@ -2,6 +2,7 @@ package com.ssyijiu.mvpdemo2.model;
 
 
 import com.ssyijiu.mvpdemo2.app.AbsSingle;
+import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 /**
  * Created by ssyijiu on 2016/10/20.
@@ -9,7 +10,7 @@ import com.ssyijiu.mvpdemo2.app.AbsSingle;
  * E-mail: lxmyijiu@163.com
  */
 
-public class LoginModelImpl extends AbsSingle implements LoginModel {
+public class LoginModelImpl extends AbsSingle implements LoginContract.Mode {
 
     public static LoginModelImpl getInstance() {
         return getInstance(LoginModelImpl.class);

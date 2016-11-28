@@ -6,10 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ssyijiu.library.MLog;
-import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import icepick.Icepick;
@@ -21,12 +19,12 @@ import icepick.Icepick;
  */
 
 public abstract class BaseActivity<T extends BasePresenter>
-        extends AppCompatActivity implements IView {
+        extends AppCompatActivity implements MvpView {
 
 
     private T mPresenter;
 
-    private Set<IPresenter> mAllPresenters = new HashSet<>(1);
+    private Set<MvpPresenter> mAllPresenters = new HashSet<>(1);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +35,7 @@ public abstract class BaseActivity<T extends BasePresenter>
         mPresenter = createPresenter();
         mPresenter.attachView(this);
 
-        addPresenters();
+        loadPresenters();
 
         initEventAndData();
 
@@ -45,17 +43,17 @@ public abstract class BaseActivity<T extends BasePresenter>
             parseIntDataFromIntent(getIntent());
         }
 
-        getPresenter().initView();
+        checkPresenter().initView();
     }
 
 
-    protected void addPresenters() {
+    protected void loadPresenters() {
 
         mAllPresenters.add(mPresenter);
 
-        IPresenter[] presenters = getPresenters();
-        if(presenters != null){
-            for (IPresenter presenter : presenters) {
+        MvpPresenter[] presenters = getPresenters();
+        if (presenters != null) {
+            for (MvpPresenter presenter : presenters) {
                 presenter.attachView(this);
                 mAllPresenters.add(presenter);
             }
@@ -64,9 +62,14 @@ public abstract class BaseActivity<T extends BasePresenter>
         MLog.i(mAllPresenters);
     }
 
-    protected abstract T createPresenter();
 
-    protected abstract IPresenter[] getPresenters();
+    /**
+     * 需要使用其他 Presenter，重写此方法
+     * @return
+     */
+    protected MvpPresenter[] getPresenters() {
+        return null;
+    }
 
 
     @Override
@@ -82,10 +85,9 @@ public abstract class BaseActivity<T extends BasePresenter>
         detachViews();
 
         // Activity意外销毁这个方法不会被执行
-        if(isFinishing()) {
-
+        if (isFinishing()) {
             MLog.i("isFinishing");
-            clearPresenters();
+            removePresenters();
         }
         MLog.i(mAllPresenters);
         super.onDestroy();
@@ -93,11 +95,13 @@ public abstract class BaseActivity<T extends BasePresenter>
 
     protected abstract int getLayoutResId();
 
+    protected abstract T createPresenter();
+
     protected abstract void initEventAndData();
 
     protected abstract void parseIntDataFromIntent(Intent intent);
 
-    public T getPresenter() {
+    public T checkPresenter() {
         if (mPresenter == null) {
             throw new IllegalStateException("The createPresenter must return non-null");
         }
@@ -105,10 +109,10 @@ public abstract class BaseActivity<T extends BasePresenter>
     }
 
     private void detachViews() {
-        IPresenter[] presenters = getPresenters();
-        if(presenters != null){
-            for (IPresenter presenter : presenters) {
-                if(presenter != null){
+        MvpPresenter[] presenters = getPresenters();
+        if (presenters != null) {
+            for (MvpPresenter presenter : presenters) {
+                if (presenter != null) {
                     presenter.detachView();
                 }
             }
@@ -116,14 +120,12 @@ public abstract class BaseActivity<T extends BasePresenter>
 
     }
 
-    private void clearPresenters() {
-        IPresenter[] presenters = getPresenters();
-        if(presenters != null){
-            for (IPresenter presenter : presenters) {
+    private void removePresenters() {
+        MvpPresenter[] presenters = getPresenters();
+        if (presenters != null) {
+            for (MvpPresenter presenter : presenters) {
                 mAllPresenters.remove(presenter);
             }
         }
-
-        mPresenter = null;
     }
 }

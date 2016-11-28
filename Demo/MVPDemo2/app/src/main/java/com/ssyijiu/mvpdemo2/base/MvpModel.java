@@ -6,5 +6,5 @@ package com.ssyijiu.mvpdemo2.base;
  * E-mail: lxmyijiu@163.com
  */
 
-public interface IView {
+public interface MvpModel {
 }

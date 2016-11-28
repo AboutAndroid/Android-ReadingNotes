@@ -1,14 +1,12 @@
 package com.ssyijiu.mvpdemo2.base;
 
-import android.os.Bundle;
-
 /**
  * Created by ssyijiu on 2016/10/20.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  */
 
-public interface IPresenter<V extends IView> {
+public interface MvpPresenter<V extends MvpView> {
 
 
     void attachView(V view);

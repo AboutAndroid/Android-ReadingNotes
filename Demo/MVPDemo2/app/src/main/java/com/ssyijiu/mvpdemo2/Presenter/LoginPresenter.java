@@ -2,10 +2,8 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import android.os.Handler;
 
-import com.ssyijiu.mvpdemo2.base.BasePresenter;
-import com.ssyijiu.mvpdemo2.model.LoginModel;
 import com.ssyijiu.mvpdemo2.model.LoginModelImpl;
-import com.ssyijiu.mvpdemo2.ui.LoginView;
+import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 
 /**
@@ -14,7 +12,7 @@ import com.ssyijiu.mvpdemo2.ui.LoginView;
  * E-mail: lxmyijiu@163.com
  */
 
-public class LoginPresenter extends BasePresenter<LoginView> {
+public class LoginPresenter extends LoginContract.Presenter {
 
     private LoginPresenter() {
         initData();
@@ -32,7 +30,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         return getInstance(LoginPresenter.class);
     }
 
-
+    @Override
     public void login(final String username, final String password) {
 
         if (isViewAttached()) {
@@ -43,11 +41,11 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             @Override
             public void run() {
 
-                LoginModelImpl.getInstance().login(username, password, new LoginModel.LoginListener() {
+                LoginModelImpl.getInstance().login(username, password, new LoginContract.Mode.LoginListener() {
                     @Override
                     public void onSuccess() {
                         if (isViewAttached()) {
-                            getView().showSuccess();
+                            getView().toUserInfo();
                         }
                     }
 
@@ -59,7 +57,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     }
                 });
             }
-        }, 3000);
+        }, 1000);
     }
 
 

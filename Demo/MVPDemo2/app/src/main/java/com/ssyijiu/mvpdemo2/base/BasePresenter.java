@@ -3,15 +3,13 @@ package com.ssyijiu.mvpdemo2.base;
 
 import com.ssyijiu.mvpdemo2.app.AbsSingle;
 
-import static android.os.Build.VERSION_CODES.M;
-
 /**
  * Created by ssyijiu on 2016/10/20.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  */
 
-public abstract class BasePresenter<V extends IView>extends AbsSingle implements IPresenter<V> {
+public abstract class BasePresenter<V extends MvpView>extends AbsSingle implements MvpPresenter<V> {
 
     private V mView;
 
