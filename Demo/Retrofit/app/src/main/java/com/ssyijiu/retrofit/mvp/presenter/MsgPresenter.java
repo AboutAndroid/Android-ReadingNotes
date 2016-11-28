@@ -35,6 +35,7 @@ public class MsgPresenter extends BasePresenter<MsgView>{
         MsgModelImpl.getInstance().getFinancingList(new MsgListener());
     }
 
+
     public void getGoldPrice() {
         loading("GoldPrice:loading...");
 

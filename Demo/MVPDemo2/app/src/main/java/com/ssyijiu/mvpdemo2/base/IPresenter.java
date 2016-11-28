@@ -13,7 +13,7 @@ public interface IPresenter<V extends IView> {
 
     void attachView(V view);
 
-    void onStart();
+    void initView();
 
     void detachView();
 

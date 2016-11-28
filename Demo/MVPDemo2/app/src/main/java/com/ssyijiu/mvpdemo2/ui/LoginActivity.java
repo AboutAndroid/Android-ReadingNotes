@@ -2,6 +2,7 @@ package com.ssyijiu.mvpdemo2.ui;
 
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -9,15 +10,21 @@ import android.widget.Toast;
 
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.R;
+import com.ssyijiu.mvpdemo2.base.IPresenter;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
+import com.ssyijiu.mvpdemo2.presenter.OtherPresenter;
+
+import icepick.State;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
-
 
     EditText et_username;
     EditText et_password;
     Button btn_login;
     TextView login_status;
+
+    @State
+    String status,username,password;
 
     @Override
     protected int getLayoutResId() {
@@ -27,6 +34,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected LoginPresenter createPresenter() {
         return LoginPresenter.getInstance();
+    }
+
+    @Override
+    protected IPresenter[] getPresenters() {
+        return new IPresenter[] {OtherPresenter.getInstance()};
     }
 
     @Override
@@ -43,12 +55,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
                 String username = et_username.getText().toString();
                 String password = et_password.getText().toString();
-                checkPresenter().login(username, password);
+                getPresenter().login(username, password);
 
             }
         });
-
-
     }
 
     @Override
@@ -58,21 +68,34 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void showLoading() {
-        login_status.setText("loading...");
+        login_status.setText(R.string.loading);
+        saveStatus();
+
     }
 
     @Override
     public void showSuccess() {
-        login_status.setText("success");
+        login_status.setText(R.string.success);
+        saveStatus();
     }
 
     @Override
     public void showFailed() {
-        login_status.setText("failed");
+        login_status.setText(R.string.failed);
+        saveStatus();
     }
 
     @Override
     public void showHello() {
-        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(status)) {
+            status = getResources().getString(R.string.hello);
+        }
+        login_status.setText(R.string.hello);
+        Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
+        saveStatus();
+    }
+
+    public void saveStatus() {
+        status = login_status.getText().toString();
     }
 }

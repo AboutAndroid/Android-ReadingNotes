@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MVPDemo2</string>
+    <string name="loading">loading...</string>
+    <string name="success">success</string>
+    <string name="failed">failed</string>
+    <string name="hello">hello</string>
 </resources>

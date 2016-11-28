@@ -1,8 +1,30 @@
-https://drakeet.me/mvp-and-thinking-in-android
-https://github.com/hehonghui/android-tech-frontier/blob/master/issue-12%2FAndroid%E4%B8%8AMVP%E7%9A%84%E4%BB%8B%E7%BB%8D.md#ʹ��mvp
+1. 使用单例来管理 Model、Presenter
+2. Presenter 是 static 的，在创建的时候初始化数据
+3. Activity 意外重启 Presenter 并不销毁，会和 Activity 重新绑定，数据不会再次被初始化
+4. Activity 手动销毁，Presenter 会跟随销毁
+5. 没有使用谷歌的契约类
 
-1. getView != null �� �� view ��set presenter �ܽ����
+需要解决：
+1.  if(getView != null)
+2.  在 activity 意外重启时，如何根据 presenter 的数据恢复 activity 状态
 
-2. ҵ���߼�Ӧ�÷��� presenter ���� model
+纸上得来终觉浅，需要实际项目的验证与优化。
 
-3. presenter ��Ҫ�ӿ���
+如何写好分清 M V P
+
+1.  model为上层提供数据，model处理上层传递的数据
+    数据的解析，数据的存储，数据的分发，数据的增删改查等操作
+    凡是涉及到关于数据发生于三个数据源加工处理的操作的代码都要放在model中
+    model中的所有操作都发生于子线程 ？
+
+2.  view (xml/activity/iview) 负责展示数据
+
+3.  presenter
+    不是 model、view 层的代码都写在 presenter
+
+
+
+http://www.jianshu.com/p/559f85a42f23
+http://mp.weixin.qq.com/s?__biz=MzA3MDMyMjkzNg==&mid=2652261695&idx=1&sn=ab5fc0468b9bbd6a7777830981a61356&scene=21#wechat_redirect
+http://blog.csdn.net/u014099894/article/details/51388170
+http://blog.csdn.net/u011459799/article/details/51360882
