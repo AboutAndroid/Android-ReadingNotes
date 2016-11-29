@@ -29,7 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         setContentView(getLayoutResId());
 
         loadPresenters();
-
         initViewAndData();
 
         if (getIntent() != null) {
@@ -37,29 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         }
 
         initPresenters();
-
         MLog.i(sPresenterManager);
-    }
-
-    protected void initPresenters() {
-        MvpPresenter[] presenters = getPresenters();
-        if (presenters != null) {
-            for (MvpPresenter presenter : presenters) {
-                presenter.init();
-            }
-        }
-    }
-
-
-    protected void loadPresenters() {
-
-        MvpPresenter[] presenters = getPresenters();
-        if (presenters != null) {
-            for (MvpPresenter presenter : presenters) {
-                presenter.attachView(this);
-                sPresenterManager.add(presenter);
-            }
-        }
     }
 
     @Override
@@ -71,9 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onDestroy() {
 
-        // 解绑视图
         detachViews();
-
         // Activity意外销毁这个方法不会被执行
         if (isFinishing()) {
             MLog.i("isFinishing");
@@ -90,6 +65,27 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     protected abstract void initViewAndData();
 
     protected abstract void parseIntDataFromIntent(Intent intent);
+
+
+    protected void loadPresenters() {
+
+        MvpPresenter[] presenters = getPresenters();
+        if (presenters != null) {
+            for (MvpPresenter presenter : presenters) {
+                presenter.attachView(this);
+                sPresenterManager.add(presenter);
+            }
+        }
+    }
+
+    protected void initPresenters() {
+        MvpPresenter[] presenters = getPresenters();
+        if (presenters != null) {
+            for (MvpPresenter presenter : presenters) {
+                presenter.init();
+            }
+        }
+    }
 
     private void detachViews() {
 
