@@ -27,7 +27,7 @@ public interface LoginContract {
         public abstract void login(final String username, final String password);
     }
 
-    interface Mode extends MvpModel {
+    interface Model extends MvpModel {
 
         interface LoginListener {
 

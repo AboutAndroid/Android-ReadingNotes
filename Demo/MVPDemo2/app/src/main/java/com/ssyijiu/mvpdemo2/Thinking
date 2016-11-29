@@ -2,7 +2,7 @@
 2. Presenter 是 static 的，在创建的时候初始化数据
 3. Activity 意外重启 Presenter 并不销毁，会和 Activity 重新绑定，数据不会再次被初始化
 4. Activity 手动销毁，Presenter 会跟随销毁
-5. 没有使用谷歌的契约类
+5. 将 model 接口添加到谷歌的契约类
 
 需要解决：
 1.  if(getView != null)
@@ -25,8 +25,4 @@
 
 
 谷歌mvp
-http://blog.csdn.net/u014099894/article/details/51388170
 http://blog.csdn.net/u011459799/article/details/51360882
-
-如何设计 presenter
-http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0301/4018.html

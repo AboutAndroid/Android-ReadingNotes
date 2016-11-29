@@ -16,7 +16,7 @@ public class UserInfoPresenter extends UserInfoContract.Presenter {
     }
 
     @Override
-    public void initView() {
+    public void init() {
         if(isViewAttached()) {
             getView().showLoading();
         }

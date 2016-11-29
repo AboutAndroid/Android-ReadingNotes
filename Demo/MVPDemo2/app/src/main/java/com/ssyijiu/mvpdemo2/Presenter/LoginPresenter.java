@@ -41,7 +41,7 @@ public class LoginPresenter extends LoginContract.Presenter {
             @Override
             public void run() {
 
-                LoginModelImpl.getInstance().login(username, password, new LoginContract.Mode.LoginListener() {
+                LoginModelImpl.getInstance().login(username, password, new LoginContract.Model.LoginListener() {
                     @Override
                     public void onSuccess() {
                         if (isViewAttached()) {
@@ -60,12 +60,10 @@ public class LoginPresenter extends LoginContract.Presenter {
         }, 1000);
     }
 
-
-
     @Override
-    public void initView() {
+    public void init() {
 
-        // 根据 initData 的数据来 initView
+        // 根据 initData 的数据来 init
 
         if(isViewAttached()) {
             getView().showHello();

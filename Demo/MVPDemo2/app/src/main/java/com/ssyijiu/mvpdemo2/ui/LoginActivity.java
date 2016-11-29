@@ -8,16 +8,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ssyijiu.mvpdemo2.MainActivity;
 import com.ssyijiu.mvpdemo2.R;
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
+import com.ssyijiu.mvpdemo2.base.MvpPresenter;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 import icepick.State;
 
-public class LoginActivity extends BaseActivity<LoginPresenter>
-        implements LoginContract.View {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
+
+    LoginPresenter mLoginPresenter = LoginPresenter.getInstance();
 
     EditText et_username;
     EditText et_password;
@@ -27,19 +28,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
     @State
     String status,username,password;
 
+
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_login;
     }
 
     @Override
-    protected LoginPresenter createPresenter() {
-        return LoginPresenter.getInstance();
+    protected MvpPresenter[] getPresenters() {
+        return new MvpPresenter[]{mLoginPresenter};
     }
 
-
     @Override
-    protected void initEventAndData() {
+    protected void initViewAndData() {
         et_username = (EditText) findViewById(R.id.et_username);
         et_password = (EditText) findViewById(R.id.et_password);
         btn_login = (Button) findViewById(R.id.btn_login);
@@ -52,7 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
 
                 String username = et_username.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
-                checkPresenter().login(username, password);
+                mLoginPresenter.login(username, password);
 
             }
         });
@@ -72,7 +74,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
 
     @Override
     public void toUserInfo() {
-        startActivity(new Intent(this,UserInfoActivity.class));
+        Intent intent = new UserInfoActivityIntentBuilder("ssyijiu")
+                .build(this);
+        startActivity(intent);
     }
 
     @Override
@@ -94,4 +98,5 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
     public void saveStatus() {
         status = login_status.getText().toString();
     }
+
 }
