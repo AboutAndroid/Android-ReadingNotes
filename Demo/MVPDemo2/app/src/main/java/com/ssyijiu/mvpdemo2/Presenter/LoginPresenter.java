@@ -2,7 +2,7 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import android.os.Handler;
 
-import com.ssyijiu.mvpdemo2.model.LoginModelImpl;
+import com.ssyijiu.mvpdemo2.model.LoginModel;
 import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 
@@ -41,7 +41,7 @@ public class LoginPresenter extends LoginContract.Presenter {
             @Override
             public void run() {
 
-                LoginModelImpl.getInstance().login(username, password, new LoginContract.Model.LoginListener() {
+                LoginModel.getInstance().login(username, password, new LoginContract.Model.LoginListener() {
                     @Override
                     public void onSuccess() {
                         if (isViewAttached()) {

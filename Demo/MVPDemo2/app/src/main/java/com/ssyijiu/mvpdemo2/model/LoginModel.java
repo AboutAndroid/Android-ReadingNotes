@@ -10,10 +10,10 @@ import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
  * E-mail: lxmyijiu@163.com
  */
 
-public class LoginModelImpl extends AbsSingle implements LoginContract.Model {
+public class LoginModel extends AbsSingle implements LoginContract.Model {
 
-    public static LoginModelImpl getInstance() {
-        return getInstance(LoginModelImpl.class);
+    public static LoginModel getInstance() {
+        return getInstance(LoginModel.class);
     }
 
 

@@ -56,4 +56,7 @@ dependencies {
 
     // router
     compile 'org.lzh.nonview.router:router-api:0.6'
+
+    compile 'org.parceler:parceler-api:1.1.6'
+    apt 'org.parceler:parceler:1.1.6'
 }
