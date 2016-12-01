@@ -38,25 +38,18 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     testCompile 'junit:junit:4.12'
 
-    // MLog
+    // MLog：log工具
     compile "com.github.ssyijiu:MLog:${MLogVersion}"
 
-    // leakcanary
+    // leakcanary：内存泄漏检测
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
-    // icepick
-    compile 'frankiesardo:icepick:3.2.0'
-    provided 'frankiesardo:icepick-processor:3.2.0'
+    // autobundle： activity/fragment 传参及状态保存恢复
+    compile 'com.github.yatatsu:autobundle:3.1.1'
+    apt 'com.github.yatatsu:autobundle-processor:3.1.1'
 
-    // intentbuilder
-    compile 'se.emilsjolander:intentbuilder-api:0.14.0'
-    apt 'se.emilsjolander:intentbuilder-compiler:0.14.0'
-
-    // router
+    // router：activity 路由
     compile 'org.lzh.nonview.router:router-api:0.6'
-
-    compile 'org.parceler:parceler-api:1.1.6'
-    apt 'org.parceler:parceler:1.1.6'
 }

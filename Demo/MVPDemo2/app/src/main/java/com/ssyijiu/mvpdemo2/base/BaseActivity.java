@@ -6,11 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ssyijiu.library.MLog;
+import com.yatatsu.autobundle.AutoBundle;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import icepick.Icepick;
 
 /**
  * Created by ssyijiu on 2016/10/20.
@@ -25,8 +24,9 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Icepick.restoreInstanceState(this, savedInstanceState);
         setContentView(getLayoutResId());
+
+        autoBundleBind(savedInstanceState);
 
         loadPresenters();
         initViewAndData();
@@ -39,10 +39,11 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         MLog.i(sPresenterManager);
     }
 
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Icepick.saveInstanceState(this, outState);
+        AutoBundle.pack(this, outState);
     }
 
     @Override
@@ -106,6 +107,14 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
             for (MvpPresenter presenter : presenters) {
                 sPresenterManager.remove(presenter);
             }
+        }
+    }
+
+    private void autoBundleBind(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            AutoBundle.bind(this, savedInstanceState);
+        } else if(getIntent() != null){
+            AutoBundle.bind(this, getIntent());
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.ssyijiu.mvpdemo2.ui;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,9 +9,8 @@ import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
 import com.ssyijiu.mvpdemo2.presenter.UserInfoPresenter;
 import com.ssyijiu.mvpdemo2.presenter.contract.UserInfoContract;
+import com.yatatsu.autobundle.AutoBundleField;
 
-import se.emilsjolander.intentbuilder.Extra;
-import se.emilsjolander.intentbuilder.IntentBuilder;
 
 /**
  * Created by ssyijiu on 2016/11/28.
@@ -21,14 +19,14 @@ import se.emilsjolander.intentbuilder.IntentBuilder;
  */
 
 
-@IntentBuilder
+
 public class UserInfoActivity extends BaseActivity implements UserInfoContract.View{
 
     UserInfoPresenter mUserInfoPresenter = UserInfoPresenter.getInstance();
 
     TextView tvUserInfo;
 
-    @Extra("name")
+    @AutoBundleField(key = "name")
     String userInfo;
 
     @Override
@@ -54,7 +52,6 @@ public class UserInfoActivity extends BaseActivity implements UserInfoContract.V
 
     @Override
     protected void parseIntDataFromIntent(Intent intent) {
-        UserInfoActivityIntentBuilder.inject(intent,this);
     }
 
     @Override

@@ -13,8 +13,7 @@ import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
-
-import icepick.State;
+import com.yatatsu.autobundle.AutoBundleField;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
@@ -25,8 +24,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     Button btn_login;
     TextView login_status;
 
-    @State
-    String status,username,password;
+    @AutoBundleField
+    String status;
 
 
 
@@ -74,7 +73,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void toUserInfo() {
-        Intent intent = new UserInfoActivityIntentBuilder("ssyijiu")
+        login_status.setText(R.string.success);
+        saveStatus();
+        Intent intent = UserInfoActivityAutoBundle.createIntentBuilder("ssyijiu")
                 .build(this);
         startActivity(intent);
     }
