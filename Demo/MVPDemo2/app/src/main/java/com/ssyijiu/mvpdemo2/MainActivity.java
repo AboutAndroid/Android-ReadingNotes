@@ -1,19 +1,36 @@
 package com.ssyijiu.mvpdemo2;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ssyijiu.mvpdemo2.ui.LoginActivity;
+import com.lzh.nonview.router.Router;
+import com.ssyijiu.mvpdemo2.app.RouteUrl;
+import com.ssyijiu.mvpdemo2.app.Routes;
 
 public class MainActivity extends AppCompatActivity {
+
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContext = this;
+
         findViewById(R.id.button).setOnClickListener(v->{
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            Router.create(
+//                    RouteUrl.formatUrl(
+//                            RouteUrl.newUrl(Routes.LOGIN,Routes.LOGIN_USERNAME,Routes.LOGIN_PASSWORD),
+//                            "lxm","123"
+//                    )
+//
+//            ).open(MainActivity.this);
+
+
+            Router.create(Routes.INFO).open(mContext);
+
         });
     }
 }

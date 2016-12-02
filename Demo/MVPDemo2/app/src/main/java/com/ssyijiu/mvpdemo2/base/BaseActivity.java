@@ -1,5 +1,6 @@
 package com.ssyijiu.mvpdemo2.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import com.yatatsu.autobundle.AutoBundle;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * Created by ssyijiu on 2016/10/20.
  * Github: ssyijiu
@@ -21,12 +23,16 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     protected static Set<MvpPresenter> sPresenterManager = new HashSet<>(1);
 
+    protected Context mContext;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
 
-        autoBundleBind(savedInstanceState);
+        mContext = this;
+
+        bindBundle(savedInstanceState);
 
         loadPresenters();
         initViewAndData();
@@ -43,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        AutoBundle.pack(this, outState);
+        AutoBundle.pack(this,outState);
     }
 
     @Override
@@ -110,9 +116,9 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         }
     }
 
-    private void autoBundleBind(@Nullable Bundle savedInstanceState) {
+    private void bindBundle(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            AutoBundle.bind(this, savedInstanceState);
+            AutoBundle.bind(this,savedInstanceState);
         } else if(getIntent() != null){
             AutoBundle.bind(this, getIntent());
         }

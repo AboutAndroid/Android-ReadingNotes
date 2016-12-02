@@ -1,6 +1,7 @@
 package com.ssyijiu.mvpdemo2.ui;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -56,7 +57,12 @@ public class UserInfoActivity extends BaseActivity implements UserInfoContract.V
 
     @Override
     public void showLoading() {
-        tvUserInfo.setText(R.string.press_to_show);
+        if(TextUtils.isEmpty(userInfo)) {
+            tvUserInfo.setText(R.string.press_to_show);
+        } else {
+            tvUserInfo.setText(userInfo);
+        }
+
     }
 
     @Override

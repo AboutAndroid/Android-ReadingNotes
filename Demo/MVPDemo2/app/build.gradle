@@ -46,10 +46,14 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
-    // autobundle： activity/fragment 传参及状态保存恢复
+    // autobundle：activity/fragment 传参和状态保存恢复
     compile 'com.github.yatatsu:autobundle:3.1.1'
     apt 'com.github.yatatsu:autobundle-processor:3.1.1'
 
     // router：activity 路由
     compile 'org.lzh.nonview.router:router-api:0.6'
+
+    // icepick：activity/fragment 状态保存恢复
+//    compile 'frankiesardo:icepick:3.2.0'
+//    provided 'frankiesardo:icepick-processor:3.2.0'
 }
