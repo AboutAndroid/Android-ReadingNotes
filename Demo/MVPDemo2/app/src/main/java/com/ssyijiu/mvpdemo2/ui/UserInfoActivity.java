@@ -27,7 +27,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoContract.V
 
     TextView tvUserInfo;
 
-    @AutoBundleField(key = "name")
+    @AutoBundleField(key = "name",required = false)
     String userInfo;
 
     @Override

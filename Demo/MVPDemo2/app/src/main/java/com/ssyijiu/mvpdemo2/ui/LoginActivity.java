@@ -12,10 +12,8 @@ import android.widget.Toast;
 
 import com.lzh.nonview.router.Router;
 import com.ssyijiu.mvpdemo2.R;
-import com.ssyijiu.mvpdemo2.app.Routes;
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
-import com.ssyijiu.mvpdemo2.model.LoginManager;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 import com.yatatsu.autobundle.AutoBundleField;
@@ -45,10 +43,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @AutoBundleField(required = false)
     Bundle extras;
-
-
-
-
 
     @Override
     protected int getLayoutResId() {
@@ -80,7 +74,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         });
 
         btn_login.setOnLongClickListener(v -> {
-            LoginManager.INSTANCE.setLogin(true);
+
+//            LoginManager.isLogin = true;
             Router.create(uri).open(mContext);
             finish();
             return true;

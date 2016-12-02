@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import com.ssyijiu.library.MLog;
 import com.yatatsu.autobundle.AutoBundle;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 
@@ -21,7 +24,7 @@ import java.util.Set;
 
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
 
-    protected static Set<MvpPresenter> sPresenterManager = new HashSet<>(1);
+    protected static ArrayList<MvpPresenter> sPresenterManager = new ArrayList<>();
 
     protected Context mContext;
 
@@ -42,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         }
 
         initPresenters();
-        MLog.i(sPresenterManager);
+        MLog.i("onCreate:" + sPresenterManager);
     }
 
 
@@ -61,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
             MLog.i("isFinishing");
             removePresenters();
         }
-        MLog.i(sPresenterManager);
+        MLog.i("onDestroy:" + sPresenterManager);
         super.onDestroy();
     }
 

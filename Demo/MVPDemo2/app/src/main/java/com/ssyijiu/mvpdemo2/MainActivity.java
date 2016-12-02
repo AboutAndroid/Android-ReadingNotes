@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 //            ).open(MainActivity.this);
 
 
-            Router.create(Routes.INFO).open(mContext);
+            Router.create(Routes.INFO+"?name=lxm").open(mContext);
 
         });
     }

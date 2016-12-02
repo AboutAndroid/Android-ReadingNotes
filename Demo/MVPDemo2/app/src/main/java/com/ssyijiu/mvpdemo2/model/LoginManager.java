@@ -6,15 +6,6 @@ package com.ssyijiu.mvpdemo2.model;
  * E-mail: lxmyijiu@163.com
  */
 
-public enum LoginManager {
-    INSTANCE;
-    private boolean isLogin;
-
-    public boolean isLogin() {
-        return isLogin;
-    }
-
-    public void setLogin(boolean login) {
-        isLogin = login;
-    }
+public class LoginManager {
+    public static boolean isLogin = false;
 }

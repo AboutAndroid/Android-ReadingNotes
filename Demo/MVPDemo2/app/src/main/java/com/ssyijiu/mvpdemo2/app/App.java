@@ -61,19 +61,19 @@ public class App extends Application {
             @Override
             public boolean interceptOpen(Uri uri, Context context, ActivityRouteBundleExtras extras) {
 
-                if(LoginManager.INSTANCE.isLogin()) {
+                if(LoginManager.isLogin) {
                     return false;
+                } else {
+                    MLog.i("interceptOpen:" + uri);
+
+                    // 登录拦截
+                    Toast.makeText(App.this, "未登录.请先登录", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context,LoginActivity.class);
+                    intent.putExtra("uri",uri);                 // 把拦截到的 url 传过去
+                    intent.putExtra("extras",extras);           // 把拦截到的参数传过去
+                    context.startActivity(intent);
+                    return true;
                 }
-
-                MLog.i(uri);
-
-                // 登录拦截
-                Toast.makeText(App.this, "未登录.请先登录", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context,LoginActivity.class);
-                intent.putExtra("uri",uri);                 // 把拦截到的 url 传过去
-                intent.putExtra("extras",extras);           // 把拦截到的参数传过去
-                context.startActivity(intent);
-                return true;
             }
 
             @Override
