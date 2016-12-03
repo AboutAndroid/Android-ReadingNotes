@@ -1,4 +1,5 @@
 1. 使用单例来管理 Model、Presenter
+        Presenter 不能使用单例，否则一个 detachView 后，所有的复用的都被 detachView。
 2. Presenter 是 static 的，在创建的时候初始化数据
 3. Activity 意外重启 Presenter 并不销毁，会和 Activity 重新绑定，数据不会再次被初始化
 4. Activity 手动销毁，Presenter 会跟随销毁

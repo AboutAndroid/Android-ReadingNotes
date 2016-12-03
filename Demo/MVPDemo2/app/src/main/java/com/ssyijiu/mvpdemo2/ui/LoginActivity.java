@@ -18,10 +18,12 @@ import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 import com.yatatsu.autobundle.AutoBundleField;
 
+import static com.ssyijiu.mvpdemo2.R.id.et_username;
+
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
-    LoginPresenter mLoginPresenter = LoginPresenter.getInstance();
+    LoginPresenter mLoginPresenter = new LoginPresenter();
 
     EditText et_username;
     EditText et_password;

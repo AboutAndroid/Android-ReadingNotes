@@ -10,10 +10,8 @@ import com.ssyijiu.library.MLog;
 import com.yatatsu.autobundle.AutoBundle;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 
 /**
@@ -24,7 +22,7 @@ import java.util.Set;
 
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
 
-    protected static ArrayList<MvpPresenter> sPresenterManager = new ArrayList<>();
+    protected static List<MvpPresenter> sPresenterManager = new ArrayList<>();
 
     protected Context mContext;
 
@@ -45,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         }
 
         initPresenters();
-        MLog.i("onCreate:" + sPresenterManager);
+        MLog.i("onCreate:" + sPresenterManager.hashCode() + sPresenterManager);
     }
 
 
@@ -64,12 +62,16 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
             MLog.i("isFinishing");
             removePresenters();
         }
-        MLog.i("onDestroy:" + sPresenterManager);
+        MLog.i("onDestroy:" + sPresenterManager.hashCode() + sPresenterManager);
         super.onDestroy();
     }
 
     protected abstract int getLayoutResId();
 
+    /**
+     * 获取当前页面所有的 presenter
+     * @return
+     */
     protected abstract MvpPresenter[] getPresenters();
 
     protected abstract void initViewAndData();
@@ -78,7 +80,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
 
     protected void loadPresenters() {
-
         MvpPresenter[] presenters = getPresenters();
         if (presenters != null) {
             for (MvpPresenter presenter : presenters) {
@@ -89,6 +90,13 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     }
 
     protected void initPresenters() {
+
+//        if(sPresenterManager.size() > 0) {
+//            for (MvpPresenter presenter : sPresenterManager) {
+//                presenter.init();
+//            }
+//        }
+
         MvpPresenter[] presenters = getPresenters();
         if (presenters != null) {
             for (MvpPresenter presenter : presenters) {
@@ -99,18 +107,33 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     private void detachViews() {
 
+
+//        if(sPresenterManager.size() > 0) {
+//            MLog.i("detachViews:" + sPresenterManager.hashCode() + sPresenterManager);
+//            for (MvpPresenter presenter : sPresenterManager) {
+//                presenter.detachView();
+//            }
+//        }
+
         MvpPresenter[] presenters = getPresenters();
         if (presenters != null) {
+
+            MLog.i("detachViews:"+ Arrays.asList(presenters));
             for (MvpPresenter presenter : presenters) {
-                if (presenter != null) {
                     presenter.detachView();
-                }
             }
         }
 
     }
 
     private void removePresenters() {
+
+//        if(sPresenterManager.size() > 0) {
+//            for (MvpPresenter presenter : sPresenterManager) {
+//                sPresenterManager.remove(presenter);
+//            }
+//        }
+
         MvpPresenter[] presenters = getPresenters();
         if (presenters != null) {
             for (MvpPresenter presenter : presenters) {
