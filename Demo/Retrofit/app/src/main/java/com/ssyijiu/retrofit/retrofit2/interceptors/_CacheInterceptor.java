@@ -1,7 +1,7 @@
 package com.ssyijiu.retrofit.retrofit2.interceptors;
 
 import com.ssyijiu.retrofit.App;
-import com.ssyijiu.retrofit.Utils.NetUtil;
+import com.ssyijiu.retrofit.utils.NetUtil;
 
 import java.io.IOException;
 

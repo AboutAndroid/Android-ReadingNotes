@@ -11,10 +11,6 @@ import com.ssyijiu.mvpdemo2.presenter.contract.UserInfoContract;
 public class UserInfoPresenter extends UserInfoContract.Presenter {
 
 
-    public static UserInfoPresenter getInstance() {
-        return getInstance(UserInfoPresenter.class);
-    }
-
     @Override
     public void init() {
         if(isViewAttached()) {

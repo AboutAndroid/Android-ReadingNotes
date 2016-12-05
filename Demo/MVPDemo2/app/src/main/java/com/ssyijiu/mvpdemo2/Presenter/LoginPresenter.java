@@ -24,12 +24,6 @@ public class LoginPresenter extends LoginContract.Presenter {
     private void initData() {
     }
 
-
-    // 通过静态变量延长 presenter 的生命周期
-    public static LoginPresenter getInstance() {
-        return getInstance(LoginPresenter.class);
-    }
-
     @Override
     public void login(final String username, final String password) {
 

@@ -14,6 +14,7 @@ import com.lzh.nonview.router.route.RouteCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.ssyijiu.library.MLog;
 import com.ssyijiu.mvpdemo2.model.LoginManager;
+import com.ssyijiu.mvpdemo2.router.Routes;
 import com.ssyijiu.mvpdemo2.ui.LoginActivity;
 import com.ssyijiu.mvpdemo2.ui.UserInfoActivity;
 

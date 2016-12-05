@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lzh.nonview.router.Router;
-import com.ssyijiu.mvpdemo2.app.RouteUrl;
-import com.ssyijiu.mvpdemo2.app.Routes;
+import com.ssyijiu.mvpdemo2.router.Routes;
 
 public class MainActivity extends AppCompatActivity {
 
