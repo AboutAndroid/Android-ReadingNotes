@@ -23,7 +23,7 @@ import com.yatatsu.autobundle.AutoBundleField;
 
 public class UserInfoActivity extends BaseActivity implements UserInfoContract.View{
 
-    UserInfoPresenter mUserInfoPresenter = UserInfoPresenter.getInstance();
+    UserInfoPresenter mUserInfoPresenter = new UserInfoPresenter();
 
     TextView tvUserInfo;
 

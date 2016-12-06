@@ -14,8 +14,10 @@ import com.lzh.nonview.router.Router;
 import com.ssyijiu.mvpdemo2.R;
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
+import com.ssyijiu.mvpdemo2.model.LoginManager;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
 import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
+import com.ssyijiu.mvpdemo2.utils.ToastUtil;
 import com.yatatsu.autobundle.AutoBundleField;
 
 
@@ -36,13 +38,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     String username;
 
     @AutoBundleField(required = false)
-    int password;
+    String password;
 
     @AutoBundleField(required = false)
     Uri uri;
-
-    @AutoBundleField(required = false)
-    Bundle extras;
 
     @Override
     protected int getLayoutResId() {
@@ -62,7 +61,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         login_status = (TextView) findViewById(R.id.login_status);
 
         et_username.setText(username);
-        et_password.setText(password+"");
+        et_password.setText(password);
 
 
         btn_login.setOnClickListener(view -> {
@@ -75,7 +74,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
         btn_login.setOnLongClickListener(v -> {
 
-//            LoginManager.isLogin = true;
+            LoginManager.isLogin = true;
             Router.create(uri).open(mContext);
             finish();
             return true;
@@ -116,7 +115,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             status = getResources().getString(R.string.hello);
         }
         login_status.setText(status);
-        Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
+        ToastUtil.show(status);
         saveStatus();
     }
 

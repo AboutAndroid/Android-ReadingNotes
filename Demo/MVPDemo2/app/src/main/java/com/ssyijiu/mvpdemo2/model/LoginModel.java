@@ -12,6 +12,8 @@ import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 public class LoginModel extends AbsSingle implements LoginContract.Model {
 
+    private LoginModel() {
+    }
     public static LoginModel getInstance() {
         return getInstance(LoginModel.class);
     }

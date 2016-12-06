@@ -17,6 +17,7 @@ import com.ssyijiu.mvpdemo2.model.LoginManager;
 import com.ssyijiu.mvpdemo2.router.Routes;
 import com.ssyijiu.mvpdemo2.ui.LoginActivity;
 import com.ssyijiu.mvpdemo2.ui.UserInfoActivity;
+import com.ssyijiu.mvpdemo2.utils.ToastUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +29,18 @@ import java.util.Map;
  */
 
 public class App extends Application {
+
+    private static Context sContext;
+
+    public static Context getContext() {
+        return sContext;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        sContext = this;
 
         initLeakCanary();
         initRouter();
@@ -44,7 +54,7 @@ public class App extends Application {
             Map<String, RouteMap> routers = new HashMap<>();
             routers.put(Routes.LOGIN,
                     new RouteMap(LoginActivity.class)
-                            .addParam(Routes.LOGIN_PASSWORD, RouteMap.INT) // 指定参数类型，默认 String
+                    // .addParam(Routes.LOGIN_PASSWORD, RouteMap.INT) // 指定参数类型，默认 String
             );
             return routers;
         });
@@ -62,16 +72,16 @@ public class App extends Application {
             @Override
             public boolean interceptOpen(Uri uri, Context context, ActivityRouteBundleExtras extras) {
 
-                if(LoginManager.isLogin) {
+                // 已登录 or 到登录页面，不拦截
+                if(LoginManager.isLogin || uri.toString().startsWith(Routes.LOGIN)) {
                     return false;
                 } else {
                     MLog.i("interceptOpen:" + uri);
 
                     // 登录拦截
-                    Toast.makeText(App.this, "未登录.请先登录", Toast.LENGTH_SHORT).show();
+                    ToastUtil.show("未登录.请先登录");
                     Intent intent = new Intent(context,LoginActivity.class);
-                    intent.putExtra("uri",uri);                 // 把拦截到的 url 传过去
-                    intent.putExtra("extras",extras);           // 把拦截到的参数传过去
+                    intent.putExtra("uri",uri);     // 把拦截到的 url 传过去
                     context.startActivity(intent);
                     return true;
                 }
