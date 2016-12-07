@@ -1,0 +1,6 @@
+1. 静态 Vector 兼容
+    vectorDrawables.useSupportLibrary = true
+    在 ImageView 使用 app:srcCompat 代替 android:src
+
+    坑：不开启 vectorDrawables.useSupportLibrary 的时候，
+       可以使用 android:src（5.0 以下是 png ?）
