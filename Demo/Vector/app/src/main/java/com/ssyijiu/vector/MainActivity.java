@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 /**
  * http://blog.csdn.net/eclipsexys/article/details/51838119
+ * https://developer.android.google.cn/training/material/animations.html#AnimVector
  */
 public class MainActivity extends AppCompatActivity {
 

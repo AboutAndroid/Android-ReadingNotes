@@ -29,8 +29,7 @@ public interface LoginContract {
 
     interface Model extends MvpModel {
 
-        interface LoginListener {
-
+        interface LoginListener { // 这个回调方法是不是固定的，要泛型？
             void onSuccess();
 
             void onFailed();
