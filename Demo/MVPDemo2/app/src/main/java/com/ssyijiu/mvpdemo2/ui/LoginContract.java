@@ -1,8 +1,10 @@
-package com.ssyijiu.mvpdemo2.presenter.contract;
+package com.ssyijiu.mvpdemo2.ui;
 
 import com.ssyijiu.mvpdemo2.base.BasePresenter;
+import com.ssyijiu.mvpdemo2.base.MvpListener;
 import com.ssyijiu.mvpdemo2.base.MvpModel;
 import com.ssyijiu.mvpdemo2.base.MvpView;
+import com.ssyijiu.mvpdemo2.model.bean.User;
 
 /**
  * Created by ssyijiu on 2016/11/28.
@@ -18,9 +20,13 @@ public interface LoginContract {
 
         void toUserInfo();
 
-        void showFailed();
+        void showError(String errorMsg);
+
+        void showException(Throwable tr);
 
         void showHello();
+
+        void showUserInfo(User user);
     }
 
     abstract class Presenter extends BasePresenter<View> {
@@ -29,13 +35,6 @@ public interface LoginContract {
 
     interface Model extends MvpModel {
 
-        interface LoginListener {
-
-            void onSuccess();
-
-            void onFailed();
-        }
-
-        void login(String username, String password, LoginListener listener);
+        void login(String username, String password, MvpListener<User> listener);
     }
 }

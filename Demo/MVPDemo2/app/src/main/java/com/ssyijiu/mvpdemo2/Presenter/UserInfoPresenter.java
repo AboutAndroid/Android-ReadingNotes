@@ -1,6 +1,6 @@
 package com.ssyijiu.mvpdemo2.presenter;
 
-import com.ssyijiu.mvpdemo2.presenter.contract.UserInfoContract;
+import com.ssyijiu.mvpdemo2.ui.UserInfoContract;
 
 /**
  * Created by ssyijiu on 2016/11/28.

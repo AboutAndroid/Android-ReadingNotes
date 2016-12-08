@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ssyijiu.library.MLog;
+import com.ssyijiu.mvpdemo2.model.bean.User;
+import com.ssyijiu.mvpdemo2.utils.ToastUtil;
 import com.yatatsu.autobundle.AutoBundle;
 
 
@@ -94,5 +97,17 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         } else if(getIntent() != null){
             AutoBundle.bind(this, getIntent());
         }
+    }
+
+    @Override
+    public void showError(String errorMsg) {
+        ToastUtil.show(errorMsg);
+    }
+
+    @Override
+    public void showException(Throwable tr) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(tr.getMessage());
+        builder.create().show();
     }
 }
