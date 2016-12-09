@@ -6,7 +6,7 @@ package com.ssyijiu.mvpdemo2.base;
  * E-mail: lxmyijiu@163.com
  */
 
-public interface MvpView<T> {
+public interface MvpView {
 
     void showError(String errorMsg);
 

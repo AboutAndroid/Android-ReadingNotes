@@ -2,8 +2,8 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import android.os.Handler;
 
+import com.ssyijiu.mvpdemo2.base.ModelManager;
 import com.ssyijiu.mvpdemo2.base.DefaultMvpListener;
-import com.ssyijiu.mvpdemo2.base.MvpListener;
 import com.ssyijiu.mvpdemo2.model.LoginModel;
 import com.ssyijiu.mvpdemo2.model.bean.User;
 import com.ssyijiu.mvpdemo2.ui.LoginContract;
@@ -17,6 +17,14 @@ import com.ssyijiu.mvpdemo2.ui.LoginContract;
 
 public class LoginPresenter extends LoginContract.Presenter {
 
+    private LoginModel mLoginModel= ModelManager.getModel(LoginModel.class);
+
+    @Override
+    public void init() {
+        if (isViewAttached()) {
+            getView().showHello();
+        }
+    }
 
     @Override
     public void login(final String username, final String password) {
@@ -26,7 +34,7 @@ public class LoginPresenter extends LoginContract.Presenter {
         }
 
         new Handler().postDelayed(() ->
-                LoginModel.getInstance().login(username, password,
+                mLoginModel.login(username, password,
                         new DefaultMvpListener<User>(getView()) {
                             @Override
                             public void onSuccess(User bean) {
@@ -36,14 +44,5 @@ public class LoginPresenter extends LoginContract.Presenter {
                             }
                         }
                 ), 1000);
-    }
-
-    @Override
-    public void init() {
-
-        // 根据 initData 的数据来 init
-        if (isViewAttached()) {
-            getView().showHello();
-        }
     }
 }
