@@ -2,8 +2,11 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import android.os.Handler;
 
+import com.ssyijiu.mvpdemo2.base.DefaultMvpListener;
+import com.ssyijiu.mvpdemo2.base.MvpListener;
 import com.ssyijiu.mvpdemo2.model.LoginModel;
-import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
+import com.ssyijiu.mvpdemo2.model.bean.User;
+import com.ssyijiu.mvpdemo2.ui.LoginContract;
 
 
 /**
@@ -14,12 +17,6 @@ import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 
 public class LoginPresenter extends LoginContract.Presenter {
 
-    public LoginPresenter() {
-        initData();
-    }
-
-    private void initData() {
-    }
 
     @Override
     public void login(final String username, final String password) {
@@ -28,35 +25,24 @@ public class LoginPresenter extends LoginContract.Presenter {
             getView().showLoading();
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                LoginModel.getInstance().login(username, password, new LoginContract.Model.LoginListener() {
-                    @Override
-                    public void onSuccess() {
-                        if (isViewAttached()) {
-                            getView().toUserInfo();
+        new Handler().postDelayed(() ->
+                LoginModel.getInstance().login(username, password,
+                        new DefaultMvpListener<User>(getView()) {
+                            @Override
+                            public void onSuccess(User bean) {
+                                if (isViewAttached()) {
+                                    getView().showUserInfo(bean);
+                                }
+                            }
                         }
-                    }
-
-                    @Override
-                    public void onFailed() {
-                        if (isViewAttached()) {
-                            getView().showFailed();
-                        }
-                    }
-                });
-            }
-        }, 1000);
+                ), 1000);
     }
 
     @Override
     public void init() {
 
         // 根据 initData 的数据来 init
-
-        if(isViewAttached()) {
+        if (isViewAttached()) {
             getView().showHello();
         }
     }

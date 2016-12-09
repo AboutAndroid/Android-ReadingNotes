@@ -8,6 +8,9 @@
 3. [废弃]Activity 意外重启 Presenter 并不销毁，会和 Activity 重新绑定，数据不会再次被初始化
 4. Activity 销毁，Presenter 会跟随销毁
 5. 将 model 接口添加到谷歌的契约类
+6. MvpListener -> DefaultMvpListener
+   原本这个回调是负责 M 和 P 的通信
+   现在却在 M 出现异常时 直接 通知 V
 
 需要解决：
 1.  if(getView != null)

@@ -3,20 +3,19 @@ package com.ssyijiu.mvpdemo2.ui;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lzh.nonview.router.Router;
 import com.ssyijiu.mvpdemo2.R;
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
 import com.ssyijiu.mvpdemo2.model.LoginManager;
+import com.ssyijiu.mvpdemo2.model.bean.User;
 import com.ssyijiu.mvpdemo2.presenter.LoginPresenter;
-import com.ssyijiu.mvpdemo2.presenter.contract.LoginContract;
 import com.ssyijiu.mvpdemo2.utils.ToastUtil;
 import com.yatatsu.autobundle.AutoBundleField;
 
@@ -103,11 +102,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         startActivity(intent);
     }
 
-    @Override
-    public void showFailed() {
-        login_status.setText(R.string.failed);
-        saveStatus();
-    }
+//    @Override
+//    public void showError(String errorMsg) {
+//        login_status.setText(errorMsg);
+//        ToastUtil.show(errorMsg);
+//        saveStatus();
+//    }
+//
+//    @Override
+//    public void showException(Throwable tr) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setMessage(tr.getMessage());
+//        builder.create().show();
+//    }
 
     @Override
     public void showHello() {
@@ -117,6 +124,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         login_status.setText(status);
         ToastUtil.show(status);
         saveStatus();
+    }
+
+    @Override
+    public void showUserInfo(User user) {
+        login_status.setText(user.toString());
     }
 
     public void saveStatus() {

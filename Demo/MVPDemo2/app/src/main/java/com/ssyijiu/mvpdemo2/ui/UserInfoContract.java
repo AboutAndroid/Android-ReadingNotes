@@ -1,4 +1,4 @@
-package com.ssyijiu.mvpdemo2.presenter.contract;
+package com.ssyijiu.mvpdemo2.ui;
 
 import com.ssyijiu.mvpdemo2.base.BasePresenter;
 import com.ssyijiu.mvpdemo2.base.MvpView;
