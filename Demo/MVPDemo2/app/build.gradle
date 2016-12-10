@@ -53,7 +53,4 @@ dependencies {
     // router：activity 路由
     compile 'org.lzh.nonview.router:router-api:0.6'
 
-    // icepick：activity/fragment 状态保存恢复
-//    compile 'frankiesardo:icepick:3.2.0'
-//    provided 'frankiesardo:icepick-processor:3.2.0'
 }
