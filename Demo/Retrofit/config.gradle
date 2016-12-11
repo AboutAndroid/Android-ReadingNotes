@@ -1,0 +1,28 @@
+// https://gold.xitu.io/post/582d606767f3560063320b21
+ext {
+
+    android = [compileSdkVersion: 24,
+               buildToolsVersion: "24.0.1",
+               applicationId    : "com.ssyijiu.retrofit",
+               minSdkVersion    : 15,
+               targetSdkVersion : 24,
+               versionCode      : 1,
+               versionName      : "1.0"]
+
+    dependencies = [
+            "junitVersion"              : "4.12",
+            "supportVersion"            : "3.5.0",
+            "MLogVersion"               : "1.0.9",
+            "xlogVersion"               : "1.1.0",
+            "retrofitVersion"           : "2.1.0",
+            "okhttpVersion"             : "3.5.0",
+            "converterGsonVersion"      : "2.1.0",
+            "rxjavaVersion"             : "1.2.3",
+            "rxandroidVersion"          : "1.2.1",
+            "autoValueVersion"          : "1.4-rc1",
+            "autoValueParcelVersion"    : "0.2.5",
+            "annotationVersion"         : "10.0-b28",
+            "PersistentCookieJarVersion": "v1.0.0",
+            "leakcanaryVersion"         : "1.5",
+    ]
+}

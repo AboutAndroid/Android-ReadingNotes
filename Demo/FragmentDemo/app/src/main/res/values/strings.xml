@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FragmentDemo</string>
+
+    <!-- BottomBar Item-->
+    <string name="bottombar_home">首页</string>
+    <string name="bottombar_financing">理财</string>
+    <string name="bottombar_movie">电影</string>
+    <string name="bottombar_meizhi">妹纸</string>
+
+</resources>

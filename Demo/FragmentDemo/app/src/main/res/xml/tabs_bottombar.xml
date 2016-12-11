@@ -1,0 +1,20 @@
+<tabs>
+    <tab
+        id="@+id/bottombar_home"
+        icon="@drawable/ic_bottombar_home"
+        title="@string/bottombar_home" />
+    <tab
+        id="@+id/bottombar_financing"
+        icon="@drawable/ic_bottombar_financing"
+        title="@string/bottombar_financing" />
+    <tab
+        id="@+id/bottombar_movie"
+        icon="@drawable/ic_bottombar_movie"
+        title="@string/bottombar_movie" />
+
+    <tab
+        id="@+id/bottombar_meizhi"
+        icon="@drawable/ic_bottombar_meizhi"
+        title="@string/bottombar_meizhi" />
+</tabs>
+
