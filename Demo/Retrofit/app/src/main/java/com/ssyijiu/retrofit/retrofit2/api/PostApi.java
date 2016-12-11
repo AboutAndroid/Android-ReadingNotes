@@ -40,14 +40,14 @@ public interface PostApi {
     /* FormUrlEncoded FieldMap */
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<StringResp> getMessage(@FieldMap Map<String,String> map);/* FormUrlEncoded FieldMap */
+    Call<StringResp> getMessage(@FieldMap Map<String, String> map);/* FormUrlEncoded FieldMap */
 
 
     /* Headers */
     @Headers("Content-type:application/x-www-form-urlencoded;charset=UTF-8")
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
-    Call<StringResp> useHeaders(@FieldMap Map<String,String> map);
+    Call<StringResp> useHeaders(@FieldMap Map<String, String> map);
 
 
     // 同一个请求的同一个请求头在不同地方的设置不会被覆盖，而是会被全部添加进请求头中.
@@ -66,8 +66,5 @@ public interface PostApi {
     @FormUrlEncoded
     @POST("api/banklist/getBusinessRules")
     Call<StringResp> useHeader(@Header("Content-type") String contentType);
-
-
-
 
 }

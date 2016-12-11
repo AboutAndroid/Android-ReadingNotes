@@ -1,6 +1,7 @@
 package com.ssyijiu.retrofit.bean.vo;
 
 import android.os.Parcelable;
+
 import com.google.auto.value.AutoValue;
 
 /**
@@ -10,7 +11,7 @@ import com.google.auto.value.AutoValue;
  */
 
 @AutoValue
-public abstract class Financing implements Parcelable{
+public abstract class Financing implements Parcelable {
     public abstract String name();
 
     public static Financing create(String name) {

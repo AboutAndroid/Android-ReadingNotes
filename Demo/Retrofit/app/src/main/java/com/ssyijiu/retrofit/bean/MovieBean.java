@@ -10,7 +10,6 @@ import java.util.List;
 public class MovieBean {
 
 
-
     private int count;
     private int start;
     private int total;

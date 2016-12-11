@@ -6,12 +6,10 @@ import android.os.Environment;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.ssyijiu.retrofit.App;
 import com.ssyijiu.retrofit.BuildConfig;
-import com.ssyijiu.retrofit.retrofit2.interceptors.TokenInterceptor;
-import com.ssyijiu.retrofit.retrofit2.interceptors._AddCookiesInterceptor;
+import com.ssyijiu.retrofit.app.App;
 import com.ssyijiu.retrofit.retrofit2.interceptors.LoggingInterceptor;
-import com.ssyijiu.retrofit.retrofit2.interceptors._ReceivedCookiesInterceptor;
+import com.ssyijiu.retrofit.retrofit2.interceptors.TokenInterceptor;
 import com.ssyijiu.retrofit.retrofit2.interceptors.UserAgentInterceptor;
 
 import java.io.File;

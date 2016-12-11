@@ -6,6 +6,6 @@ package com.ssyijiu.retrofit.bean.vo;
  * E-mail: lxmyijiu@163.com
  */
 
-public interface Mapper<T>{
+public interface Mapper<T> {
     T transform();
 }

@@ -86,9 +86,9 @@ public class _PersistentCookieStore {
 
         ConcurrentHashMap<String, Cookie> cookieMap = urlCookieMaps.get(url.host());
 
-        if(cookieMap != null) {
+        if (cookieMap != null) {
             Set<String> cookieSet = cookieMap.keySet();
-            if(cookieSet != null) {
+            if (cookieSet != null) {
                 String urlCookies = TextUtils.join(",", cookieSet);
                 prefsWriter.putString(url.host(), urlCookies);
                 prefsWriter.putString(name, encodeCookie(new _OkHttpCookies(cookie)));

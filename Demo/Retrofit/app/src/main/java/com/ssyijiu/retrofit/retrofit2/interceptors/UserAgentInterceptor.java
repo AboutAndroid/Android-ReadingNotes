@@ -19,6 +19,7 @@ public class UserAgentInterceptor implements Interceptor {  // 实现接口
 
     private static final String USER_AGENT_HEADER_NAME = "User-Agent";
     private final String userAgentHeaderValue;
+
     public UserAgentInterceptor(String userAgentHeaderValue) {
         this.userAgentHeaderValue = userAgentHeaderValue;
     }
@@ -33,9 +34,9 @@ public class UserAgentInterceptor implements Interceptor {  // 实现接口
                 //设置 UA
                 .addHeader(USER_AGENT_HEADER_NAME, userAgentHeaderValue)
                 // 设置其他的请求头 - 不会覆盖之前的请求头
-                .addHeader("ssyijiu","android")
+                .addHeader("ssyijiu", "android")
                 // 设置其他的请求头 - 会覆盖之前的请求头
-                .header("ssyijiu","java")
+                .header("ssyijiu", "java")
                 .build();
 
 

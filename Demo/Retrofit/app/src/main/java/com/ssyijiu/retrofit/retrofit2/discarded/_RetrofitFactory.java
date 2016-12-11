@@ -18,6 +18,7 @@ public enum _RetrofitFactory {
     MULTI_INSTANCE(API.MULTI_API_BASEURL);
 
     private final Retrofit retrofit;
+
     _RetrofitFactory(String baseUrl) {
         retrofit = new Retrofit.Builder()
                 //设置OKHttpClient
@@ -28,6 +29,7 @@ public enum _RetrofitFactory {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+
     public Retrofit getRetrofit() {
         return retrofit;
     }

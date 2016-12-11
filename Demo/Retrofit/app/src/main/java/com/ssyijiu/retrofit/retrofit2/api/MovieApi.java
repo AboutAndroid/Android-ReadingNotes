@@ -28,7 +28,8 @@ public interface MovieApi {
     Call<MovieBean> getTop250();
 
     /* GET */
-    @GET("top250")  // 跨过 baseUrl，直接访问 url
+    @GET("top250")
+    // 跨过 baseUrl，直接访问 url
     Call<MovieBean> getTop250(@Url String url, int time);
 
     /* GET with param*/
@@ -45,7 +46,7 @@ public interface MovieApi {
 
     /* QueryMap */
     @GET("top250")
-    Call<MovieBean> getTop250(@QueryMap Map<String,Integer> count);
+    Call<MovieBean> getTop250(@QueryMap Map<String, Integer> count);
 
 
 }

@@ -1,36 +1,28 @@
 package com.ssyijiu.retrofit;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ssyijiu.library.MLog;
+import com.ssyijiu.mvp.MvpActivity;
+import com.ssyijiu.mvp.i.MvpPresenter;
 import com.ssyijiu.retrofit.bean.vo.User;
-import com.ssyijiu.retrofit.mvp.presenter.MsgPresenter;
-import com.ssyijiu.retrofit.mvp.view.MsgView;
-
-import java.util.List;
+import com.ssyijiu.retrofit.mvp.RetrofitContract;
+import com.ssyijiu.retrofit.mvp.RetrofitPresenter;
 
 import rx.Observable;
-import rx.Scheduler;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 
 /**
  * http://www.codexiu.cn/android/blog/18502/
  * http://mp.weixin.qq.com/s?__biz=MzA5MzI3NjE2MA==&mid=2650237358&idx=1&sn=f71478d5c450f588ed1678752ec36f6b&chksm=886398c1bf1411d7d8ae4369114e6737291d278c8a9225364d2a7f8b29d6c40e0db291f74217&mpshare=1&scene=1&srcid=1012ccqYkXxK2jVQpdHdT9bO#wechat_redirect
  */
-public class MainActivity extends AppCompatActivity implements MsgView {
+public class MainActivity extends MvpActivity implements RetrofitContract.View {
 
     private TextView tvInfo;
-    MsgPresenter presenter;
+    RetrofitPresenter presenter = new RetrofitPresenter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +31,15 @@ public class MainActivity extends AppCompatActivity implements MsgView {
 
         tvInfo = (TextView) findViewById(R.id.tv_info);
 
-        presenter = MsgPresenter.getInstance();
-        presenter.attachView(this);
+        findViewById(R.id.btn_get).setOnClickListener((view) -> presenter.getGetMsg());
 
-        presenter.onStart();
+        findViewById(R.id.btn_post).setOnClickListener((view) -> presenter.getPostMsg());
 
-        findViewById(R.id.btn_get).setOnClickListener((view)-> presenter.getGetMsg());
+        findViewById(R.id.btn_gold_price).setOnClickListener((view) -> presenter.getGoldPrice());
 
-        findViewById(R.id.btn_post).setOnClickListener((view)-> presenter.getPostMsg());
+        findViewById(R.id.btn_financing_list).setOnClickListener((view) -> presenter.getFinancingList());
 
-        findViewById(R.id.btn_gold_price).setOnClickListener((view)-> presenter.getGoldPrice());
-
-        findViewById(R.id.btn_financing_list).setOnClickListener((view)-> presenter.getFinancingList());
-
-        findViewById(R.id.btn_rxjava).setOnClickListener((view)-> runRxjava());
+        findViewById(R.id.btn_rxjava).setOnClickListener((view) -> runRxjava());
 
 
     }
@@ -84,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements MsgView {
                     }
                 });*/
 
-        User[] users = {new User("001","lxm"),new User("002","java"),
-                        new User("003","android"),new User("004","linux")};
+        User[] users = {new User("001", "lxm"), new User("002", "java"),
+                new User("003", "android"), new User("004", "linux")};
 
         Observable.from(users) // 1
 
@@ -94,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements MsgView {
                     @Override
                     public Observable<User.Course> call(User user) {
                         return Observable.from(user.courses); // 001,lxm
-                                                              // 002,java
-                                                              // 003,android
-                                                              // 004,linux
+                        // 002,java
+                        // 003,android
+                        // 004,linux
                     }
                 })
                 // 3
@@ -109,29 +96,30 @@ public class MainActivity extends AppCompatActivity implements MsgView {
     }
 
     @Override
+    protected MvpPresenter[] getPresenters() {
+        return new MvpPresenter[]{presenter};
+    }
+
+    @Override
     public void showLoading(String loadingMsg) {
         tvInfo.setText(loadingMsg);
     }
 
     @Override
     public void showSuccess(Object resp) {
-        tvInfo.setText((String)resp);
+        tvInfo.setText((String) resp);
     }
 
     @Override
-    public void showFailed(Throwable t) {
-        tvInfo.setText(t.getMessage());
+    public void showError(String errorMsg) {
+        tvInfo.setText(errorMsg);
     }
-
 
     @Override
-    protected void onDestroy() {
-        presenter.detachView();
-        if(isFinishing()) {
-            presenter = null;
-        }
-        super.onDestroy();
+    public void showException(Throwable tr) {
+        tvInfo.setText(tr.getMessage());
     }
+
 }
 
 

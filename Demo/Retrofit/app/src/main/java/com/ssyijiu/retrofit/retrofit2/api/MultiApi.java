@@ -23,9 +23,9 @@ public interface MultiApi {
     Call<GoldPriceResp> getGoldPrice();
 
 
-    @Headers(ApiConfig.HEADER_WITH_TOKEN)
+    @Headers(Config.HEADER_WITH_TOKEN)
     @FormUrlEncoded
     @POST("api/banklist/queryLcDetailForUseNew")
     Call<FinancingListResp> getFinancingList(
-            @FieldMap Map<String,String> map);
+            @FieldMap Map<String, String> map);
 }

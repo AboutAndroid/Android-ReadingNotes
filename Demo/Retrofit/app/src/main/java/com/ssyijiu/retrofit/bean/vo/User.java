@@ -23,8 +23,8 @@ public class User {
         this.id = id;
         this.name = name;
         courses = new ArrayList<>();
-        courses.add(new Course("c-"+id));
-        courses.add(new Course("c-"+name));
+        courses.add(new Course("c-" + id));
+        courses.add(new Course("c-" + name));
     }
 
     public static class Course {

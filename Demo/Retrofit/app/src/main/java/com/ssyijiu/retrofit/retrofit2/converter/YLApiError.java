@@ -5,7 +5,7 @@ package com.ssyijiu.retrofit.retrofit2.converter;
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
  */
-public class YLApiError extends Error{
+public class YLApiError extends Error {
     public String request;
     public String errcode;
     public String errmsg;

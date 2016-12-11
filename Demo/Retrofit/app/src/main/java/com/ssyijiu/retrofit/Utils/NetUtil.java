@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.telephony.TelephonyManager;
 
 /**
  * Created by ssyijiu on 2016/8/16.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
+ * <p>
+ * 需要权限：<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
  */
 public class NetUtil {
 
@@ -21,12 +22,12 @@ public class NetUtil {
         throw new UnsupportedOperationException("NetUtil cannot be instantiated !");
     }
 
-    private static final int NET_WIFI = 1;
-    private static final int NET_4G = 4;
-    private static final int NET_3G = 3;
-    private static final int NET_2G = 2;
-    private static final int NET_UNKNOWN = 5;
-    private static final int NET_NO = -1;
+    public static final int NET_WIFI = 1;
+    public static final int NET_4G = 4;
+    public static final int NET_3G = 3;
+    public static final int NET_2G = 2;
+    public static final int NET_UNKNOWN = 5;
+    public static final int NET_NO = -1;
 
 
     /**
@@ -41,7 +42,6 @@ public class NetUtil {
      * TelephonyManager.NETWORK_TYPE_IWLAN = 18
      */
     private static final int NETWORK_TYPE_IWLAN = 18;
-    private static final int API_24 = 24;
 
     /**
      * Returns details about the currently active default data network.
@@ -52,9 +52,8 @@ public class NetUtil {
     private static NetworkInfo getActiveNetworkInfo(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
-        return networkInfo;
+        return connectivityManager.getActiveNetworkInfo();
     }
 
     /**
@@ -66,10 +65,7 @@ public class NetUtil {
     public static boolean isAvailable(Context context) {
 
         NetworkInfo networkInfo = getActiveNetworkInfo(context);
-        if (networkInfo != null) {
-            return networkInfo.isAvailable();
-        }
-        return false;
+        return networkInfo != null && networkInfo.isAvailable();
     }
 
     /**
@@ -103,10 +99,7 @@ public class NetUtil {
      */
     public static boolean isWIFI(Context context) {
         NetworkInfo networkInfo = getActiveNetworkInfo(context);
-        if (networkInfo != null && networkInfo.isAvailable()) {
-            return networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
-        }
-        return false;
+        return networkInfo != null && networkInfo.isAvailable() && networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
     }
 
     /**
@@ -117,10 +110,7 @@ public class NetUtil {
      */
     public static boolean is4G(Context context) {
         NetworkInfo networkInfo = getActiveNetworkInfo(context);
-        if (networkInfo != null && networkInfo.isAvailable()) {
-            return networkInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_LTE;
-        }
-        return false;
+        return networkInfo != null && networkInfo.isAvailable() && networkInfo.getSubtype() == TelephonyManager.NETWORK_TYPE_LTE;
     }
 
 
@@ -198,21 +188,18 @@ public class NetUtil {
     /**
      * 网络状态切换广播接受者
      */
-    static BroadcastReceiver receiver = new BroadcastReceiver() {
+    private static BroadcastReceiver receiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-
-            if (Build.VERSION.SDK_INT < API_24 && mNetChangedListener != null) {
-                mNetChangedListener.onNetChanged();
-            }
+            mNetChangedListener.onNetChanged();
         }
 
     };
 
     private static OnNetChangedListener mNetChangedListener;
 
-    public static void setOnNetChangeListener(OnNetChangedListener listener) {
+    public static void setOnNetChangedListener(OnNetChangedListener listener) {
         mNetChangedListener = listener;
     }
 
@@ -222,30 +209,20 @@ public class NetUtil {
 
     /**
      * 注册网络状态切换广播接受者
-     * 注意：Android 7.0 取消了这个广播
      *
      * @param context
      */
     public static void registerNetChangedReceiver(Context context) {
-        if (Build.VERSION.SDK_INT < API_24) {
-            IntentFilter filter = new IntentFilter();
-            filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-
-            context.registerReceiver(receiver, filter);
-        }
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     }
 
     /**
      * 反注册网络状态切换广播接受者
-     * 注意：Android 7.0 取消了这个广播
      *
      * @param context
      */
     public static void unregisterNetChangedReceiver(Context context) {
-        if (Build.VERSION.SDK_INT < API_24) {
-            context.unregisterReceiver(receiver);
-        }
+        context.unregisterReceiver(receiver);
     }
-
-
 }

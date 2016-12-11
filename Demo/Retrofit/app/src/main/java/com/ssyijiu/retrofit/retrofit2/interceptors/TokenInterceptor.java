@@ -2,8 +2,8 @@ package com.ssyijiu.retrofit.retrofit2.interceptors;
 
 import android.text.TextUtils;
 
-import com.ssyijiu.retrofit.retrofit2.api.ApiConfig;
-import com.ssyijiu.retrofit.retrofit2.api.Your;
+import com.ssyijiu.retrofit.retrofit2.api.Config;
+import com.ssyijiu.retrofit.retrofit2.token.Your;
 
 import java.io.IOException;
 
@@ -50,7 +50,7 @@ public class TokenInterceptor implements Interceptor {
         Request.Builder newRequest = originalRequest.newBuilder()
                 .headers(newHeaders.build());
 
-        if (authType.equals(ApiConfig.HEADER_TOKEN)) {
+        if (authType.equals(Config.HEADER_TOKEN)) {
             addTokenOnParam(newRequest, originalRequest.url());
         }
 
@@ -60,9 +60,9 @@ public class TokenInterceptor implements Interceptor {
     private boolean alreadyHasTokenOnParam(Request originalRequest) {
 
         FormBody body = getFormBodyFromRequest(originalRequest);
-        if(body != null) {
+        if (body != null) {
             for (int i = 0; i < body.size(); i++) {
-                if (TextUtils.equals(body.encodedName(i), ApiConfig.TOKEN)) {
+                if (TextUtils.equals(body.encodedName(i), Config.TOKEN)) {
                     return true;
                 }
             }
@@ -72,13 +72,14 @@ public class TokenInterceptor implements Interceptor {
 
     /**
      * 从 Request 提取 FormBody
+     *
      * @param request
      * @return if is GET Request or happen exception return null
      */
     private FormBody getFormBodyFromRequest(Request request) {
 
         // GET 请求没有 body
-        if(TextUtils.equals(request.method(),"POST")) {
+        if (TextUtils.equals(request.method(), "POST")) {
             // POST 请求没有参数的话 ，originalRequest.body() 不能转成 FormBody
             try {
                 return (FormBody) request.body();
@@ -96,7 +97,7 @@ public class TokenInterceptor implements Interceptor {
         }
 
         HttpUrl.Builder newUrl = url.newBuilder()
-                .addQueryParameter(ApiConfig.TOKEN, Your.sToken);
+                .addQueryParameter(Config.TOKEN, Your.sToken);
 
         newRequest.url(newUrl.build());
     }

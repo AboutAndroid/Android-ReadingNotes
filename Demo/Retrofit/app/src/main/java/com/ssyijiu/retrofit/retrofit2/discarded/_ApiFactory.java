@@ -15,6 +15,7 @@ public enum _ApiFactory {
     public final MovieApi API_MOVIE;
     public final PostApi API_POST;
     public final MultiApi API_MULTI;
+
     _ApiFactory() {
 
         /**

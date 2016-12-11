@@ -9,19 +9,22 @@ import java.util.Map;
  * E-mail: lxmyijiu@163.com
  */
 
-public enum  ParamsMap {
+public enum ParamsMap {
 
     INSTANCE;
 
-    private HashMap<String,String> tokenMap;
+    private HashMap<String, String> tokenMap;
+
     ParamsMap() {
         tokenMap = new HashMap<>();
     }
 
 
-    public Map<String,String> getTokenMap() {
+    public Map<String, String> getTokenMap() {
         tokenMap.clear();
-        tokenMap.put(ApiConfig.CHANNEL_ID,"23");
+
+        // token 需要登录获取，暂时使用 CHANNEL_ID 模拟
+        tokenMap.put(Config.CHANNEL_ID, "23");
         return tokenMap;
     }
 }

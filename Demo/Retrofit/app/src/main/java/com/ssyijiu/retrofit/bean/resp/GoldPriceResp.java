@@ -6,7 +6,7 @@ package com.ssyijiu.retrofit.bean.resp;
  * E-mail: lxmyijiu@163.com
  */
 
-public class GoldPriceResp extends BaseResp<GoldPriceResp.ResponseParamsBean>{
+public class GoldPriceResp extends BaseResp<GoldPriceResp.ResponseParamsBean> {
 
     public static class ResponseParamsBean {
         public SysTimeBean sysTime;

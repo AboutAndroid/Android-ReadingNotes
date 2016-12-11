@@ -15,7 +15,7 @@ import okio.Okio;
  * Created by ssyijiu on 2016/11/23.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
- *
+ * <p>
  * Gzip压缩，待验证（在我们服务器交互出现崩溃）
  */
 

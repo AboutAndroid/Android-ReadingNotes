@@ -15,7 +15,7 @@ import retrofit2.Retrofit;
  * Created by ssyijiu on 2016/11/25.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
- *
+ * <p>
  * API Error 处理，看不懂。
  * http://blog.piasy.com/2016/09/04/RESTful-Android-Network-Solution-2/
  */

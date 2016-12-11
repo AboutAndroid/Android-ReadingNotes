@@ -6,5 +6,5 @@ package com.ssyijiu.retrofit.bean.resp;
  * E-mail: lxmyijiu@163.com
  */
 
-public class StringResp extends BaseResp<String>{
+public class StringResp extends BaseResp<String> {
 }

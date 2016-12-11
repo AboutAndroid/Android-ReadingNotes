@@ -12,7 +12,7 @@ import com.ssyijiu.retrofit.retrofit2.api.PostApi;
 
 public class ApiFactory {
 
-    private ApiFactory(){
+    private ApiFactory() {
     }
 
     public static final class INSTANCE {

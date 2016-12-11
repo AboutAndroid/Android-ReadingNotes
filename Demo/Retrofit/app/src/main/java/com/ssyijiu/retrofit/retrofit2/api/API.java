@@ -5,6 +5,6 @@ package com.ssyijiu.retrofit.retrofit2.api;
  */
 public interface API {
 
-   String MOVIE_API_BASEURL = "https://api.douban.com/v2/movie/";
-   String MULTI_API_BASEURL = "https://app.dbjb.com/";
+    String MOVIE_API_BASEURL = "https://api.douban.com/v2/movie/";
+    String MULTI_API_BASEURL = "https://app.dbjb.com/";
 }

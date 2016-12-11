@@ -19,13 +19,13 @@ public class UserListResp implements Mapper<List<User>> {
     @Override
     public List<User> transform() {
         List<User> list = new ArrayList<>();
-        for(UserDTO dto : userList){
+        for (UserDTO dto : userList) {
             list.add(dto.transform());
         }
         return list;
     }
 
-    private static class UserDTO implements Mapper<User>{
+    private static class UserDTO implements Mapper<User> {
         private String uid;
         private String user_name;
         private String gender;

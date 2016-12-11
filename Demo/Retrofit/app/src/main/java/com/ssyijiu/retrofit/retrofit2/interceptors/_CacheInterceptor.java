@@ -1,6 +1,6 @@
 package com.ssyijiu.retrofit.retrofit2.interceptors;
 
-import com.ssyijiu.retrofit.App;
+import com.ssyijiu.retrofit.app.App;
 import com.ssyijiu.retrofit.utils.NetUtil;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import okhttp3.Response;
  * Created by ssyijiu on 2016/11/23.
  * Github: ssyijiu
  * E-mail: lxmyijiu@163.com
- *
+ * <p>
  * OkHttp 使用 HTTP缓存
  * http://blog.csdn.net/qq_17766199/article/details/53186874
  * 注意：HTTP缓存不支持 POST 见 http://www.w3school.com.cn/tags/html_ref_httpmethods.asp
@@ -38,7 +38,7 @@ public class _CacheInterceptor implements Interceptor {
         // 构建响应
         Response originalResponse = chain.proceed(originalRequest);
 
-        if(NetUtil.isAvailable(App.getContext())) {
+        if (NetUtil.isAvailable(App.getContext())) {
 
             // String cacheControl = originalRequest.cacheControl().toString();
             return originalResponse.newBuilder()
@@ -48,7 +48,7 @@ public class _CacheInterceptor implements Interceptor {
                     .build();
         } else {
 
-            int maxAge= 60 * 60;
+            int maxAge = 60 * 60;
             return originalResponse.newBuilder()
                     .header("Cache-Control", "public, only-if-cached, max-age=" + maxAge)
                     .removeHeader("Pragma")

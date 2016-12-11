@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitFactory {
 
     private Retrofit RETROFIT;
+    private Retrofit.Builder BUILDER;
 
     /**
      * 服务器有几个 HOST, 创建几个 retrofit 单例。
@@ -26,14 +27,18 @@ public class RetrofitFactory {
     }
 
     private RetrofitFactory(String baseUrl) {
-        RETROFIT = new Retrofit.Builder()
-                //设置OKHttpClient
-                .client(OKHttpFactory.INSTANCE.getOkHttpClient())
-                //baseUrl
-                .baseUrl(baseUrl)
-                //gson转化器
-                .addConverterFactory(GsonConverterFactory.create(mGson))
-                .build();
+
+        if(BUILDER == null) {
+            BUILDER = new Retrofit.Builder()
+                    //设置OKHttpClient
+                    .client(OKHttpFactory.INSTANCE.getOkHttpClient())
+                    //baseUrl
+                    .baseUrl(baseUrl)
+                    //gson转化器
+                    .addConverterFactory(GsonConverterFactory.create(mGson));
+        }
+
+        RETROFIT = BUILDER.baseUrl(baseUrl).build();
     }
 
     private static final Gson mGson = new Gson();

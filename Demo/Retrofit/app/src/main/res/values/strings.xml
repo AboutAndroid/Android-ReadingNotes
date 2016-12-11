@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Retrofit</string>
+
+    <!-- Error Tip Dialog-->
+    <string name="error_tip">提示</string>
+    <string name="make_sure">确定</string>
+
 </resources>

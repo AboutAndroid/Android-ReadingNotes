@@ -13,7 +13,7 @@ import okhttp3.Cookie;
  * E-mail: lxmyijiu@163.com
  */
 
-public class _OkHttpCookies implements Serializable{
+public class _OkHttpCookies implements Serializable {
     private transient final Cookie cookies;
     private transient Cookie clientCookies;
 
@@ -59,6 +59,6 @@ public class _OkHttpCookies implements Serializable{
         builder = builder.path(path);
         builder = secure ? builder.secure() : builder;
         builder = httpOnly ? builder.httpOnly() : builder;
-        clientCookies =builder.build();
+        clientCookies = builder.build();
     }
 }
