@@ -17,7 +17,8 @@ import com.ssyijiu.mvpdemo2.ui.LoginContract;
 
 public class LoginPresenter extends LoginContract.Presenter {
 
-    private LoginModel mLoginModel= ModelManager.getModel(LoginModel.class);
+    private LoginContract.Model mLoginModel
+            = ModelManager.getModel(LoginModel.class);
 
     @Override
     public void init() {
