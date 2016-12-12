@@ -13,7 +13,7 @@ import com.ssyijiu.mvp.i.MvpView;
 public class RetrofitPresenter extends RetrofitContract.Presenter {
 
 
-    RetrofitModel mModel = ModelManager.getModel(RetrofitModel.class);
+    RetrofitContract.Model mModel = ModelManager.getModel(RetrofitModel.class);
 
     @Override
     public void getFinancingList() {

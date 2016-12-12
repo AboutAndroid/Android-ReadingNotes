@@ -81,9 +81,9 @@ public class MainActivity extends MvpActivity implements RetrofitContract.View {
                     @Override
                     public Observable<User.Course> call(User user) {
                         return Observable.from(user.courses); // 001,lxm
-                        // 002,java
-                        // 003,android
-                        // 004,linux
+                                                              // 002,java
+                                                              // 003,android
+                                                              // 004,linux
                     }
                 })
                 // 3
