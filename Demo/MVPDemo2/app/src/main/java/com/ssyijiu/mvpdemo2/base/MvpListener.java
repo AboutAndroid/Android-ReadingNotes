@@ -10,6 +10,8 @@ public interface MvpListener<T> {
 
     void onSuccess(T bean);
 
+    void onSuccess();
+
     void onError(String errorMsg);
 
     void onException(Throwable tr);

@@ -14,4 +14,5 @@ public class HomeFragment extends BaseFragment{
     protected int getFragmentResId() {
         return R.layout.fragment_home;
     }
+
 }
