@@ -1,9 +1,12 @@
 package com.ssyijiu.fragmentdemo;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.widget.FrameLayout;
 
 import com.roughike.bottombar.BottomBar;
 import com.ssyijiu.fragmentdemo.app.BaseActivity;
+import com.ssyijiu.fragmentdemo.ui.HomeFragment;
 
 import static com.ssyijiu.fragmentdemo.R.layout.activity_main;
 
@@ -28,7 +31,15 @@ public class MainActivity extends BaseActivity {
         mBottombar = getView(R.id.bottombar);
 
         initBottomBar();
+        initFragment();
 
+    }
+
+    private void initFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container, new HomeFragment());
+        fragmentTransaction.commit();
     }
 
 
@@ -42,7 +53,7 @@ public class MainActivity extends BaseActivity {
                     break;
                 case R.id.bottombar_movie:
                     break;
-                case R.id.bottombar_meizhi:
+                case R.id.bottombar_girls:
                     break;
             }
         });
