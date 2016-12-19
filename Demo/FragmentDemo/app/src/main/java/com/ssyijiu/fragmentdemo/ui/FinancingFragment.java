@@ -1,5 +1,7 @@
 package com.ssyijiu.fragmentdemo.ui;
 
+import android.os.Bundle;
+
 import com.ssyijiu.fragmentdemo.R;
 import com.ssyijiu.fragmentdemo.app.BaseFragment;
 
@@ -10,6 +12,11 @@ import com.ssyijiu.fragmentdemo.app.BaseFragment;
  */
 
 public class FinancingFragment extends BaseFragment {
+    @Override
+    protected void parseArguments(Bundle arguments) {
+
+    }
+
     @Override
     protected int getFragmentResId() {
         return R.layout.fragment_financing;

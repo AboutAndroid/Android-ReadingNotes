@@ -18,8 +18,10 @@ import com.ssyijiu.library.MLog;
  */
 
 public abstract class BaseFragment extends Fragment {
-    Activity mActivity;
-    View mRootView;
+    protected Activity mActivity;
+    protected View mRootView;
+
+
 
     @Override
     public void onAttach(Context context) {
@@ -33,8 +35,13 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         MLog.i("onCreate");
 
+        if(getArguments() != null) {
+            parseArguments(getArguments());
+        }
         // 初始化或恢复 Fragment 中组件的状态
     }
+
+    protected abstract void parseArguments(Bundle arguments);
 
     /**
      *

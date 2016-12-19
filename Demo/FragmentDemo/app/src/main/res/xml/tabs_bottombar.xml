@@ -13,7 +13,7 @@
         title="@string/bottombar_movie" />
 
     <tab
-        id="@+id/bottombar_meizhi"
+        id="@+id/bottombar_girls"
         icon="@drawable/ic_bottombar_meizhi"
         title="@string/bottombar_meizhi" />
 </tabs>
