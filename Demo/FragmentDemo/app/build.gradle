@@ -27,9 +27,11 @@ android {
 
 
 ext {
+    supportVersion = '25.1.0'
     bottomBarVersion = '2.0.2'
     leakcanaryVersion = '1.5'
     MLogVersion = '1.0.9'
+    eventbusVersion = '3.0.0'
 }
 
 dependencies {
@@ -37,7 +39,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile "com.android.support:appcompat-v7:${supportVersion}"
     testCompile 'junit:junit:4.12'
 
 
@@ -48,5 +50,7 @@ dependencies {
     debugCompile "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
     testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
+
+    compile "org.greenrobot:eventbus:${eventbusVersion}"
 
 }

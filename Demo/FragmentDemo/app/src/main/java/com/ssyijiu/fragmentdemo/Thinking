@@ -1,2 +1,5 @@
 Fragment 必须始终嵌入在 Activity 中，其生命周期直接受宿主 Activity 生命周期的影响。
 例如，当 Activity 暂停时，其中的所有 Fragment 也会暂停；当 Activity 被销毁时，所有 Fragment 也会被销毁。
+
+2016.12.22
+完成一级 Fragment 的 show/hide 、内存重启状态保存、懒加载

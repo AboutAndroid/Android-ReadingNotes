@@ -1,11 +1,16 @@
 package com.ssyijiu.fragmentdemo.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ssyijiu.fragmentdemo.R;
 import com.ssyijiu.fragmentdemo.app.BaseFragment;
-import com.ssyijiu.fragmentdemo.app.FRAG;
+import com.ssyijiu.fragmentdemo.event.TabReselectEvent;
 import com.ssyijiu.library.MLog;
+
+import org.greenrobot.eventbus.Subscribe;
 
 
 /**
@@ -16,43 +21,44 @@ import com.ssyijiu.library.MLog;
 
 public class HomeFragment extends BaseFragment {
 
+    private TextView tvText;
+
     // Activity意外重启恢复Fragment时候默认会执行无参构造方法
     // 没有无参构造方法则抛出异常
     public HomeFragment() {
         MLog.i("HomeFragment");
     }
 
-    public HomeFragment(int index) {
-        FRAG.INDEX = index;
-        MLog.i("HomeFragment with the index");
-    }
-
-
-    @Override
-    protected void parseArguments(Bundle arguments) {
-        FRAG.INDEX = arguments.getInt("index");
-    }
-
     @Override
     protected int getFragmentResId() {
-        switch (FRAG.INDEX) {
-            case FRAG.HOME:
-                return R.layout.fragment_home;
-            case FRAG.GIRLS:
-                return R.layout.fragment_girls;
-            default:
-                return R.layout.fragment_home;
-        }
+        return R.layout.fragment_home;
 
     }
 
-    public static HomeFragment newInstance(int index) {
-        HomeFragment f = new HomeFragment(index);
+    @Override
+    protected void initView(View rootView) {
+        tvText = (TextView) rootView.findViewById(R.id.home_tv_text);
+
+    }
+
+    @Override
+    protected void initLazyData() {
+        Toast.makeText(mActivity, getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+    }
+
+    public static HomeFragment newInstance() {
+        HomeFragment f = new HomeFragment();
         // Supply index input as an argument.
         Bundle args = new Bundle();
-        args.putInt("index", index);
         f.setArguments(args);
         return f;
+    }
+
+    @Subscribe
+    public void onEvent(TabReselectEvent event) {
+        if(event.tabId == R.id.bottombar_home) {
+            tvText.setText("HOME");
+        }
     }
 
 }

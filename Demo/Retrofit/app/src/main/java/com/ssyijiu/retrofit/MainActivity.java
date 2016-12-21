@@ -48,6 +48,7 @@ public class MainActivity extends MvpActivity implements RetrofitContract.View {
     private void runRxjava() {
 
         // http://gank.io/post/560e15be2dca930e00da1083
+        // https://realm.io/cn/news/gotocph-jake-wharton-exploring-rxjava2-android/
 
         // 1.创建被观察者，并注入事件
         // 2.创建订阅者，并指定拿到事件后的操作

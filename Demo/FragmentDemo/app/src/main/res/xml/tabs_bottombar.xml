@@ -14,7 +14,7 @@
 
     <tab
         id="@+id/bottombar_girls"
-        icon="@drawable/ic_bottombar_meizhi"
+        icon="@drawable/ic_bottombar_girls"
         title="@string/bottombar_meizhi" />
 </tabs>
 

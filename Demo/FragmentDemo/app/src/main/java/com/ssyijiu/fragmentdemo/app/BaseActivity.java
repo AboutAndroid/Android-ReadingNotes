@@ -12,6 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.View;
 
+import com.ssyijiu.fragmentdemo.event.Event;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 /**
  * Created by ssyijiu on 2016/12/11.
  * Github: ssyijiu
@@ -39,10 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
     }
 
+
     protected abstract void initView(Bundle savedInstanceState);
 
     protected abstract int getLayoutResId();
-
 
 
     protected void parseIntent(Intent intent) {
@@ -52,18 +57,32 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // EventBus 注册
+        EventBus.getDefault().register(this);
+    }
 
-    public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                              @NonNull Fragment fragment, int frameId) {
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // EventBus 反注册
+        EventBus.getDefault().unregister(this);
+    }
+
+
+    public void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+                                      @NonNull Fragment fragment, int frameId, String tag) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(frameId, fragment);
+        transaction.add(frameId, fragment, tag);
         transaction.commit();
     }
 
-    private static <T> T checkNotNull(T reference) {
-        if(reference == null) {
+    private <T> T checkNotNull(T reference) {
+        if (reference == null) {
             throw new NullPointerException();
         } else {
             return reference;
@@ -80,5 +99,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             mViews.put(viewId, view);
         }
         return (T) view;
+    }
+
+    @Subscribe
+    public void onEvent(Event event) {
     }
 }

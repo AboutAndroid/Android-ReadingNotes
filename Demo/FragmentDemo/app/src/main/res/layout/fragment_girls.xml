@@ -6,6 +6,8 @@
 
 
     <TextView
+        android:id="@+id/girls_tv_text"
+        android:textSize="23sp"
         android:textColor="@android:color/black"
         android:text="@string/bottombar_meizhi"
         android:layout_gravity="center"

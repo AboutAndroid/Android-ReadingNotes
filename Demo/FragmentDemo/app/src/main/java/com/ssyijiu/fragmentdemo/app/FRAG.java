@@ -6,9 +6,17 @@ package com.ssyijiu.fragmentdemo.app;
  * E-mail: lxmyijiu@163.com
  */
 
-public class FRAG {
-    public static final int HOME = 0;
-    public static final int GIRLS = 1;
+public interface FRAG {
 
-    public static int INDEX = HOME;
+    // the index of fragments
+    int HOME = 0;
+    int GIRLS = 1;
+    int MOVIE = 2;
+    int FINANCING = 3;
+
+    // the tag of fragments
+    String TAG_HOME = "tag_home";
+    String TAG_GIRLS = "tag_girls";
+    String TAG_MOVIE = "tag_movie";
+    String TAG_FINANCING = "tag_financing";
 }
