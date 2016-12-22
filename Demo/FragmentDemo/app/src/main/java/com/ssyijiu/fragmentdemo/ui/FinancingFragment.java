@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.ssyijiu.fragmentdemo.R;
 import com.ssyijiu.fragmentdemo.app.BaseFragment;
+import com.ssyijiu.fragmentdemo.app.FRAG;
 import com.ssyijiu.fragmentdemo.event.TabReselectEvent;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -48,7 +49,7 @@ public class FinancingFragment extends BaseFragment {
 
     @Subscribe
     public void onEvent(TabReselectEvent event) {
-        if(event.tabId == R.id.bottombar_financing) {
+        if(event.position == FRAG.FINANCING) {
             tvText.setText("FINANCING");
         }
     }

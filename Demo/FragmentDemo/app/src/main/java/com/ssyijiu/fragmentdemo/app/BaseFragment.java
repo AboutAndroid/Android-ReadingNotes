@@ -2,6 +2,7 @@ package com.ssyijiu.fragmentdemo.app;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -24,17 +25,10 @@ public abstract class BaseFragment extends Fragment {
 
     protected Activity mActivity;  // 宿主 Activity
 
-    private View mRootView;  // 根布局
-
     protected boolean mIsFirstShow = true;  // 是否第一次显示，用于判断懒加载
 
-    /* the context is null
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mActivity = (Activity) context;
-    }
-    */
+    /** 记录 Fragment 的 show/hide 状态 */
+    private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
 
 
     @Override
@@ -46,12 +40,22 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MLog.i("onCreate");
+
+        // 恢复 Fragment show/hide 状态
+        if (savedInstanceState != null) {
+            boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.hide(this);  // 将 Fragment 全部 hide，默认全部 show
+            if (!isSupportHidden) {   // 将原来 show 的恢复
+                ft.show(this);
+            }
+            ft.commit();
+        }
 
         if (getArguments() != null) {
             parseArguments(getArguments());
         }
-        // 初始化或恢复 Fragment 中组件的状态
+
     }
 
     /**
@@ -67,7 +71,7 @@ public abstract class BaseFragment extends Fragment {
 
         EventBus.getDefault().register(this);
 
-        mRootView = inflater.inflate(getFragmentResId(), container, false);
+        View mRootView = inflater.inflate(getFragmentResId(), container, false);
 
         initView(mRootView);
 
@@ -81,6 +85,12 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initView(View rootView);
 
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        // 保存 Fragment 的 show/hide 状态
+        outState.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden());
+    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.ssyijiu.fragmentdemo.R;
 import com.ssyijiu.fragmentdemo.app.BaseFragment;
+import com.ssyijiu.fragmentdemo.app.FRAG;
 import com.ssyijiu.fragmentdemo.event.TabReselectEvent;
 import com.ssyijiu.library.MLog;
 
@@ -38,7 +39,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initView(View rootView) {
         tvText = (TextView) rootView.findViewById(R.id.home_tv_text);
-
     }
 
     @Override
@@ -56,7 +56,7 @@ public class HomeFragment extends BaseFragment {
 
     @Subscribe
     public void onEvent(TabReselectEvent event) {
-        if(event.tabId == R.id.bottombar_home) {
+        if(event.position == FRAG.HOME) {
             tvText.setText("HOME");
         }
     }

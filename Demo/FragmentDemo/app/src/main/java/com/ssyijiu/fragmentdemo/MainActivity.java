@@ -4,7 +4,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 
-import com.roughike.bottombar.BottomBar;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.ssyijiu.fragmentdemo.app.BaseActivity;
 import com.ssyijiu.fragmentdemo.app.FRAG;
 import com.ssyijiu.fragmentdemo.event.TabReselectEvent;
@@ -23,7 +24,8 @@ import org.greenrobot.eventbus.EventBus;
  */
 public class MainActivity extends BaseActivity {
 
-    private BottomBar mBottombar;
+    private AHBottomNavigation mBottombar;
+
     private FragmentManager mFragmentManager;
     private HomeFragment mHomeFragment;
     private GirlsFragment mGirlsFragment;
@@ -42,7 +44,7 @@ public class MainActivity extends BaseActivity {
         mBottombar = getView(R.id.bottombar);
         mFragmentManager = getFragmentManager();
 
-        // Activity意外重启时会自动恢复Fragment,不需要重新添加
+        // Activity内存重启时会自动恢复Fragment,不需要重新添加
         if (savedInstanceState == null) {
             addFragment();
         } else {
@@ -72,31 +74,63 @@ public class MainActivity extends BaseActivity {
         mMovieFragment = (MovieFragment) mFragmentManager.findFragmentByTag(FRAG.TAG_MOVIE);
         mFinancingFragment = (FinancingFragment) mFragmentManager.findFragmentByTag(FRAG.TAG_FINANCING);
 
+        // 内存重启后，会恢复所有的 Fragment,但是 Fragment 的 mHidden 属性默认 false,造成 Fragment 重叠
     }
 
 
     private void initBottomBar() {
-        mBottombar.setOnTabSelectListener((tabId) -> {
-            switch (tabId) {
-                case R.id.bottombar_home:  // mBottombar 会默认执行选中第一个tab一次
+
+        // Create items
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.bottombar_home, R.drawable.ic_bottombar_home, R.color.colorPrimary);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.bottombar_girls, R.drawable.ic_bottombar_girls, R.color.colorPrimary);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.bottombar_movie, R.drawable.ic_bottombar_movie, R.color.colorPrimary);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.bottombar_financing, R.drawable.ic_bottombar_financing, R.color.colorPrimary);
+
+        // Add items
+        mBottombar.addItem(item1);
+        mBottombar.addItem(item2);
+        mBottombar.addItem(item3);
+        mBottombar.addItem(item4);
+
+        // Change colors
+        mBottombar.setAccentColor(getColorFromId(R.color.colorPrimary));
+        mBottombar.setInactiveColor(getColorFromId(R.color.GERY));
+
+        // Manage titles
+        mBottombar.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
+
+        // Set current item programmatically
+        mBottombar.setCurrentItem(0);
+
+        // Customize notification (title, background, typeface)
+        mBottombar.setNotificationBackgroundColor(getColorFromId(R.color.colorPrimary));
+
+        // Add or remove notification for each item
+        mBottombar.setNotification("1", 3);
+
+        // Set listeners
+        mBottombar.setOnTabSelectedListener((position, wasSelected) -> {
+            switch (position) {
+                case FRAG.HOME:
                     showFragment(mHomeFragment);
                     break;
-                case R.id.bottombar_financing:
-                    showFragment(mFinancingFragment);
-                    break;
-                case R.id.bottombar_movie:
-                    showFragment(mMovieFragment);
-                    break;
-                case R.id.bottombar_girls:
+                case FRAG.GIRLS:
                     showFragment(mGirlsFragment);
                     break;
+                case FRAG.MOVIE:
+                    showFragment(mMovieFragment);
+                    break;
+                case FRAG.FINANCING:
+                    showFragment(mFinancingFragment);
+                    break;
             }
-        });
 
-        mBottombar.setOnTabReselectListener((tabId) -> {
-            EventBus.getDefault().post(new TabReselectEvent(tabId));
+            // 再次选中
+            if(wasSelected) {
+                EventBus.getDefault().post(new TabReselectEvent(position));
+            }
+            return true;
         });
-
     }
 
     private void showFragment(Fragment fragment) {

@@ -101,6 +101,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         return (T) view;
     }
 
+    protected int getColorFromId(int colorId) {
+        return getResources().getColor(colorId);
+    }
+
     @Subscribe
     public void onEvent(Event event) {
     }

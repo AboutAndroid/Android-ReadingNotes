@@ -3,7 +3,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.ssyijiu.fragmentdemo"
         minSdkVersion 15
@@ -28,7 +28,7 @@ android {
 
 ext {
     supportVersion = '25.1.0'
-    bottomBarVersion = '2.0.2'
+    ahbottomnavigationVersion = '2.0.2'
     leakcanaryVersion = '1.5'
     MLogVersion = '1.0.9'
     eventbusVersion = '3.0.0'
@@ -45,7 +45,7 @@ dependencies {
 
     compile "com.github.ssyijiu:MLog:${MLogVersion}"
 
-    compile "com.roughike:bottom-bar:${bottomBarVersion}"
+    compile "com.aurelhubert:ahbottomnavigation:${ahbottomnavigationVersion}"
 
     debugCompile "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"

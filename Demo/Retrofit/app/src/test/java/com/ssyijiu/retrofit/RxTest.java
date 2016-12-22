@@ -43,13 +43,13 @@ public class RxTest {
 
 
         // just
-//         mObservable = Observable.just("lxm","rxjava");
+         mObservable = Observable.just("lxm","rxjava");
         // subscriber.onNext("lxm");
         // subscriber.onNext("rxjava");
         // subscriber.onCompleted();
 
         // from
-        mObservable = Observable.from(new String[]{"rxjava","lxm"});
+//        mObservable = Observable.from(new String[]{"rxjava","lxm"});
 
         // 2. 创建订阅者，指定拿到事件后的操作
         mSubscriber = new Subscriber<String>() {

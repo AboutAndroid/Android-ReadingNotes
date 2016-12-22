@@ -9,7 +9,7 @@
         android:id="@+id/girls_tv_text"
         android:textSize="23sp"
         android:textColor="@android:color/black"
-        android:text="@string/bottombar_meizhi"
+        android:text="@string/bottombar_girls"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

@@ -8,9 +8,9 @@ package com.ssyijiu.fragmentdemo.event;
 
 public class TabReselectEvent {
 
-    public int tabId;
+    public int position;
 
-    public TabReselectEvent(int tabId) {
-        this.tabId = tabId;
+    public TabReselectEvent(int position) {
+        this.position = position;
     }
 }
