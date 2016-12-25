@@ -6,24 +6,23 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.ssyijiu.recyclerdemo.ImageUrls;
 import com.ssyijiu.recyclerdemo.R;
 
-import java.util.List;
+import static com.ssyijiu.library.MLog.LogLev.I;
 
-/**
- * Created by lxm on 2016/5/3.
- */
+
 public class RecycleAdapter extends RecyclerView.Adapter {
-    Context mContext;
-    List<String> mDatas;
-    SparseArray<View> viewArray = new SparseArray<>();
+    private Context mContext;
+    private SparseArray<View> viewArray = new SparseArray<>();
 
 
-    public RecycleAdapter(Context context, List<String> datas) {
+    public RecycleAdapter(Context context) {
         mContext = context;
-        mDatas = datas;
     }
 
 
@@ -39,21 +38,30 @@ public class RecycleAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        viewHolder.textView.setText(position + ":" + mDatas.get(position));
+
+        Glide.with(mContext)
+                .load(ImageUrls.INSTANCE.get(position))
+                .centerCrop()
+                .placeholder(R.color.colorAccent)
+                .into(viewHolder.mImageView);
+
+        viewHolder.mTextView.setText("Use Glide load Girls");
     }
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return ImageUrls.INSTANCE.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    private static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        ImageView mImageView;
+        TextView mTextView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.text);
+            mImageView = (ImageView) itemView.findViewById(R.id.item_image);
+            mTextView = (TextView) itemView.findViewById(R.id.item_text);
         }
     }
 
