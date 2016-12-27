@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.squareup.leakcanary.LeakCanary;
+import com.ssyijiu.fgp.FGP;
 
 /**
  * Created by ssyijiu on 2016/11/15.
@@ -25,6 +26,8 @@ public class App extends Application {
 
         sContext = this;
         sResources = getResources();
+
+        FGP.init(this);
 
         initLeakCanary();
     }

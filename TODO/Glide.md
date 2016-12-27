@@ -5,6 +5,8 @@
 http://wuxiaolong.me/2016/09/07/MyAndroidLibrary/
 
 http://mrfu.me/2016/02/27/Glide_Advanced_Loading/
+
+https://github.com/YaphetZhao/GlideCatchSimple
 完成时间：2016/9/18  
 ###1. 踩坑
 - 加载 GIF - Glide加载 GIF 真的很糟糕，经常出现各种加载不出来，如果对 GIF 进行剪裁就更糟糕了。

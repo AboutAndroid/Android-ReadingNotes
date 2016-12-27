@@ -9,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.ssyijiu.fgp.switchlib.ImageLoader;
+import com.ssyijiu.fgp.weight.MImageView;
 import com.ssyijiu.recyclerdemo.ImageUrls;
 import com.ssyijiu.recyclerdemo.R;
-
-import static com.ssyijiu.library.MLog.LogLev.I;
 
 
 public class RecycleAdapter extends RecyclerView.Adapter {
@@ -39,11 +38,7 @@ public class RecycleAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
 
-        Glide.with(mContext)
-                .load(ImageUrls.INSTANCE.get(position))
-                .centerCrop()
-                .placeholder(R.color.colorAccent)
-                .into(viewHolder.mImageView);
+        ImageLoader.getInstance().loadImageOnlyWifi(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
 
         viewHolder.mTextView.setText("Use Glide load Girls");
     }
@@ -55,12 +50,12 @@ public class RecycleAdapter extends RecyclerView.Adapter {
 
     private static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mImageView;
+        MImageView mImageView;
         TextView mTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            mImageView = (ImageView) itemView.findViewById(R.id.item_image);
+            mImageView = (MImageView) itemView.findViewById(R.id.item_image);
             mTextView = (TextView) itemView.findViewById(R.id.item_text);
         }
     }
