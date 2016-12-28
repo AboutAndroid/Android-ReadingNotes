@@ -1,4 +1,4 @@
-package com.ssyijiu.fgp.weight;
+package com.ssyijiu.picassof.weight;
 
 import android.content.Context;
 import android.util.AttributeSet;

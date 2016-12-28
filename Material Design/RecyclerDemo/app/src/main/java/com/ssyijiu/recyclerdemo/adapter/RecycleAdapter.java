@@ -6,11 +6,10 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ssyijiu.fgp.switchlib.ImageLoader;
-import com.ssyijiu.fgp.weight.MImageView;
+import com.ssyijiu.picassof.switchlib.ImageLoader;
+import com.ssyijiu.picassof.weight.MImageView;
 import com.ssyijiu.recyclerdemo.ImageUrls;
 import com.ssyijiu.recyclerdemo.R;
 
@@ -38,7 +37,8 @@ public class RecycleAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
 
-        ImageLoader.getInstance().loadImageOnlyWifi(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
+
+        ImageLoader.getInstance().loadImage(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
 
         viewHolder.mTextView.setText("Use Glide load Girls");
     }

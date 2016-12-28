@@ -1,8 +1,8 @@
-package com.ssyijiu.fgp.switchlib;
+package com.ssyijiu.picassof.switchlib;
 
 import android.content.Context;
 
-import com.ssyijiu.fgp.weight.MImageView;
+import com.ssyijiu.picassof.weight.MImageView;
 
 /**
  * Created by ssyijiu on 2016/12/27.
@@ -18,7 +18,7 @@ public class ImageLoader {
 
     private static class Lazy {
 
-        // use Picasso load image
+        // use PicassoF load image
 //        static final Loader INSTANCE = LoaderFactory.providePicassoLoader();
 
         // use Glide load image
@@ -36,8 +36,17 @@ public class ImageLoader {
     }
 
     public interface Loader {
+
+        /** 总是加载图片 */
+        void loadImageAlways(Context context, String url, MImageView imageView);
+
+        /** 根据设置(是否仅WIFI加载图片)加载图片 */
         void loadImage(Context context, String url, MImageView imageView);
+
+        /** 仅WIFI加载图片 */
         void loadImageOnlyWifi(Context context, String url, MImageView imageView);
+
+        /** 只加载图片缓存 */
         void loadImageOnlyCache(Context context, String url, MImageView imageView);
     }
 }

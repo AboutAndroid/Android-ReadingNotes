@@ -1,8 +1,8 @@
-package com.ssyijiu.fgp.switchlib;
+package com.ssyijiu.picassof.switchlib;
 
 import android.content.Context;
 
-import com.ssyijiu.fgp.weight.MImageView;
+import com.ssyijiu.picassof.weight.MImageView;
 
 /**
  * Created by ssyijiu on 2016/12/27.
@@ -16,6 +16,11 @@ public class QiniuLoader implements ImageLoader.Loader {
     }
 
     static final QiniuLoader INSTANCE = new QiniuLoader();
+
+    @Override
+    public void loadImageAlways(Context context, String url, MImageView imageView) {
+
+    }
 
     @Override
     public void loadImage(Context context, String url, MImageView imageView) {

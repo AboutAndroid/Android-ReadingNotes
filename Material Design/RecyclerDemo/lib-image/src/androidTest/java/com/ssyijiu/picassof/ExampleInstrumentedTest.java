@@ -1,4 +1,4 @@
-package com.ssyijiu.fgp;
+package com.ssyijiu.picassof;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

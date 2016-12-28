@@ -1,4 +1,4 @@
-package com.ssyijiu.fgp.switchlib;
+package com.ssyijiu.picassof.switchlib;
 
 /**
  * Created by ssyijiu on 2016/12/26.

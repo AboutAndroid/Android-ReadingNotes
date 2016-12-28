@@ -1,4 +1,4 @@
-package com.ssyijiu.fgp;
+package com.ssyijiu.picassof;
 
 import org.junit.Test;
 
