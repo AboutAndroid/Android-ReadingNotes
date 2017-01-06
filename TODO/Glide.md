@@ -19,7 +19,7 @@ https://github.com/YaphetZhao/GlideCatchSimple
     	 .dontAnimate()
     	 .into(imageView);
     ```
-
+缓存怎么也去不掉，上传头像的时候，页面跳转将 url 传递的时候
 ###2. 二次封装
 ```
 public class GlideLoader {
