@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ssyijiu.picassof.switchlib.ImageLoader;
+import com.ssyijiu.picassof.imageloader.ImageClient;
 import com.ssyijiu.picassof.weight.MImageView;
 import com.ssyijiu.recyclerdemo.ImageUrls;
 import com.ssyijiu.recyclerdemo.R;
@@ -38,7 +38,7 @@ public class RecycleAdapter extends RecyclerView.Adapter {
         ViewHolder viewHolder = (ViewHolder) holder;
 
 
-        ImageLoader.getInstance().loadImage(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
+        ImageClient.getInstance().loadImage(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
 
         viewHolder.mTextView.setText("Use Glide load Girls");
     }
