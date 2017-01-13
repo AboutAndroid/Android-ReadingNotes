@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ssyijiu.library.MLog;
-import com.ssyijiu.mvpdemo2.model.bean.User;
 import com.ssyijiu.mvpdemo2.utils.ToastUtil;
 import com.yatatsu.autobundle.AutoBundle;
 
@@ -25,6 +24,8 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     protected Context mContext;
 
+    private MvpPresenter[] mMvpPresenters;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +33,30 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
         mContext = this;
 
+        // 保存和恢复数据
         bindBundle(savedInstanceState);
 
+        // 加载 Presenters 并绑定 View
         loadPresenters();
-        initViewAndData();
+        attachViews();
 
+        // 初始化 View
+        initView();
+
+        // 初始化传递数据
         if (getIntent() != null) {
-            parseIntDataFromIntent(getIntent());
+            parseIntent(getIntent());
         }
 
-        attachViews();
+        // 初始化数据
+        initData();
+
+
     }
+
+
+
+
 
 
     @Override
@@ -66,28 +80,33 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
      */
     protected abstract MvpPresenter[] getPresenters();
 
-    protected abstract void initViewAndData();
 
-    protected abstract void parseIntDataFromIntent(Intent intent);
+    protected abstract void initView();
+
+    protected abstract void parseIntent(Intent intent);
+
+    protected void initData() {
+    }
 
 
     protected void loadPresenters() {
         MLog.i("before load:" + mPresenterManager.getPresenters());
-        mPresenterManager.addPresenter(getPresenters());
+        mMvpPresenters = getPresenters();
+        mPresenterManager.addPresenter(mMvpPresenters);
         MLog.i("after load:" + mPresenterManager.getPresenters());
     }
 
     protected void attachViews() {
-        mPresenterManager.attachViews(this,getPresenters());
+        mPresenterManager.attachViews(this,mMvpPresenters);
     }
 
     private void detachViews() {
-        mPresenterManager.detachViews(getPresenters());
+        mPresenterManager.detachViews(mMvpPresenters);
     }
 
     private void removePresenters() {
         MLog.i("before remove:" + mPresenterManager.getPresenters());
-        mPresenterManager.removePresenter(getPresenters());
+        mPresenterManager.removePresenter(mMvpPresenters);
         MLog.i("after remove:" + mPresenterManager.getPresenters());
     }
 

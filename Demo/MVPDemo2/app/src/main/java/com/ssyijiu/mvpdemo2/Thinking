@@ -15,7 +15,7 @@
 需要解决：
 1.  if(getView != null)
 2.  在 activity 意外重启时，如何根据 presenter 的数据恢复 activity 状态
-3. MvpListener 的泛型需要声明两次，调用的时候还要写一次，有没有好的方法就写一次
+3.  MvpListener 的泛型需要声明两次，调用的时候还要写一次，有没有好的方法就写一次
 
 
 谷歌的契约类需要吗？

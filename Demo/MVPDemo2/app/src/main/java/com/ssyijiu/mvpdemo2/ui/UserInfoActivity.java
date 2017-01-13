@@ -40,7 +40,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoContract.V
     }
 
     @Override
-    protected void initViewAndData() {
+    protected void initView() {
         tvUserInfo = (TextView) findViewById(R.id.tv_userinfo);
         findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +51,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoContract.V
     }
 
     @Override
-    protected void parseIntDataFromIntent(Intent intent) {
+    protected void parseIntent(Intent intent) {
     }
 
     @Override

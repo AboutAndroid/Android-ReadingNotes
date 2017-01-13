@@ -3,7 +3,6 @@ package com.ssyijiu.mvpdemo2.ui;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +52,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    protected void initViewAndData() {
+    protected void initView() {
         et_username = (EditText) findViewById(R.id.et_username);
         et_password = (EditText) findViewById(R.id.et_password);
         btn_login = (Button) findViewById(R.id.btn_login);
@@ -82,7 +81,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    protected void parseIntDataFromIntent(Intent intent) {
+    protected void parseIntent(Intent intent) {
 
     }
 

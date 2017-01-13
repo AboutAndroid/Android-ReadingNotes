@@ -2,8 +2,8 @@ package com.ssyijiu.mvpdemo2.presenter;
 
 import android.os.Handler;
 
-import com.ssyijiu.mvpdemo2.base.ModelManager;
 import com.ssyijiu.mvpdemo2.base.DefaultMvpListener;
+import com.ssyijiu.mvpdemo2.base.ModelManager;
 import com.ssyijiu.mvpdemo2.model.LoginModel;
 import com.ssyijiu.mvpdemo2.model.bean.User;
 import com.ssyijiu.mvpdemo2.ui.LoginContract;

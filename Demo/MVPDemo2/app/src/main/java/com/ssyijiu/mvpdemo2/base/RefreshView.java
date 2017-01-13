@@ -6,6 +6,9 @@ package com.ssyijiu.mvpdemo2.base;
  * E-mail: lxmyijiu@163.com
  */
 
-public interface Pull2refreshView {
+public interface RefreshView extends LceView {
+
     void refresh();
+
+    void loadMore();
 }
