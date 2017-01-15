@@ -8,7 +8,7 @@ package com.ssyijiu.mvpdemo2.base;
 
 public interface MvpView {
 
-    void showError(String errorMsg);  // Dialog 只是展示一个
+    void showError(String errorMsg);
 
     void showException(Throwable tr);
 

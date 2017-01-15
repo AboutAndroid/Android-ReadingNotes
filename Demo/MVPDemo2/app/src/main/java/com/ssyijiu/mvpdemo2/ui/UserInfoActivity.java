@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.ssyijiu.mvpdemo2.R;
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
+import com.ssyijiu.mvpdemo2.base.LoginMust;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
 import com.ssyijiu.mvpdemo2.presenter.UserInfoPresenter;
 import com.yatatsu.autobundle.AutoBundleField;
@@ -20,7 +21,7 @@ import com.yatatsu.autobundle.AutoBundleField;
 
 
 
-public class UserInfoActivity extends BaseActivity implements UserInfoContract.View{
+public class UserInfoActivity extends BaseActivity implements LoginMust, UserInfoContract.View{
 
     UserInfoPresenter mUserInfoPresenter = new UserInfoPresenter();
 

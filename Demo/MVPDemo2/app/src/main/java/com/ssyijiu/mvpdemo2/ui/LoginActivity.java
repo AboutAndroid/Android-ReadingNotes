@@ -3,12 +3,12 @@ package com.ssyijiu.mvpdemo2.ui;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.lzh.nonview.router.Router;
 import com.ssyijiu.mvpdemo2.R;
 import com.ssyijiu.mvpdemo2.base.BaseActivity;
 import com.ssyijiu.mvpdemo2.base.MvpPresenter;
@@ -21,7 +21,7 @@ import com.yatatsu.autobundle.AutoBundleField;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
-    LoginPresenter mLoginPresenter = new LoginPresenter();
+    LoginPresenter mLoginPresenter = new com.ssyijiu.mvpdemo2.presenter.LoginPresenter();
 
     EditText et_username;
     EditText et_password;
@@ -73,7 +73,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         btn_login.setOnLongClickListener(v -> {
 
             LoginManager.isLogin = true;
-            Router.create(uri).open(mContext);
             finish();
             return true;
         });
@@ -101,19 +100,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         startActivity(intent);
     }
 
-//    @Override
-//    public void showError(String errorMsg) {
-//        login_status.setText(errorMsg);
-//        ToastUtil.show(errorMsg);
-//        saveStatus();
-//    }
-//
-//    @Override
-//    public void showException(Throwable tr) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setMessage(tr.getMessage());
-//        builder.create().show();
-//    }
+    @Override
+    public void showError(String errorMsg) {
+        login_status.setText(errorMsg);
+        ToastUtil.show(errorMsg);
+        saveStatus();
+    }
+
+    @Override
+    public void showException(Throwable tr) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(tr.getMessage());
+        builder.create().show();
+    }
 
     @Override
     public void showHello() {

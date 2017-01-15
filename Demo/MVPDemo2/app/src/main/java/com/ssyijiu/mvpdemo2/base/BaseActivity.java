@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ssyijiu.library.MLog;
+import com.ssyijiu.mvpdemo2.model.LoginManager;
 import com.ssyijiu.mvpdemo2.utils.ToastUtil;
 import com.yatatsu.autobundle.AutoBundle;
 
@@ -21,9 +22,7 @@ import com.yatatsu.autobundle.AutoBundle;
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
 
     protected PresenterManager mPresenterManager = PresenterManager.INSTANCE;
-
     protected Context mContext;
-
     private MvpPresenter[] mMvpPresenters;
 
     @Override
@@ -33,36 +32,34 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
         mContext = this;
 
-        // 保存和恢复数据
+        // save and restore data
         bindBundle(savedInstanceState);
-
-        // 加载 Presenters 并绑定 View
         loadPresenters();
+        initView();
         attachViews();
 
-        // 初始化 View
-        initView();
+        // intercept the Activity that implements LoginMusts
+        if (this instanceof LoginMust) {
+            if (!LoginManager.isLogin) {
+                showException(new Exception("No Login"));
+            }
+        }
 
-        // 初始化传递数据
+        // init Intent data
         if (getIntent() != null) {
             parseIntent(getIntent());
         }
 
-        // 初始化数据
         initData();
 
 
     }
 
 
-
-
-
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        AutoBundle.pack(this,outState);
+        AutoBundle.pack(this, outState);
     }
 
     @Override
@@ -75,8 +72,9 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     protected abstract int getLayoutResId();
 
     /**
-     * 获取当前页面所有的 presenter
-     * @return
+     * get All presenters this Activity
+     *
+     * @return MvpPresenter[], if no presenters return null
      */
     protected abstract MvpPresenter[] getPresenters();
 
@@ -97,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     }
 
     protected void attachViews() {
-        mPresenterManager.attachViews(this,mMvpPresenters);
+        mPresenterManager.attachViews(this, mMvpPresenters);
     }
 
     private void detachViews() {
@@ -112,8 +110,8 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     private void bindBundle(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            AutoBundle.bind(this,savedInstanceState);
-        } else if(getIntent() != null){
+            AutoBundle.bind(this, savedInstanceState);
+        } else if (getIntent() != null) {
             AutoBundle.bind(this, getIntent());
         }
     }
