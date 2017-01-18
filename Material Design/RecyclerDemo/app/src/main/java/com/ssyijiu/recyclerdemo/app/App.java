@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.squareup.leakcanary.LeakCanary;
-import com.ssyijiu.picassof.PicassoF;
+import com.ssyijiu.vinci.imageloader.Vinci;
 
 /**
  * Created by ssyijiu on 2016/11/15.
@@ -27,7 +27,7 @@ public class App extends Application {
         sContext = this;
         sResources = getResources();
 
-        PicassoF.init(this,true);
+        Vinci.init(this,true);
 
         initLeakCanary();
     }

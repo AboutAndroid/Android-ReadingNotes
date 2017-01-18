@@ -35,9 +35,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
 
-    compile project(':understructure')
+    compile project(':zlib')
 
     compile "com.github.bumptech.glide:glide:${glideVersion}"
-    compile "com.squareup.picasso:picasso:${picassoVersion}"
-    compile "com.facebook.fresco:fresco:${frescoVersion}"
+    //compile "com.squareup.picasso:picasso:${picassoVersion}"
+    //compile "com.facebook.fresco:fresco:${frescoVersion}"
 }

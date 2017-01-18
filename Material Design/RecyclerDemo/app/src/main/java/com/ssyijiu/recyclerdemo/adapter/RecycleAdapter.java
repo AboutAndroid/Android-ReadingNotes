@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ssyijiu.picassof.imageloader.ImageClient;
-import com.ssyijiu.picassof.weight.MImageView;
+import com.ssyijiu.vinci.imageloader.Vinci;
+import com.ssyijiu.vinci.weight.ImageVinci;
 import com.ssyijiu.recyclerdemo.ImageUrls;
 import com.ssyijiu.recyclerdemo.R;
 
@@ -38,7 +38,7 @@ public class RecycleAdapter extends RecyclerView.Adapter {
         ViewHolder viewHolder = (ViewHolder) holder;
 
 
-        ImageClient.getInstance().loadImage(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
+        Vinci.getInstance().loadImage(mContext,ImageUrls.INSTANCE.get(position),viewHolder.mImageView);
 
         viewHolder.mTextView.setText("Use Glide load Girls");
     }
@@ -50,12 +50,12 @@ public class RecycleAdapter extends RecyclerView.Adapter {
 
     private static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MImageView mImageView;
+        ImageVinci mImageView;
         TextView mTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            mImageView = (MImageView) itemView.findViewById(R.id.item_image);
+            mImageView = (ImageVinci) itemView.findViewById(R.id.item_image);
             mTextView = (TextView) itemView.findViewById(R.id.item_text);
         }
     }

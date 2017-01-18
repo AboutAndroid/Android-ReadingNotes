@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     RecycleAdapter adapter;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
