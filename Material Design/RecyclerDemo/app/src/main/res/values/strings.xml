@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecyclerDemo</string>
+    <string name="desc">Use Glide load Girls</string>
 </resources>

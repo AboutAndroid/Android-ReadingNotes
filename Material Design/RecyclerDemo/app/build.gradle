@@ -29,7 +29,7 @@ android {
 ext {
     supportVersion = '25.1.0'
     leakcanaryVersion = '1.5'
-    MLogVersion = '1.0.9'
+    MLogVersion = '1.1.0'
     butterknifeVersion = '8.4.0'
     glideVersion = '3.7.0'
 }

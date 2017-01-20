@@ -18,7 +18,7 @@ public class Vinci {
         ONLY_WIFI = onlyWifi;
     }
 
-    public static boolean isOnlyWifi() {
+    static boolean isOnlyWifi() {
         return ONLY_WIFI;
     }
 

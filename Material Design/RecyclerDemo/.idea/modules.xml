@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RecyclerDemo.iml" filepath="$PROJECT_DIR$/RecyclerDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib-image/lib-image.iml" filepath="$PROJECT_DIR$/lib-image/lib-image.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zlib/zlib.iml" filepath="$PROJECT_DIR$/zlib/zlib.iml" />
     </modules>
   </component>
 </project>

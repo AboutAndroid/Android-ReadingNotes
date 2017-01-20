@@ -1,1 +1,1 @@
-include ':app', ':lib-image', ':zlib'
+include ':app', ':lib-image', ':common'

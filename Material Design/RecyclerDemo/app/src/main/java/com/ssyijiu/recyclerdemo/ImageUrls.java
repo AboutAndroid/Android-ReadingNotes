@@ -27,6 +27,14 @@ public enum  ImageUrls {
         mUrls.add("http://ww1.sinaimg.cn/large/610dc034jw1faj6sozkluj20u00nt75p.jpg");
         mUrls.add("http://ww1.sinaimg.cn/large/610dc034jw1fahy9m7xw0j20u00u042l.jpg");
         mUrls.add("http://ww4.sinaimg.cn/large/610dc034jw1fagrnmiqm1j20u011hanr.jpg");
+
+        mUrls.add("http://ww3.sinaimg.cn/large/610dc034gw1fbsfgssfrwj20u011h48y.jpg");
+        mUrls.add("http://ww3.sinaimg.cn/large/610dc034gw1fbou2xsqpaj20u00u0q4h.jpg");
+        mUrls.add("http://ww2.sinaimg.cn/large/0060lm7Tgw1fbnmsjogt9j30u00u0jvv.jpg");
+        mUrls.add("http://ww4.sinaimg.cn/large/0060lm7Tgw1fbmfo9is9hj30u00u0ai3.jpg");
+        mUrls.add("http://ww3.sinaimg.cn/large/610dc034gw1fbldexdog4j20u011h41b.jpg");
+        mUrls.add("http://ww1.sinaimg.cn/large/610dc034gw1fbk6h23k3ij20u00jymyw.jpg");
+        mUrls.add("http://ww4.sinaimg.cn/large/610dc034gw1fbfwwsjh3zj20u00u00w1.jpg");
     }
 
     public String get(int index) {
