@@ -64,16 +64,15 @@ public class MainActivity extends AppCompatActivity {
         // 设置 Adapter
         // mAdapter = new CardAdapter(this);
 
+
         // 使用万能适配器
-        mAdapter = new QuickAdapter<String>(mRecyclerView, ImageUrls.INSTANCE.mUrls, R.layout.item_list) {
+        mAdapter = new QuickAdapter<String>(this, ImageUrls.INSTANCE.mUrls, R.layout.item_list) {
 
             @Override
-            public void convert(QuickViewHolder holder, String item, boolean isScrolling) {
+            public void convert(QuickViewHolder holder, String item) {
                 ImageVinci vinci = holder.getView(R.id.item_image);
 
-                if(!isScrolling) {
-                    Vinci.getInstance().loadImage(holder.mContext,item,vinci);
-                }
+                Vinci.getInstance().loadImage(holder.mContext, item, vinci);
 
                 holder.setText(R.id.item_text, R.string.desc);
             }
@@ -101,22 +100,6 @@ public class MainActivity extends AppCompatActivity {
             mAdapter.removeData(position);
         });
         mRecyclerView.setAdapter(mAdapter);
-
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                MLog.i("dx = " + dx + ", dy = " + dy);
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                MLog.i("newState = " + newState);
-            }
-        });
-
-
 
     }
 

@@ -33,41 +33,17 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickAdapter.
     private List<T> mDatas;
     private LayoutInflater mInflater;
     private int mLayoutId;
-    private RecyclerView mRecyclerView;
 
-    private boolean isScrolling = false;
 
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
 
-    public QuickAdapter(RecyclerView recyclerView, List<T> datas, int layoutId) {
-        this.mRecyclerView = recyclerView;
-        this.mContext = recyclerView.getContext();
+
+    public QuickAdapter(Context context, List<T> datas, int layoutId) {
+        this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
         this.mDatas = datas;
         this.mLayoutId = layoutId;
-
-
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if(newState == RecyclerView.SCROLL_STATE_SETTLING) {
-                    if(!isScrolling) {
-                        isScrolling = true;
-                    }
-
-                } else {
-                    if(isScrolling) {
-                        isScrolling = false;
-                    }
-                }
-            }
-        });
     }
 
     @Override
@@ -97,7 +73,7 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickAdapter.
     @Override
     public void onBindViewHolder(QuickViewHolder holder, int position) {
 
-        convert(holder, getItem(position), isScrolling);
+        convert(holder, getItem(position));
 
     }
 
@@ -125,7 +101,7 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickAdapter.
     }
 
 
-    public abstract void convert(QuickViewHolder holder, T item, boolean isScrolling);
+    public abstract void convert(QuickViewHolder holder, T item);
 
     public static class QuickViewHolder extends RecyclerView.ViewHolder {
 
