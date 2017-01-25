@@ -36,6 +36,9 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         bindBundle(savedInstanceState);
         loadPresenters();
         initView();
+
+        // 如果在Presenter创建的时候进行一些操作（如：获取本地数据，然后设置到View上）
+        // 那么 attachView 必须在 initView 之后
         attachViews();
 
         // intercept the Activity that implements LoginMusts

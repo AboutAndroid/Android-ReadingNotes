@@ -26,7 +26,6 @@ public enum PresenterManager {
         if(isNotEmpty(presenters)) {
             for (MvpPresenter presenter : presenters) {
                 presenter.attachView(mvpView);
-                presenter.init();
             }
         }
     }

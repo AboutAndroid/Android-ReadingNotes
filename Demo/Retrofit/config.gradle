@@ -1,17 +1,17 @@
 // https://gold.xitu.io/post/582d606767f3560063320b21
 ext {
 
-    android = [compileSdkVersion: 24,
-               buildToolsVersion: "24.0.1",
+    android = [compileSdkVersion: 25,
+               buildToolsVersion: "25.0.2",
                applicationId    : "com.ssyijiu.retrofit",
                minSdkVersion    : 15,
-               targetSdkVersion : 24,
+               targetSdkVersion : 25,
                versionCode      : 1,
                versionName      : "1.0"]
 
     dependencies = [
             "junitVersion"              : "4.12",
-            "supportVersion"            : "3.5.0",
+            "supportVersion"            : "25.1.0",
             "MLogVersion"               : "1.0.9",
             "xlogVersion"               : "1.1.0",
             "retrofitVersion"           : "2.1.0",

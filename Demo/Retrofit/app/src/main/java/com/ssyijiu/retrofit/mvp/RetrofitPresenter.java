@@ -61,7 +61,4 @@ public class RetrofitPresenter extends RetrofitContract.Presenter {
         }
     }
 
-    @Override
-    public void init() {
-    }
 }

@@ -42,7 +42,8 @@ public interface MovieApi {
 
     /* Query */
     @GET("top250")
-    Call<MovieBean> getTop250(@Query("start") int start, @Query("count") int count);
+    Call<MovieBean> getTop250(@Query("start") String start, @Query("count") String count);
+
 
     /* QueryMap */
     @GET("top250")
