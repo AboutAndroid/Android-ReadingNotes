@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        testOOM();
-        testThread();
+        testOOM();
+//        testThread();
     }
 
     private void testThread() {

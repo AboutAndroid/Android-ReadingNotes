@@ -2,6 +2,7 @@
   <dictionary name="ssyijiu">
     <words>
       <w>flatmap</w>
+      <w>flowable</w>
       <w>gson</w>
       <w>okhttp</w>
       <w>rxjava</w>

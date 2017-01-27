@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.ssyijiu.library.MLog;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -20,33 +22,77 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        test();
+//        testFilter();
+//        testSample();
+        testDelay();
     }
 
-    int i = 0;
-    private void test() {
+    private void testDelay() {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
                 while (true) {
                     e.onNext(i++);
-                    MLog.i(i++);
+                    Thread.sleep(2000);
                 }
             }
         })
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .filter(new Predicate<Integer>() {
-            @Override
-            public boolean test(Integer integer) throws Exception {
-                return integer % 10 == 0;
-
-            }
-        })
         .doOnNext(new Consumer<Integer>() {
             @Override
             public void accept(Integer integer) throws Exception {
+                MLog.i(integer);
+            }
+        })
+        .subscribe();
+    }
 
+    private void testSample() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                while (true) {
+                    e.onNext(i++);
+                    Thread.sleep(2000);
+                }
+            }
+        })
+        .subscribeOn(Schedulers.io())
+        .sample(2, TimeUnit.SECONDS)
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnNext(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                MLog.i(integer);
+            }
+        })
+        .subscribe();
+    }
+
+    int i = 0;
+    private void testFilter() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                while (true) {
+                    e.onNext(i++);
+                }
+            }
+        })
+        .subscribeOn(Schedulers.io())
+        .filter(new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer integer) throws Exception {
+                return integer % 100 == 0;
+
+            }
+        })
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnNext(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                MLog.i(integer);
                 Thread.sleep(1000);
             }
         })

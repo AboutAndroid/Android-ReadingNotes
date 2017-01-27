@@ -30,6 +30,7 @@ public class HomeFragment extends BaseFragment {
         MLog.i("HomeFragment");
     }
 
+
     @Override
     protected int getFragmentResId() {
         return R.layout.fragment_home;
