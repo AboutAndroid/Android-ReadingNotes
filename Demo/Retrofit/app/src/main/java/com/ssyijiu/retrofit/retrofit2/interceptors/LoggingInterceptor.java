@@ -49,7 +49,7 @@ public class LoggingInterceptor implements Interceptor {
                 response.request().url(), (t2 - t1) / 1e6d, response.headers()));
 
         MediaType mediaType = response.body().contentType();
-        String content = response.body().string();  // 从流中获取信息
+        String content = response.body().string();
 
         if (!TextUtils.isEmpty(content)) {
             XLog.json(content);

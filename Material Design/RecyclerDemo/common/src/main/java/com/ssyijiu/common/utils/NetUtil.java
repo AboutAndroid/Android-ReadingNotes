@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 
 /**
@@ -215,6 +216,7 @@ public class NetUtil {
     public static void registerNetChangedReceiver(Context context) {
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        context.registerReceiver(receiver, filter);
     }
 
     /**
@@ -224,5 +226,5 @@ public class NetUtil {
      */
     public static void unregisterNetChangedReceiver(Context context) {
         context.unregisterReceiver(receiver);
-    }
+    } ß
 }
