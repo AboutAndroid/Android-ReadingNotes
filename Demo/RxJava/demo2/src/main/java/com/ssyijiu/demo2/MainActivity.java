@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         hello = (TextView) findViewById(R.id.hello);
 
 //        test1();
-//        test2();
+        test2();
 //        test3();
 //        testMap();
-        testZip();
+//        testZip();
     }
 
     public void testZip() {
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // 3
-        observable.subscribeOn(Schedulers.newThread()) // 子线程发送
+        observable.subscribeOn(Schedulers.io()) // 子线程发送
                 .observeOn(AndroidSchedulers.mainThread()) // 主线程接收
                 .subscribe(consumer);
     }
