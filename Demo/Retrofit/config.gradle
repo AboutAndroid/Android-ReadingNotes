@@ -20,7 +20,7 @@ ext {
             "rxjavaVersion"             : "1.2.3",
             "rxandroidVersion"          : "1.2.1",
             "autoValueVersion"          : "1.4-rc1",
-            "autoValueParcelVersion"    : "0.2.5",
+            "mViewPager.setAdapter(new BannerAdapter(mActivity,urls,mViewPager));"    : "0.2.5",
             "annotationVersion"         : "10.0-b28",
             "PersistentCookieJarVersion": "v1.0.0",
             "leakcanaryVersion"         : "1.5",

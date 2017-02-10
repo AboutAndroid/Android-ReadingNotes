@@ -16,7 +16,7 @@ public abstract class Financing implements Parcelable {
 
     public static Financing create(String name) {
 
-        // auto-value 默认生产带全部参数的构造函数
+        // auto-value 默认生产带全部成员变量的构造函数
         // 如果参数为空，会抛出 NullPointerException
         return new AutoValue_Financing(name);
     }
