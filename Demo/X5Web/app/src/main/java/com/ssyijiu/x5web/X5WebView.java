@@ -59,6 +59,7 @@ public class X5WebView extends WebView {
 				String realm) {
 			boolean flag = httpAuthHandlerhost.useHttpAuthUsernamePassword();
 		}
+
 	};
 	private WebChromeClient chromeClient = new WebChromeClient() {
 
