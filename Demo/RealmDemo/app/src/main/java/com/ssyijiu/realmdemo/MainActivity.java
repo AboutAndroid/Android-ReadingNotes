@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
         insert();
 
-        User user = getRealm().where(User.class)
-                .equalTo("id", "03")
-                .findFirst();
+        RealmResults<User> user = getRealm().where(User.class)
+                //.equalTo("id", "03")
+                .findAll();
         System.out.println(user);
 
     }
