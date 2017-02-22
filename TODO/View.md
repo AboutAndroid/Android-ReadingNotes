@@ -41,8 +41,37 @@ event.getRawY();
 其中字母表示通道类型，数值表示该类型用多少位二进制来描述。如 ARGB8888 则表示有四个通道 (ARGB)，每个对应的通道均用 8 位来描述。     
 其中 A R G B 的取值范围均为 0~255 (即 16 进制的 0x00~0xff)      
 - A 从 ox00 到 oxf f表示从透明到不透明。
-- RGB 从 0x00 到 0xff 表示颜色从浅到深。
+- RGB 从 0x00 到 0xff 表示颜色从浅到深。   
+
+## 4. View 的绘制流程   
+
+1. 构造函数
+
+   ```java
+   public ImageView(Context context) {
+           super(context);
+           initImageView();
+       }
+
+       public ImageView(Context context, @Nullable AttributeSet attrs) {
+           this(context, attrs, 0);
+       }
+
+       public ImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+           this(context, attrs, defStyleAttr, 0);
+       }
+
+       public ImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr,
+               int defStyleRes) {
+                 initImageView();
+       }
+   ```
+
+   一个参数的构造在 new ImageView(content) 的时候调用，两个参数的构造在 xml 中使用的时候调用。   
+
+2. onMeasure
 
 ##Thanks
+
 - [http://www.gcssloop.com/customview/CustomViewIndex](http://www.gcssloop.com/customview/CustomViewIndex)
 - [http://blog.csdn.net/guolin_blog/article/details/12921889](http://blog.csdn.net/guolin_blog/article/details/12921889)
