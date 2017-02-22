@@ -28,20 +28,29 @@ Context
    数字2：在这些类中去 layout inflate 是合法的，但是会使用系统默认的主题样式，如果你自定义了某些样式可能不会被使用   
    数字3：在 receiver 为 null 时允许，在 4.2 或以上的版本中，用于获取黏性广播的当前值（可以无视）。   
    注：ContentProvider、BroadcastReceiver 之所以在上述表格中，是因为在其内部方法中都有一个context用于使用。      
-6. 总结：  
-   凡是跟 UI 相关的，都应该使用 Activity 做为 Context 来处理；其他的一些操作，Service、Activity、Application 等实例都可以.       
+6. 总结：   
+
+   凡是跟 UI 相关的，都应该使用 Activity 做为 Context 来处理；其他的一些操作，Service、Activity、Application 等实例都可以.     
+  
 7. 源码注释：  
-   ```
-   Interface to global information about an application environment.This is an abstract class whose implementation is provided by the Android system.It allows access to application-specific resources and classes,as well as up-calls for application-level operationssuch as launching activities, broadcasting and receiving intents, etc.
-```    
+
+    ```
+    Interface to global information about an application environment.This is an abstract class whose implementation is provided by the Android system.It allows access to application-specific resources and classes,as well as up-calls for application-level operationssuch as launching activities, broadcasting and receiving intents, etc.
+    ```    
+
 8. 获取 Context.      
+
    - view.getContext()
    - getApplicationContext()
    - Activity.this    
+
 9. getApplication() 和 getApplicationContext()是同一个对象.     
+
     getApplicationContext() 方法的作用域会更广一些     
    任何一个 Context 的实例，只要调用 getApplicationContext\(\) 方法都可以拿到我们的Application对象。    
+
 10. Application 方法执行的顺序.    
+
    - 构造方法 -> attachBaseContext() -> onCreate()
    - ContextWrapper 源码分析：   
    -  attachBaseContext 这个方法会将传入的一个 Context 参数赋值给mBase对象   
