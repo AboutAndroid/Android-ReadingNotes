@@ -1,6 +1,6 @@
 #SharedPreference
-本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-完成时间：2016/10/19    
+本文来自：[书生依旧](https://github.com/ssyijiu) [Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes) . 
+完成时间：2016/10/19     
 
 ###1. commit 和 apply 的区别  
 commit 返回一个 boolean 来表明修改是否提交成功， apply 没有返回值；commit 是将数据写入内存后同步提交到磁盘(不要在主线程中 commit )，而 apply 将数据写入内存后会在一个新线程中异步提交到磁盘，在不要求提交结果的情况下应使用 apply。   
