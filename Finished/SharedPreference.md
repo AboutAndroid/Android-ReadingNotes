@@ -1,5 +1,5 @@
 #SharedPreference
-本文来自：[书生依旧](https://github.com/ssyijiu) [Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes) . 
+本文来自：[书生依旧](https://github.com/ssyijiu) [Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)  
 完成时间：2016/10/19     
 
 ###1. commit 和 apply 的区别  
