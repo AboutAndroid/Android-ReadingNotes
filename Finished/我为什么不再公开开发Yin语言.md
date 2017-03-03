@@ -1,6 +1,6 @@
 ##读：我为什么不再公开开发Yin语言
-本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
-阅读文章：[我为什么不再公开开发Yin语言](http://www.yinwang.org/blog-cn/2015/03/18/yin-lang-secret)  
+本文来自：[书生依旧](https://github.com/ssyijiu) [Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)   
+阅读文章：[我为什么不再公开开发Yin语言](http://www.yinwang.org/blog-cn/2015/03/18/yin-lang-secret)  
 完成时间：2016/8/20
 
 对王垠大神的不敢做太多的评价，下面两句是原文摘抄。
