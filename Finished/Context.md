@@ -1,4 +1,4 @@
-Context
+# Context
 
 1. 什么是 Context  
 
@@ -22,7 +22,7 @@ Context
 
 5. Context 的使用场景. ![](http://obe5pxv6t.bkt.clouddn.com/context.png)
    大家注意看到有一些 NO上添加了一些数字，其实这些从能力上来说是YES，但是为什么说是 NO 呢？下面一个一个解释：   
-   数字1：启动 Activity 在这些类中是可以的，但是需要创建一个新的task。一般情况不推荐        
+   数字1：启动 Activity 在这些类中是可以的，但是需要创建一个新的 task。一般情况不推荐        
    数字2：在这些类中去 layout inflate 是合法的，但是会使用系统默认的主题样式，如果你自定义了某些样式可能不会被使用   
    数字3：在 receiver 为 null 时允许，在 4.2 或以上的版本中，用于获取黏性广播的当前值（可以无视）。   
    注：ContentProvider、BroadcastReceiver 之所以在上述表格中，是因为在其内部方法中都有一个context用于使用。      
@@ -52,4 +52,4 @@ Context
    - 构造方法 -> attachBaseContext() -> onCreate()
    - ContextWrapper 源码分析：   
    -  attachBaseContext 这个方法会将传入的一个 Context 参数赋值给mBase对象   
-   - 之后mBase对象就有值了，所有 Context 的方法都是调用这个mBase 对象的同名方法. 
+   - 之后 mBase 对象就有值了，所有 Context 的方法都是调用这个mBase 对象的同名方法. 
