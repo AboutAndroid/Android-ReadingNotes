@@ -18,8 +18,8 @@
         dependencies {
             classpath 'com.android.tools.build:gradle:2.1.0'
             
-            // Add this line
-            classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+            // 添加这一行，[版本号](https://jitpack.io/docs/ANDROID/)
+            classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         }
     }
     ```
@@ -73,7 +73,7 @@
 
 ##5. 远程依赖
 前四步走完的话，你的库已经发布好了，下面则是如何远程依赖刚刚发布的库。
-- 前往[JitPack](https://jitpack.io/)
+- 前往 [JitPack](https://jitpack.io/)
 - 搜索你的 Github name/Project name
 - 选择最新版本，Get it
 
