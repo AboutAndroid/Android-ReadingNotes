@@ -14,8 +14,6 @@ Context
 
    Context 数量 = Activity 数量 + Service 数量 + 1.   
 
-   ​
-
 4. 内存泄漏，一般 Context 造成的内存泄漏，几乎都是当 Context 销毁的时候，却因为被引用导致销毁失败。  
    使用 Context 的正确姿势：  
    - 当 Application 的 Context 能搞定的情况下，并且生命周期长的对象，优先使用 Application 的 Context。 
