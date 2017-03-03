@@ -25,7 +25,7 @@
    数字1：启动 Activity 在这些类中是可以的，但是需要创建一个新的 task。一般情况不推荐        
    数字2：在这些类中去 layout inflate 是合法的，但是会使用系统默认的主题样式，如果你自定义了某些样式可能不会被使用   
    数字3：在 receiver 为 null 时允许，在 4.2 或以上的版本中，用于获取黏性广播的当前值（可以无视）。   
-   注：ContentProvider、BroadcastReceiver 之所以在上述表格中，是因为在其内部方法中都有一个context用于使用。      
+   注：ContentProvider、BroadcastReceiver 之所以在上述表格中，是因为在其内部方法中都有一个 context 用于使用。      
 6. 总结：   
 
    凡是跟 UI 相关的，都应该使用 Activity 做为 Context 来处理；其他的一些操作，Service、Activity、Application 等实例都可以.     
