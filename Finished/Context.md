@@ -8,7 +8,7 @@
 
    ![](http://obe5pxv6t.bkt.clouddn.com/context-uml.png)
 
-   Context 的两个子类分工明确：其中 ContextImpl 是 Context 的具体实现类，它实现了 Context 中的所以函数，应用程序中所调用的各种 Context 类的方法，其实现均来自于该类；ContextWrapper 是 Context 的包装类，Activity、Application、Service 虽都继承 ContextWrapper，但它们初始化的过程中都会创建 ContextImpl 对象，由 ContextImpl 实现 Context 中的方法。   
+   Context 的两个子类分工明确：其中 ContextImpl 是 Context 的具体实现类，它实现了 Context 中的所有函数，应用程序中所调用的各种 Context 类的方法，其实现均来自于该类；ContextWrapper 是 Context 的包装类，Activity、Application、Service 虽都继承 ContextWrapper，但它们初始化的过程中都会创建 ContextImpl 对象，由 ContextImpl 实现 Context 中的方法。   
 
 3. Context 一共有三种类型，分别是 Application、Activity 和 Service。   
 
