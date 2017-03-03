@@ -1,5 +1,5 @@
 #JitPack
-本文来自：[书生依旧](https://github.com/ssyijiu)的[Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)，这不是博客，只是笔记，最纯粹的干货，转载请注明出处。     
+本文来自：[书生依旧](https://github.com/ssyijiu) [Android阅读笔记](https://github.com/ssyijiu/Android-ReadingNotes)   
 阅读文章：[JitPack官方文档](https://jitpack.io/docs/ANDROID/)  , [写自己的开源库发布到 JitPack.io](http://icodeyou.com/2015/12/23/2015-12-23-AndroidLibraryJitPack/)  , [用JitPack发布开源库时附加文档和源码](http://www.gcssloop.com/course/jitpack-sources-javadoc/?utm_source=tuicool&utm_medium=referral)  
 完成时间：2016/9/18
 
