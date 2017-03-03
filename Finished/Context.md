@@ -42,14 +42,14 @@
    - getApplicationContext()
    - Activity.this    
 
-9. getApplication() 和 getApplicationContext()是同一个对象.     
+9. getApplication() 和 getApplicationContext() 是同一个对象.     
 
-    getApplicationContext() 方法的作用域会更广一些     
-   任何一个 Context 的实例，只要调用 getApplicationContext\(\) 方法都可以拿到我们的Application对象。    
+   getApplicationContext() 方法的作用域会更广一些     
+   任何一个 Context 的实例，只要调用 getApplicationContext() 方法都可以拿到我们的 Application 对象。    
 
 10. Application 方法执行的顺序.    
 
    - 构造方法 -> attachBaseContext() -> onCreate()
    - ContextWrapper 源码分析：   
-   -  attachBaseContext 这个方法会将传入的一个 Context 参数赋值给mBase对象   
+   -  attachBaseContext 这个方法会将传入的一个 Context 参数赋值给 mBase 对象   
    - 之后 mBase 对象就有值了，所有 Context 的方法都是调用这个mBase 对象的同名方法. 
