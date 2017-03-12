@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by ssyijiu on 2017/3/8.

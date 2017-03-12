@@ -1,1 +1,1 @@
-include ':canvas1', ':canvas1test'
+include ':canvas1', ':canvas1test', ':canvas2'

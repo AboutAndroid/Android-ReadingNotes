@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/canvas1" />
             <option value="$PROJECT_DIR$/canvas1test" />
+            <option value="$PROJECT_DIR$/canvas2" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
