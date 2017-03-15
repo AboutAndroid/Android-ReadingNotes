@@ -126,7 +126,7 @@ public class UpLoadPhotoActivity extends Activity {
      */
     private void getAlbumPhoto() {
         Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_PICK);
+        intent.setAction(Intent.ACTION_PICK); // ACTION_GET_CONTENT
         intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_UNSPECIFIED);
         startActivityForResult(intent, PHOTO_ALBUM);
