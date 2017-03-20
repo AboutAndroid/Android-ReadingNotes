@@ -4,7 +4,7 @@
 
 1. 什么时候会触发运行时权限？
 
-   targetSdkVersion >= 23 ，运行在 Android 6.0 及以上设备上，使用[这些权限](https://developer.android.com/guide/topics/security/permissions.html#perm-groups)的时候。
+   targetSdkVersion >= 23 ，运行在 Android 6.0 及以上设备上，使用 [危险权限](https://developer.android.com/guide/topics/security/permissions.html#perm-groups) 的时候。
 
 2. 触发了运行时权限，没有进行适配会怎么样？
 
@@ -14,7 +14,46 @@
 
    设置 targetSdkVersion < 23，会和以前一样，在应用安装申请所有的权限。值得注意的是用户依然可以在设置里取消已授权的权限，这时候应用虽然不会崩溃，但是肯定是无法使用这个权限的，而且不会给用户任何的提示。
 
-### 二. 适配方法
+###二. 危险权限有哪些
+危险权限共 9 组 24 个，每组有一个权限申请成功则该组其他权限默认申请成功。
+
+- CALENDAR	 
+    - READ_CALENDAR    
+    - WRITE_CALENDAR 
+- CAMERA	
+    - CAMERA
+- CONTACTS	
+    - READ_CONTACTS
+    - WRITE_CONTACTS
+    - GET_ACCOUNTS
+- LOCATION	
+    - ACCESS_FINE_LOCATION
+    - ACCESS_COARSE_LOCATION
+- MICROPHONE	
+    - RECORD_AUDIO
+- PHONE	
+    - READ_PHONE_STATE
+    - CALL_PHONE
+    - READ_CALL_LOG
+    - WRITE_CALL_LOG
+    - ADD_VOICEMAIL
+    - USE_SIP
+    - PROCESS_OUTGOING_CALLS
+- SENSORS	
+    - BODY_SENSORS
+- SMS	
+    - SEND_SMS
+    - RECEIVE_SMS
+    - READ_SMS
+    - RECEIVE_WAP_PUSH
+    - RECEIVE_MMS
+- STORAGE	
+    - READ_EXTERNAL_STORAGE
+    - WRITE_EXTERNAL_STORAGE
+
+注意：READ_PHONE_STATE、READ_EXTERNAL_STORAGE、WRITE_EXTERNAL_STORAGE 几乎是必须的，放在启动页申请，用户拒绝后引导至设置页面。
+
+### 三. 适配方法
 
 1. 在 AndroidManifest.xml 添加权限声明。
 
@@ -54,7 +93,7 @@
 
 ### Thanks
 
-[Android M 新的运行时权限开发者需要知道的一切](http://jijiaxin89.com/2015/08/30/Android-s-Runtime-Permission/)
-
-[Android 6.0 运行时权限处理完全解析](http://blog.csdn.net/lmj623565791/article/details/50709663)
+[Android M 新的运行时权限开发者需要知道的一切](http://jijiaxin89.com/2015/08/30/Android-s-Runtime-Permission/)       
+[Android 6.0 运行时权限处理完全解析](http://blog.csdn.net/lmj623565791/article/details/50709663)      
+[Android 6.0 RuntimePermission](http://wuxiaolong.me/2016/02/04/RuntimePermission/)
 
