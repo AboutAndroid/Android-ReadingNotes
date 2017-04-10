@@ -26,7 +26,9 @@
 
 - 熟悉 Android/Java 基础，具有良好的代码风格，完整阅读过《阿里巴巴 Java 开发手册》。
 - 熟练使用 Android Studio 进行开发，掌握 SVN/Git 的使用。
-- 熟悉 Android 客户端的整体开发流程，能使用 MVC/MVP 独立开发客户端程序。
+- 熟悉 Android 客户端的整体开发流程，能使用 MVC/MVP 独立开发客户端程序。  
+- 熟悉 Android UI ，能够正确快速的使用什么控件，熟悉 style、include 及自定义 View 的使用。  
+- 有 App 重构的经验。   
 - 熟悉 Handler 机制的原理及优化技术，解决 Handler 内存泄漏问题。
 - 熟悉 Android 下的典型内存泄露原因及解决办法，有内存优化及内存泄漏排查的经验。
 - 熟悉 Android 6.0 运行时权限的适配。
