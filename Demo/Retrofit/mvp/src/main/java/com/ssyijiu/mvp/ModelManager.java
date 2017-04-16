@@ -1,5 +1,6 @@
 package com.ssyijiu.mvp;
 
+import com.ssyijiu.mvp.i.MvpModel;
 import java.lang.reflect.Constructor;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,11 +12,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ModelManager {
 
-    private final static ConcurrentHashMap<String,BaseModel> sModelMap = new ConcurrentHashMap<>();
+    private final static ConcurrentHashMap<String,MvpModel> sModelMap = new ConcurrentHashMap<>();
 
-    private static <T extends BaseModel> T createModel(Class<T> modelType){
+    private static <T extends MvpModel> T createModel(Class<T> modelType){
 
-        if (modelType!=null && BaseModel.class.isAssignableFrom(modelType)){
+        if (modelType!=null && MvpModel.class.isAssignableFrom(modelType)){
             try {
                 Constructor<T> constructor = modelType.getDeclaredConstructor ();
                 constructor.setAccessible(true);
@@ -26,13 +27,13 @@ public class ModelManager {
                 e.printStackTrace();
             }
         }else{
-            throw new IllegalArgumentException("Your model must extends BaseModel");
+            throw new IllegalArgumentException("Your model must extends MvpModel");
         }
-        throw new IllegalArgumentException("Your model must extends BaseModel");
+        throw new IllegalArgumentException("Your model must extends MvpModel");
     }
 
 
-    public static <T extends BaseModel> T getModel(Class<T> modelType) {
+    public static <T extends MvpModel> T getModel(Class<T> modelType) {
 
         String modelName = modelType.getName();
 

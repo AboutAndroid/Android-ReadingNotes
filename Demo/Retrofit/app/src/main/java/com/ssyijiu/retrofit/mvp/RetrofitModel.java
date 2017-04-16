@@ -1,7 +1,6 @@
 package com.ssyijiu.retrofit.mvp;
 
 import com.ssyijiu.library.MLog;
-import com.ssyijiu.mvp.BaseModel;
 import com.ssyijiu.mvp.i.MvpListener;
 import com.ssyijiu.retrofit.bean.MovieBean;
 import com.ssyijiu.retrofit.bean.resp.FinancingListResp;
@@ -27,7 +26,7 @@ import retrofit2.Response;
  * E-mail: lxmyijiu@163.com
  */
 
-public class RetrofitModel extends BaseModel implements RetrofitContract.Model {
+public class RetrofitModel implements RetrofitContract.Model {
 
     private RetrofitModel() {
     }
@@ -38,7 +37,6 @@ public class RetrofitModel extends BaseModel implements RetrofitContract.Model {
 
 
         Map<String, String> map = ParamsMap.INSTANCE.getTokenMap();
-//        Map<String,String> map = new HashMap<>();
         map.put("prdType", "1");
 
         ApiFactory.INSTANCE.API_MULTI.getFinancingList(map).enqueue(new Callback<FinancingListResp>() {
@@ -56,6 +54,7 @@ public class RetrofitModel extends BaseModel implements RetrofitContract.Model {
 
     @Override
     public void getGoldPrice(final MvpListener<String> listener) {
+
         ApiFactory.INSTANCE.API_MULTI.getGoldPrice().enqueue(new Callback<GoldPriceResp>() {
             @Override
             public void onResponse(Call<GoldPriceResp> call, Response<GoldPriceResp> response) {

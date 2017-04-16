@@ -22,7 +22,7 @@ ext {
             "autoValueVersion"          : "1.4-rc1",
             "mViewPager.setAdapter(new BannerAdapter(mActivity,urls,mViewPager));"    : "0.2.5",
             "annotationVersion"         : "10.0-b28",
-            "PersistentCookieJarVersion": "v1.0.0",
+            "PersistentCookieJarVersion": "v1.0.1",
             "leakcanaryVersion"         : "1.5",
     ]
 }

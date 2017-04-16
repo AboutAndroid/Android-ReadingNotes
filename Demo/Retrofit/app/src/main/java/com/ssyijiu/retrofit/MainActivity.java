@@ -39,62 +39,6 @@ public class MainActivity extends MvpActivity implements RetrofitContract.View {
 
         findViewById(R.id.btn_financing_list).setOnClickListener((view) -> presenter.getFinancingList());
 
-        findViewById(R.id.btn_rxjava).setOnClickListener((view) -> runRxjava());
-
-
-    }
-
-    @SuppressWarnings("all")
-    private void runRxjava() {
-
-        // http://gank.io/post/560e15be2dca930e00da1083
-        // https://realm.io/cn/news/gotocph-jake-wharton-exploring-rxjava2-android/
-        // https://zhuanlan.zhihu.com/p/23617414
-
-        // 1.创建被观察者，并注入事件
-        // 2.创建订阅者，并指定拿到事件后的操作
-        // 3.发送事件
-
-        /*String[] names = {"lxm","android","java","rxjava"};
-        Observable.from(names)  // 1
-                .subscribeOn(Schedulers.io())               // IO线程订阅
-                .observeOn(AndroidSchedulers.mainThread())  // 主线程回调
-                .map(new Func1<String, String>() {   // 变换，将一个类型变成另一个
-                    @Override
-                    public String call(String s) {
-                        return "rx-map:"+s;
-                    }
-                })
-                // 3
-                .subscribe(new Action1<String>() { // 2
-                    @Override
-                    public void call(String s) {
-                        Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-
-        User[] users = {new User("001", "lxm"), new User("002", "java"),
-                new User("003", "android"), new User("004", "linux")};
-
-        Observable.from(users) // 1
-
-                // 变换，将 User 变换成 Observable<User.Course>
-                .flatMap(new Func1<User, Observable<User.Course>>() {
-                    @Override
-                    public Observable<User.Course> call(User user) {
-                        return Observable.from(user.courses); // 001,lxm
-                                                              // 002,java
-                                                              // 003,android
-                                                              // 004,linux
-                    }
-                })
-                // 3
-                .subscribe(new Action1<User.Course>() {  // 2
-                    @Override
-                    public void call(User.Course course) {
-                        MLog.i(course.cname);
-                    }
-                });
     }
 
     @Override

@@ -54,7 +54,8 @@ dependencies {
 
     // auto-value
     compile "com.google.auto.value:auto-value:${rootProject.ext.dependencies.autoValueVersion}"
-    apt "com.ryanharter.auto.value:auto-value-parcel:${rootProject.ext.dependencies.autoValueParcelVersion}"
+    apt 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
+    compile 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.5'
 
     // java annotation
     compile "org.glassfish:javax.annotation:${rootProject.ext.dependencies.annotationVersion}"
