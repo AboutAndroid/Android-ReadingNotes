@@ -10,7 +10,7 @@ class Cousins {
 	 */
 	private IDrinkMachine mDrinkMachine;
 
-	public void setmDrinkMachine(IDrinkMachine mDrinkMachine) {
+	public synchronized void setmDrinkMachine(IDrinkMachine mDrinkMachine) {
 		this.mDrinkMachine = mDrinkMachine;
 	}
 	
