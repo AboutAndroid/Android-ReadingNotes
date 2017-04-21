@@ -60,7 +60,6 @@ public class PieView extends View {
         mHeight = h;
     }
 
-
     @Override protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
