@@ -6,7 +6,7 @@ Android阅读笔记，个人成长之路。
 - E-mail : lxmyijiu@163.com
 - WeChat : [ssyijiu11](http://obe5pxv6t.bkt.clouddn.com/weixin.jpg)
 
-##License
+## License
 
 ```
 Copyright 2016 ssyijiu
