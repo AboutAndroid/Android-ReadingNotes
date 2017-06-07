@@ -6,6 +6,7 @@
     <com.kelin.scrollablepanel.library.ScrollablePanel
         android:id="@+id/scrollable_panel"
         android:layout_width="match_parent"
+        android:background="#E5E5E5"
         android:layout_height="match_parent" />
 
 </FrameLayout>

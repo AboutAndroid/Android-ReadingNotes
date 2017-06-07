@@ -3,6 +3,7 @@ package com.stay4it.sample.utils;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Environment;
+import android.util.Log;
 
 import com.stay4it.sample.utils.IOUtil;
 import com.stay4it.sample.utils.ToastUtil;
@@ -44,7 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         mDBFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                 + mContext.getFilesDir(), dbName);
-
+        Log.d("yuy",mContext.getFilesDir()+"");
         //load sqlcipher libraries
         SQLiteDatabase.loadLibs(context.getApplicationContext());
 

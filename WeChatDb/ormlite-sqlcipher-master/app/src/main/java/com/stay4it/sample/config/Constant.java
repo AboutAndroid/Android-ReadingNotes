@@ -11,9 +11,10 @@ public interface Constant {
     /**
      * 数据库密码，IMEi+UIN经过MD5加密后去取前7位
      */
-    String DB_PASSWORD = "1d73105";
-    String DB_PASSWORD7 = "4df7236";
+//    String DB_PASSWORD = "1d73105";
+//    String DB_PASSWORD7 = "4df7236";
 
-    String DATABASE_NAME = "EnMicroMsg.db";
+    //    String DATABASE_NAME = "EnMicroMsg.db";
+//    String DATABASE_NAME7 = "EnMicroMsg7.db";
 
 }

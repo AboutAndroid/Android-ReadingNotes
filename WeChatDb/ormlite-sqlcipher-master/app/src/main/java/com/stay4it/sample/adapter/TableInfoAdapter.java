@@ -1,11 +1,15 @@
 package com.stay4it.sample.adapter;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kelin.scrollablepanel.library.PanelAdapter;
 import com.stay4it.sample.R;
@@ -38,9 +42,9 @@ public class TableInfoAdapter extends PanelAdapter {
     private static final int TITLE_TYPE = 4;
 
 
-    private List<String> mIdList ;
-    private List<String> mColNameList ;
-    private List<List<String>> mInfoList ;
+    private List<String> mIdList;
+    private List<String> mColNameList;
+    private List<List<String>> mInfoList;
 
     @Override
     public int getRowCount() {
@@ -88,7 +92,7 @@ public class TableInfoAdapter extends PanelAdapter {
     }
 
     private void setId(int row, VH holder) {
-        if (mIdList != null && mIdList.size()>0) {
+        if (mIdList != null && mIdList.size() > 0) {
             String id = mIdList.get(row - 1);
             if (!TextUtils.isEmpty(id)) {
                 ((TextView) holder.itemView).setText(id);
@@ -98,31 +102,67 @@ public class TableInfoAdapter extends PanelAdapter {
 
     private void setName(int column, VH holder) {
 
-        if (mColNameList != null && mColNameList.size()>0) {
-            String name = mColNameList.get(column - 1);
+        if (mColNameList != null && mColNameList.size() > 0) {
+            final String name = mColNameList.get(column - 1);
             if (!TextUtils.isEmpty(name)) {
                 ((TextView) holder.itemView).setText(name);
+                ((TextView) holder.itemView).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!name.equals("null")){
+                            showDialog(v.getContext(),name);
+                        }
+                    }
+                });
             }
+
         }
 
     }
 
     private void setInfo(int row, int column, VH holder) {
 
-        if (mInfoList != null && mInfoList.size()>0 && mColNameList != null && mColNameList.size()>0) {
-            String info = mInfoList.get(row - 1).get(column - 1);
+        if (mInfoList != null && mInfoList.size() > 0 && mColNameList != null && mColNameList.size() > 0) {
+            final String info = mInfoList.get(row - 1).get(column - 1);
             if (!TextUtils.isEmpty(info)) {
                 ((TextView) holder.itemView).setText(info);
+                ((TextView) holder.itemView).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                      if (!info.equals("null")){
+                          showDialog(v.getContext(),info);
+                      }
+                    }
+                });
             }
         }
     }
 
+    //显示基本的AlertDialog
+    private void showDialog(Context context, String msg) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("详细信息");
+        builder.setMessage(msg);
+        builder.setPositiveButton("确定",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                });
 
+        builder.show();
+    }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tableinfo, parent, false);
-        return new VH(view);
+        switch (viewType) {
+            case ID_TYPE:
+                return new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_table_id, parent, false));
+            case TITLE_TYPE:
+                return new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_table_title, parent, false));
+            case COLNAME_TYPE:
+                return new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_table_colname, parent, false));
+        }
+        return new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tableinfo, parent, false));
     }
 
     private static class VH extends RecyclerView.ViewHolder {

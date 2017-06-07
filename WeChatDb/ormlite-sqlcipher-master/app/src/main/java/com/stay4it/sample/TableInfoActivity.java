@@ -1,6 +1,7 @@
 package com.stay4it.sample;
 
 import android.content.Intent;
+import android.text.TextUtils;
 
 import com.kelin.scrollablepanel.library.ScrollablePanel;
 import com.ssyijiu.library.MLog;
@@ -11,12 +12,15 @@ import com.stay4it.sample.config.IntentKey;
 import com.stay4it.sample.config.SQL;
 import com.stay4it.sample.utils.DbHelper;
 import com.stay4it.sample.utils.IOUtil;
+import com.stay4it.sample.utils.ToastUtil;
 
 import net.sqlcipher.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.name;
 
 /**
  * Created by ssyijiu on 2017/1/21.
@@ -35,13 +39,17 @@ public class TableInfoActivity extends BaseActivity {
     private TableInfoAdapter mAdapter;
 
 
-    /** 所有的列名 */
+    /**
+     * 所有的列名
+     */
     private List<String> mColNameList;
-    /** 存放二维表中的所有数据 */
+    /**
+     * 存放二维表中的所有数据
+     */
     private List<List<String>> mInfoList = new ArrayList<>();
 
     int mMaxId = 0;
-
+    private String password, fileName, sql;
 
     @Override
     protected int getLayoutResId() {
@@ -57,17 +65,23 @@ public class TableInfoActivity extends BaseActivity {
     @Override
     protected void parseIntent(Intent intent) {
         mTableName = intent.getStringExtra(IntentKey.TABLE_NAME);
+        fileName = intent.getStringExtra("fileName");
+        password = intent.getStringExtra("pwd");
+        sql = intent.getStringExtra("sql");
     }
 
     @Override
     protected void initData() {
-        mDbHelper = new DbHelper(this, Constant.DATABASE_NAME);
-        mSQLiteDatabase = mDbHelper.open(Constant.DB_PASSWORD);
+        mDbHelper = new DbHelper(this, fileName);
+        mSQLiteDatabase = mDbHelper.open(password);
 
+        try {
+            mColNameList = getAllColName();
+            getAllValues(sql);
+        } catch (Exception e) {
+            ToastUtil.show("sql语句错误！");
+        }
 
-        mColNameList = getAllColName();
-
-        getAllValues();
 
         // bug -> 要多加一个数据、否则这个控件显示不全
         mColNameList.add("");
@@ -84,14 +98,15 @@ public class TableInfoActivity extends BaseActivity {
     /**
      * 获取一个表所有的数据
      */
-    private void getAllValues() {
-
-        String sql = String.format("select * from %s;", mTableName);
+    private void getAllValues(String sql) throws Exception {
+        if (TextUtils.isEmpty(sql)) {
+            sql = String.format("select * from %s;", mTableName);
+        }
         openDataBae();
         Cursor cursor = mSQLiteDatabase.rawQuery(sql, null);
 
         // cursor 有数据
-        if(cursor != null && cursor.getCount() > 0) {
+        if (cursor != null && cursor.getCount() > 0) {
             // 最大 id
             mMaxId = cursor.getCount();
             MLog.i(mColNameList);
@@ -107,7 +122,7 @@ public class TableInfoActivity extends BaseActivity {
                         value = cursor.getString(cursor.getColumnIndex(colName));
                     } catch (Exception ignored) {
                     } finally {
-                        rowList.add(value);
+                        rowList.add(value == null || value.equals("") ? "null" : value);
                     }
                 }
 
@@ -122,7 +137,7 @@ public class TableInfoActivity extends BaseActivity {
     /**
      * 获取一个表所有的列名
      */
-    private List<String> getAllColName() {
+    private List<String> getAllColName() throws Exception {
 
         List<String> list = new ArrayList<>();
         openDataBae();
@@ -153,7 +168,8 @@ public class TableInfoActivity extends BaseActivity {
      */
     private void openDataBae() {
         if (!mSQLiteDatabase.isOpen()) {
-            mSQLiteDatabase = mDbHelper.open(Constant.DB_PASSWORD);
+            mSQLiteDatabase = mDbHelper.open(password);
         }
     }
+
 }
