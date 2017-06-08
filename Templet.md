@@ -10,4 +10,4 @@
 - WeChat : [ssyijiu11](http://obe5pxv6t.bkt.clouddn.com/weixin.jpg)
 
 
-http://obe5pxv6t.bkt.clouddn.com/my.patch
+http://obe5pxv6t.bkt.clouddn.com/www.patch
